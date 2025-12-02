@@ -1,513 +1,172 @@
-// // "use client"
-// // import React, { useState } from 'react';
-// // import { 
-// //   MapPin, Clock, Users, Calendar, ArrowRight, CheckCircle, 
-// //   Scissors, Star, TrendingUp, Bell, Smartphone, ShieldCheck, Menu,
-// //   ChevronLeft, Building2, User, Phone, Mail, Lock, Store
-// // } from 'lucide-react';
-
-
-
-// // const BackgroundMesh = () => (
-// //   <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-// //     <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-200/30 rounded-full blur-[120px]" />
-// //     <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-green-200/30 rounded-full blur-[120px]" />
-// //   </div>
-// // );
-
-// // const Logo = () => (
-// //   <div className="flex items-center gap-2">
-// //     <div className="w-8 h-8 bg-zinc-900 rounded-full flex items-center justify-center text-white font-bold text-sm">
-// //       TG
-// //     </div>
-// //     <span className="font-bold text-zinc-900 tracking-tight">
-// //      TrimGo
-// //     </span>
-// //   </div>
-// // );
-
-
-
-// // const UserRegistration = ({ onBack,  onLogin }) => {
-// //   return (
-// //     <div className="min-h-screen w-full bg-zinc-50 flex items-center justify-center p-4 relative font-sans">
-// //       <BackgroundMesh />
-      
-// //       {/* Back Button */}
-// //       <button 
-// //         onClick={onBack}
-// //         className="absolute top-8 left-8 flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition z-20 font-medium"
-// //       >
-// //         <ChevronLeft size={20} /> Back to Home
-// //       </button>
-
-// //       <div className="w-full max-w-4xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row relative z-10 border border-zinc-100">
-        
-// //         {/* Left: Form */}
-// //         <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-// //           <div className="mb-8">
-// //             <h2 className="text-3xl font-bold text-zinc-900 mb-2">Create Account</h2>
-// //             <p className="text-zinc-500">Join 10,000+ users skipping the queue today.</p>
-// //           </div>
-
-// //           <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-// //             <div className="space-y-1">
-// //               <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Full Name</label>
-// //               <div className="relative">
-// //                 <User className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-// //                 <input 
-// //                   type="text" 
-// //                   placeholder="Sanjay Choudhary" 
-// //                   className="w-full bg-zinc-50 border border-zinc-200 rounded-xl py-3 pl-12 pr-4 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-900/20 focus:border-zinc-900 transition"
-// //                 />
-// //               </div>
-// //             </div>
-
-// //             <div className="space-y-1">
-// //               <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Mobile Number</label>
-// //               <div className="relative">
-// //                 <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-// //                 <input 
-// //                   type="tel" 
-// //                   placeholder="+91 98765 43210" 
-// //                   className="w-full bg-zinc-50 border border-zinc-200 rounded-xl py-3 pl-12 pr-4 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-900/20 focus:border-zinc-900 transition"
-// //                 />
-// //               </div>
-// //             </div>
-
-// //             <div className="space-y-1">
-// //               <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Password</label>
-// //               <div className="relative">
-// //                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-// //                 <input 
-// //                   type="password" 
-// //                   placeholder="••••••••" 
-// //                   className="w-full bg-zinc-50 border border-zinc-200 rounded-xl py-3 pl-12 pr-4 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-900/20 focus:border-zinc-900 transition"
-// //                 />
-// //               </div>
-// //             </div>
-
-// //             <button className="w-full bg-zinc-900 text-white font-bold py-4 rounded-xl mt-6 hover:bg-zinc-800 transition shadow-lg shadow-zinc-900/20">
-// //               Sign Up Free
-// //             </button>
-// //           </form>
-
-// //           <p className="mt-8 text-center text-sm text-zinc-500">
-// //             Already have an account? <button onClick={onLogin} className="text-zinc-900 font-bold hover:underline">Log In</button>
-// //           </p>
-// //         </div>
-
-// //         {/* Right: Visual */}
-// //         <div className="w-full md:w-1/2 bg-zinc-900 relative p-12 flex flex-col justify-between overflow-hidden">
-// //           <div className="absolute top-0 right-0 w-64 h-64 bg-green-500 rounded-full blur-[100px] opacity-20"></div>
-// //           <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500 rounded-full blur-[100px] opacity-20"></div>
-          
-// //           <div className="relative z-10">
-// //             <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 border border-white/20">
-// //               <Clock className="text-white" />
-// //             </div>
-// //             <h3 className="text-3xl font-bold text-white mb-4">Your time is money. Stop wasting it.</h3>
-// //             <p className="text-zinc-400">Book your slot, track your wait time live, and walk in exactly when the barber is ready.</p>
-// //           </div>
-
-// //           <div className="relative z-10 mt-12 bg-zinc-800/50 backdrop-blur-sm p-4 rounded-2xl border border-white/10">
-// //             <div className="flex items-center gap-3 mb-2">
-// //               <div className="flex -space-x-2">
-// //                  <div className="w-8 h-8 rounded-full bg-zinc-700 border-2 border-zinc-800" />
-// //                  <div className="w-8 h-8 rounded-full bg-zinc-600 border-2 border-zinc-800" />
-// //               </div>
-// //               <span className="text-sm text-zinc-300">2 people ahead of you</span>
-// //             </div>
-// //             <div className="w-full bg-zinc-700 h-1.5 rounded-full overflow-hidden">
-// //                <div className="bg-green-500 w-[60%] h-full"></div>
-// //             </div>
-// //           </div>
-// //         </div>
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // // --- PAGE 2: SALON REGISTRATION (BUSINESS) ---
-
-// // const SalonRegistration = ({ onBack }) => {
-// //   return (
-// //     <div className="min-h-screen w-full bg-zinc-50 flex items-center justify-center p-4 relative font-sans">
-// //       <BackgroundMesh />
-      
-// //       {/* Back Button */}
-// //       <button 
-// //         onClick={onBack}
-// //         className="absolute top-8 left-8 flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition z-20 font-medium"
-// //       >
-// //         <ChevronLeft size={20} /> Back to Home
-// //       </button>
-
-// //       <div className="w-full max-w-6xl bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row relative z-10 border border-zinc-100">
-        
-// //         {/* Left: Value Prop (Dark Side) */}
-// //         <div className="w-full md:w-5/12 bg-zinc-900 p-12 text-white flex flex-col justify-between relative overflow-hidden">
-// //            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=2074')] bg-cover bg-center opacity-10"></div>
-// //            <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 to-transparent"></div>
-
-// //            <div className="relative z-10">
-// //              <div className="flex items-center gap-2 mb-8">
-// //                 <div className="w-8 h-8 bg-white text-zinc-900 rounded-lg flex items-center justify-center font-bold text-sm">SQ</div>
-// //                 <span className="font-bold tracking-tight">For Business</span>
-// //              </div>
-// //              <h2 className="text-4xl font-bold mb-6">Partner with the future of grooming.</h2>
-// //              <ul className="space-y-6">
-// //                <li className="flex items-start gap-4">
-// //                  <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 shrink-0">
-// //                    <TrendingUp size={16} />
-// //                  </div>
-// //                  <div>
-// //                    <h4 className="font-bold">Increase Revenue</h4>
-// //                    <p className="text-sm text-zinc-400 mt-1">Fill empty slots and reduce walk-away customers.</p>
-// //                  </div>
-// //                </li>
-// //                <li className="flex items-start gap-4">
-// //                  <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
-// //                    <Users size={16} />
-// //                  </div>
-// //                  <div>
-// //                    <h4 className="font-bold">Manage Staff</h4>
-// //                    <p className="text-sm text-zinc-400 mt-1">Track barber performance and daily earnings.</p>
-// //                  </div>
-// //                </li>
-// //              </ul>
-// //            </div>
-
-// //            <div className="relative z-10 mt-12 pt-8 border-t border-white/10">
-// //              <p className="italic text-zinc-400 text-sm">"Since joining SalonQueue, our weekend chaos has turned into organized profit. Highly recommended."</p>
-// //              <div className="mt-4 flex items-center gap-3">
-// //                <div className="w-10 h-10 bg-zinc-700 rounded-full"></div>
-// //                <div>
-// //                  <p className="font-bold text-sm">Rajesh Kumar</p>
-// //                  <p className="text-xs text-zinc-500">Owner, The Royal Cut</p>
-// //                </div>
-// //              </div>
-// //            </div>
-// //         </div>
-
-// //         {/* Right: Registration Form */}
-// //         <div className="w-full md:w-7/12 p-8 md:p-12 overflow-y-auto max-h-[90vh]">
-// //           <div className="mb-8">
-// //             <h2 className="text-3xl font-bold text-zinc-900 mb-2">Register your Salon</h2>
-// //             <p className="text-zinc-500">Get your business listed in less than 5 minutes.</p>
-// //           </div>
-
-// //           <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
-            
-// //             <div className="space-y-1 md:col-span-2">
-// //               <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Salon Name</label>
-// //               <div className="relative">
-// //                 <Store className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-// //                 <input type="text" placeholder="e.g. Urban Cut Pro" className="w-full bg-zinc-50 border border-zinc-200 rounded-xl py-3 pl-12 pr-4 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-900/20 focus:border-zinc-900 transition" />
-// //               </div>
-// //             </div>
-
-// //             <div className="space-y-1">
-// //               <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Owner Name</label>
-// //               <div className="relative">
-// //                 <User className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-// //                 <input type="text" placeholder="Your Name" className="w-full bg-zinc-50 border border-zinc-200 rounded-xl py-3 pl-12 pr-4 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-900/20 focus:border-zinc-900 transition" />
-// //               </div>
-// //             </div>
-
-// //             <div className="space-y-1">
-// //               <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Mobile Number</label>
-// //               <div className="relative">
-// //                 <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-// //                 <input type="tel" placeholder="+91" className="w-full bg-zinc-50 border border-zinc-200 rounded-xl py-3 pl-12 pr-4 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-900/20 focus:border-zinc-900 transition" />
-// //               </div>
-// //             </div>
-
-// //             <div className="space-y-1 md:col-span-2">
-// //               <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider">Salon Location (City/Area)</label>
-// //               <div className="relative">
-// //                 <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-// //                 <input type="text" placeholder="e.g. Koramangala, Bangalore" className="w-full bg-zinc-50 border border-zinc-200 rounded-xl py-3 pl-12 pr-4 text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-900/20 focus:border-zinc-900 transition" />
-// //               </div>
-// //             </div>
-
-// //             <div className="space-y-1 md:col-span-2">
-// //               <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2 block">Salon Type</label>
-// //               <div className="grid grid-cols-3 gap-3">
-// //                 <button className="py-3 border border-zinc-200 rounded-xl text-sm font-medium hover:border-zinc-900 hover:bg-zinc-50 transition">Unisex</button>
-// //                 <button className="py-3 border-2 border-zinc-900 bg-zinc-900 text-white rounded-xl text-sm font-bold shadow-lg">Men's Only</button>
-// //                 <button className="py-3 border border-zinc-200 rounded-xl text-sm font-medium hover:border-zinc-900 hover:bg-zinc-50 transition">Women's Only</button>
-// //               </div>
-// //             </div>
-
-// //             <div className="md:col-span-2 pt-4">
-// //               <button className="w-full bg-zinc-900 text-white font-bold py-4 rounded-xl hover:bg-zinc-800 transition shadow-lg shadow-zinc-900/20 flex items-center justify-center gap-2">
-// //                 Continue to Verification <ArrowRight size={18} />
-// //               </button>
-// //               <p className="text-center text-xs text-zinc-400 mt-4">By registering, you agree to our Partner Terms & Conditions.</p>
-// //             </div>
-// //           </form>
-// //         </div>
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-
-// // // --- PAGE 3: LANDING PAGE (Your Original + Nav Logic) ---
-
-// // const LandingPage = ({ onNavigateUser, onNavigateSalon }) => {
-// //   return (
-// //     <div className="min-h-screen w-full bg-zinc-50 flex flex-col font-sans selection:bg-zinc-900 selection:text-white overflow-x-hidden relative">
-// //       <BackgroundMesh />
-
-// //       {/* FLOATING NAVBAR */}
-// //       <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl z-50 bg-white/70 backdrop-blur-xl border border-white/20 shadow-lg shadow-zinc-200/50 rounded-full px-6 py-3 flex justify-between items-center">
-// //         <Logo />
-
-// //         <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-500">
-// //           <a href="#features" className="hover:text-zinc-900 transition">Features</a>
-// //           <a href="#business" className="hover:text-zinc-900 transition">For Business</a>
-// //           <a href="#download" className="hover:text-zinc-900 transition">Download App</a>
-// //         </div>
-
-// //         <div className="flex gap-3">
-// //           <button className="px-5 py-2 rounded-full text-zinc-600 text-sm font-medium hover:bg-zinc-100 transition">Login</button>
-// //           <button className="px-5 py-2 rounded-full bg-zinc-900 text-white text-sm font-medium hover:bg-zinc-800 transition shadow-lg shadow-zinc-900/20">Get Started</button>
-// //         </div>
-// //       </nav>
-
-// //       {/* HERO SECTION */}
-// //       <section className="relative z-10 pt-40 pb-20 px-6 max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
-// //         {/* Left: Copy */}
-// //         <div className="flex flex-col items-start text-left space-y-8">
-// //           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-zinc-200 shadow-sm text-zinc-600 text-xs font-bold">
-// //             <span className="relative flex h-2 w-2">
-// //               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-// //               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-// //             </span>
-// //             LIVE IN 500+ SALONS
-// //           </div>
-
-// //           <h1 className="text-6xl md:text-7xl font-extrabold text-zinc-900 tracking-tight leading-[1.05]">
-// //             Wait Less. <br />
-// //             <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-800 to-zinc-500">
-// //               Live More.
-// //             </span>
-// //           </h1>
-
-// //           <p className="text-xl text-zinc-500 max-w-lg leading-relaxed">
-// //             The first intelligent queue management system for modern salons. Book spots, track wait times, and walk in like a VIP.
-// //           </p>
-
-// //           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-// //             {/* USER / CUSTOMER REGISTRATION */}
-// //             <button
-// //               onClick={onNavigateUser}
-// //               className="flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-zinc-900 text-white font-semibold hover:bg-zinc-800 transition hover:-translate-y-1 shadow-xl shadow-zinc-900/20"
-// //             >
-// //               Register as User <ArrowRight size={18} />
-// //             </button>
-
-// //             {/* SALON REGISTRATION */}
-// //             <button
-// //               onClick={onNavigateSalon}
-// //               className="flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-white border border-zinc-200 text-zinc-900 font-semibold hover:bg-zinc-50 transition hover:-translate-y-1"
-// //             >
-// //               Register Salon
-// //             </button>
-// //           </div>
-
-// //           {/* Mini Trust Signal */}
-// //           <div className="flex items-center gap-3 text-sm text-zinc-400 font-medium">
-// //             <div className="flex text-yellow-500">
-// //               <Star size={16} fill="currentColor" />
-// //               <Star size={16} fill="currentColor" />
-// //               <Star size={16} fill="currentColor" />
-// //               <Star size={16} fill="currentColor" />
-// //               <Star size={16} fill="currentColor" />
-// //             </div>
-// //             <span>4.9/5 from 10k+ users</span>
-// //           </div>
-// //         </div>
-
-// //         {/* Right: 3D-ish Interface */}
-// //         <div className="relative group perspective-1000">
-// //           <div className="absolute inset-0 bg-gradient-to-tr from-zinc-200 to-zinc-100 rounded-[3rem] transform rotate-3 scale-105 opacity-50 blur-xl"></div>
-
-// //           <div className="relative bg-white rounded-[2.5rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)] border border-white/50 p-6 overflow-hidden transform transition duration-700 hover:rotate-1 hover:scale-[1.01]">
-// //             {/* Simulated Notch/Header */}
-// //             <div className="flex justify-between items-center mb-8 px-2">
-// //               <Menu size={20} className="text-zinc-400" />
-// //               <span className="font-bold text-zinc-900">SalonQueue</span>
-// //               <div className="w-8 h-8 bg-zinc-100 rounded-full overflow-hidden border border-zinc-200">
-// //                 <img
-// //                   src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
-// //                   alt="User"
-// //                 />
-// //               </div>
-// //             </div>
-
-// //             {/* The "Live Card" UI */}
-// //             <div className="bg-zinc-900 rounded-3xl p-6 text-white shadow-2xl shadow-zinc-900/30 relative overflow-hidden mb-6">
-// //               <div className="absolute top-0 right-0 w-32 h-32 bg-zinc-800 rounded-full blur-2xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
-
-// //               <div className="relative z-10">
-// //                 <div className="flex justify-between items-start mb-4">
-// //                   <div>
-// //                     <h3 className="text-xl font-bold">Urban Cut Pro</h3>
-// //                     <p className="text-zinc-400 text-sm">Booking ID: #SQ-8821</p>
-// //                   </div>
-// //                   <div className="px-2 py-1 bg-green-500/20 text-green-400 text-xs font-bold rounded-lg border border-green-500/30 animate-pulse">
-// //                     LIVE
-// //                   </div>
-// //                 </div>
-
-// //                 <div className="flex items-end gap-3 mb-4">
-// //                   <span className="text-5xl font-bold tracking-tighter">
-// //                     12
-// //                     <span className="text-xl text-zinc-500 ml-1">min</span>
-// //                   </span>
-// //                   <span className="text-zinc-400 text-sm mb-2">
-// //                     estimated wait
-// //                   </span>
-// //                 </div>
-
-// //                 <div className="w-full bg-zinc-800 h-2 rounded-full mb-2 overflow-hidden">
-// //                   <div className="bg-white h-full w-[70%] rounded-full relative">
-// //                     <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)]"></div>
-// //                   </div>
-// //                 </div>
-// //                 <p className="text-xs text-zinc-500 text-center">
-// //                   Your turn is coming up next!
-// //                 </p>
-// //               </div>
-// //             </div>
-
-// //             <div className="space-y-3">
-// //               <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-100 flex justify-between items-center group/item hover:bg-zinc-100 transition cursor-pointer">
-// //                 <div className="flex items-center gap-3">
-// //                   <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-zinc-600">
-// //                     <Scissors size={18} />
-// //                   </div>
-// //                   <div>
-// //                     <h4 className="font-bold text-sm text-zinc-900">
-// //                       Haircut & Beard
-// //                     </h4>
-// //                     <p className="text-xs text-zinc-500">
-// //                       45 mins • Barber: Rahul
-// //                     </p>
-// //                   </div>
-// //                 </div>
-// //                 <span className="font-bold text-zinc-900">₹350</span>
-// //               </div>
-// //             </div>
-
-// //             <button className="w-full mt-6 py-4 bg-zinc-900 text-white rounded-2xl font-bold text-sm hover:scale-[1.02] transition shadow-lg">
-// //               Check In Now
-// //             </button>
-// //           </div>
-// //         </div>
-// //       </section>
-
-// //       {/* MARQUEE / SOCIAL PROOF */}
-// //       <section className="py-10 border-y border-zinc-200 bg-white/50 backdrop-blur-sm overflow-hidden">
-// //         <div className="max-w-7xl mx-auto px-6 text-center mb-6">
-// //           <p className="text-sm font-semibold text-zinc-400 uppercase tracking-widest">
-// //             Trusted by top salons in India
-// //           </p>
-// //         </div>
-// //         <div className="flex gap-16 items-center justify-center opacity-40 grayscale animate-pulse">
-// //           <span className="text-xl font-black">LAKMÉ</span>
-// //           <span className="text-xl font-black">JAVED HABIB</span>
-// //           <span className="text-xl font-black">URBAN COMPANY</span>
-// //           <span className="text-xl font-black">NATURALS</span>
-// //           <span className="text-xl font-black">TONI&GUY</span>
-// //         </div>
-// //       </section>
-
-// //       {/* FOOTER */}
-// //       <footer className="w-full py-12 px-6 bg-zinc-50 border-t border-zinc-200 mt-auto">
-// //         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-// //           <div className="flex flex-col items-start gap-2">
-// //             <Logo />
-// //             <p className="text-xs text-zinc-500">The future of grooming.</p>
-// //           </div>
-// //           <p className="text-sm text-zinc-500">
-// //             © {new Date().getFullYear()} Wolars Infosys Pvt Ltd.
-// //           </p>
-// //         </div>
-// //       </footer>
-// //     </div>
-// //   );
-// // };
-
-
-// // // --- MAIN APP COMPONENT ---
-
-// // export default function App() {
-// //   const [currentView, setCurrentView] = useState('home'); // 'home', 'user-register', 'salon-register'
-
-// //   return (
-// //     <>
-// //       {currentView === 'home' && (
-// //         <LandingPage 
-// //           onNavigateUser={() => setCurrentView('user-register')} 
-// //           onNavigateSalon={() => setCurrentView('salon-register')} 
-// //         />
-// //       )}
-      
-// //       {currentView === 'user-register' && (
-// //         <UserRegistration 
-// //           onBack={() => setCurrentView('home')} 
-// //           onLogin={() => alert('Login functionality coming soon!')}
-// //         />
-// //       )}
-
-// //       {currentView === 'salon-register' && (
-// //         <SalonRegistration 
-// //           onBack={() => setCurrentView('home')} 
-// //         />
-// //       )}
-// //     </>
-// //   );
-// // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"use client"
-import React, { useState, useEffect, useRef } from 'react';
+"use client";
+import React, { useState, useEffect, useRef, FormEvent, ChangeEvent } from "react";
+import {
+  MapPin, Clock, Users, Calendar, ArrowRight, CheckCircle, Scissors, Star,
+  TrendingUp, Bell, Smartphone, ShieldCheck, Menu, ChevronLeft, Building2,
+  User, Phone, Mail, Lock, Store, Zap, BarChart3, Sparkles, Check, Globe,
+  Heart, Search, Filter, Ticket, X, Play, CheckSquare, XSquare, PauseCircle,
+  Timer, DollarSign, LogOut, MoreVertical, ChevronRight, Settings, Grid,
+  Activity, Shield, Database, Ban, AlertTriangle, Eye, LucideIcon
+} from "lucide-react";
 import { 
-  MapPin, Clock, Users, Calendar, ArrowRight, CheckCircle, 
-  Scissors, Star, TrendingUp, Bell, Smartphone, ShieldCheck, Menu,
-  ChevronLeft, Building2, User, Phone, Mail, Lock, Store, Zap,
-  BarChart3, Sparkles
-} from 'lucide-react';
+  Download, RefreshCcw, MoreHorizontal, TrendingDown, 
+  CreditCard, Globe2, LayoutDashboard
+} from "lucide-react";
 
-// --- UTILS & HOOKS ---
+/* ---------------------------------
+   TYPES & INTERFACES (TYPESCRIPT DEFINITIONS)
+---------------------------------- */
 
-// Hook for scroll animations without external libraries
-const useOnScreen = (options) => {
-  const ref = useRef(null);
+interface Salon {
+  id: number;
+  name: string;
+  area: string;
+  city: string;
+  distance: string;
+  waiting: number;
+  eta: number;
+  rating: number;
+  reviews: number;
+  tag: string;
+  price: string;
+  type: string;
+  verified: boolean;
+  revenue: number;
+}
+
+interface UserData {
+  id: number;
+  name: string;
+  email: string;
+  joined: string;
+  status: "Active" | "Inactive";
+}
+
+interface SalonRequest {
+  id: number;
+  name: string;
+  service: string;
+  time: string;
+  status: "pending" | "accepted" | "rejected";
+  price: number;
+}
+
+interface QueueCustomer {
+  id: number;
+  name: string;
+  service: string;
+  status: "waiting" | "in-service";
+  waitTime: number;
+  price: number;
+  startTime?: number;
+}
+
+interface TicketData {
+  salonName: string;
+  number: number;
+  eta: number;
+}
+
+interface Stats {
+  revenue: number;
+  customers: number;
+  waitTime: number;
+}
+
+/* ---------------------------------
+   INITIAL DATA 
+---------------------------------- */
+
+const INITIAL_SALON_DATA: Salon[] = [
+  {
+    id: 1,
+    name: "Urban Cut Pro",
+    area: "Shastri Nagar",
+    city: "Jodhpur",
+    distance: "1.2 km",
+    waiting: 3,
+    eta: 15, 
+    rating: 4.8,
+    reviews: 321,
+    tag: "Fastest nearby",
+    price: "₹₹",
+    type: "Unisex",
+    verified: true,
+    revenue: 15400
+  },
+  {
+    id: 2,
+    name: "The Royal Cut Studio",
+    area: "Ratanada",
+    city: "Jodhpur",
+    distance: "2.0 km",
+    waiting: 9,
+    eta: 45,
+    rating: 4.5,
+    reviews: 189,
+    tag: "Most booked",
+    price: "₹₹₹",
+    type: "Men Only",
+    verified: true,
+    revenue: 8900
+  },
+  {
+    id: 3,
+    name: "Fade & Blade Men’s Salon",
+    area: "Sardarpura",
+    city: "Jodhpur",
+    distance: "0.9 km",
+    waiting: 1,
+    eta: 5,
+    rating: 4.9,
+    reviews: 412,
+    tag: "Low waiting now",
+    price: "₹₹",
+    type: "Men Only",
+    verified: true,
+    revenue: 21000
+  },
+  {
+    id: 4,
+    name: "Glow & Glam Unisex Salon",
+    area: "Civil Lines",
+    city: "Jodhpur",
+    distance: "3.4 km",
+    waiting: 6,
+    eta: 30,
+    rating: 4.3,
+    reviews: 102,
+    tag: "Family friendly",
+    price: "₹₹",
+    type: "Women Only",
+    verified: false,
+    revenue: 3200
+  },
+];
+
+const INITIAL_USERS: UserData[] = [
+  { id: 101, name: "Suresh Raina", email: "suresh@example.com", joined: "2025-10-12", status: "Active" },
+  { id: 102, name: "Rohit Sharma", email: "rohit@example.com", joined: "2025-11-05", status: "Active" },
+  { id: 103, name: "Virat Kohli", email: "virat@example.com", joined: "2025-11-28", status: "Active" },
+];
+
+const INITIAL_SALON_REQUESTS: SalonRequest[] = [
+  { id: 101, name: "Rahul Sharma", service: "Haircut & Beard", time: "10 min ago", status: "pending", price: 350 },
+  { id: 102, name: "Amit Verma", service: "Hair Spa", time: "2 min ago", status: "pending", price: 800 },
+  { id: 103, name: "Vikram Singh", service: "Shaving", time: "Just now", status: "pending", price: 150 },
+];
+
+const INITIAL_ACTIVE_QUEUE: QueueCustomer[] = [
+  { id: 201, name: "Suresh Raina", service: "Haircut", status: "waiting", waitTime: 15, price: 250 },
+  { id: 202, name: "Mahendra S.", service: "Beard Trim", status: "waiting", waitTime: 30, price: 100 },
+];
+
+/* ---------------------------------
+   HOOKS
+---------------------------------- */
+
+const useOnScreen = (options: IntersectionObserverInit) => {
+  const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -522,12 +181,32 @@ const useOnScreen = (options) => {
     return () => observer.disconnect();
   }, [options]);
 
-  return [ref, isVisible];
+  return [ref, isVisible] as const;
 };
 
-// --- VISUAL ASSETS & UI COMPONENTS ---
+const useSpotlight = (divRef: React.RefObject<HTMLDivElement>) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState(0);
 
-const BackgroundAurora = () => (
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current) return;
+    const rect = divRef.current.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    setOpacity(1);
+  };
+
+  const handleMouseLeave = () => {
+    setOpacity(0);
+  };
+
+  return { position, opacity, handleMouseMove, handleMouseLeave };
+};
+
+/* ---------------------------------
+   VISUAL ASSETS
+---------------------------------- */
+
+const BackgroundAurora: React.FC = () => (
   <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-zinc-50">
     <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
     <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-purple-300/20 rounded-full blur-[120px] animate-blob" />
@@ -536,27 +215,88 @@ const BackgroundAurora = () => (
   </div>
 );
 
-const Logo = ({ dark = false }) => (
-  <div className="flex items-center gap-2 group cursor-pointer">
-    <div className={`w-9 h-9 ${dark ? 'bg-white text-zinc-900' : 'bg-zinc-900 text-white'} rounded-xl flex items-center justify-center font-bold text-sm shadow-lg group-hover:rotate-12 transition-transform duration-300`}>
+const NoiseOverlay: React.FC = () => (
+  <div className="fixed inset-0 z-40 pointer-events-none opacity-[0.04] mix-blend-overlay">
+    <svg className="w-full h-full">
+      <filter id="noise">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.80"
+          numOctaves="4"
+          stitchTiles="stitch"
+        />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#noise)" />
+    </svg>
+  </div>
+);
+
+const GlowBlob: React.FC<{ className?: string }> = ({ className }) => (
+  <div
+    className={`absolute rounded-full blur-[110px] opacity-40 pointer-events-none animate-pulse-slow ${className}`}
+  />
+);
+
+/* ---------------------------------
+   GENERIC UI COMPONENTS
+---------------------------------- */
+
+interface LogoProps {
+  dark?: boolean;
+}
+
+const Logo: React.FC<LogoProps> = ({ dark = false }) => (
+  <div className="flex items-center gap-2 group cursor-pointer select-none">
+    <div
+      className={`w-9 h-9 ${
+        dark ? "bg-white text-zinc-900" : "bg-zinc-900 text-white"
+      } rounded-xl flex items-center justify-center font-bold text-sm shadow-lg group-hover:rotate-12 transition-transform duration-300`}
+    >
       TG
     </div>
-    <span className={`font-bold text-lg tracking-tight ${dark ? 'text-white' : 'text-zinc-900'}`}>
+    <span
+      className={`font-bold text-lg tracking-tight ${
+        dark ? "text-white" : "text-zinc-900"
+      }`}
+    >
       TrimGo
     </span>
   </div>
 );
 
-const ShimmerButton = ({ children, onClick, variant = 'primary', className = '' }) => {
-  const baseClass = "relative overflow-hidden rounded-xl font-bold transition-all duration-300 hover:-translate-y-1 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed";
+interface ShimmerButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+  variant?: "primary" | "secondary" | "ghost" | "danger" | "success";
+  className?: string;
+  disabled?: boolean;
+}
+
+const ShimmerButton: React.FC<ShimmerButtonProps> = ({
+  children,
+  onClick,
+  variant = "primary",
+  className = "",
+  disabled = false
+}) => {
+  const baseClass =
+    "group relative overflow-hidden rounded-xl font-bold transition-all duration-300 hover:-translate-y-1 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed";
   const variants = {
-    primary: "bg-zinc-900 text-white shadow-xl shadow-zinc-900/20 hover:shadow-2xl hover:shadow-zinc-900/30",
-    secondary: "bg-white text-zinc-900 border border-zinc-200 hover:bg-zinc-50 shadow-sm",
-    ghost: "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100/50"
+    primary:
+      "bg-zinc-900 text-white shadow-xl shadow-zinc-900/20 hover:shadow-2xl hover:shadow-zinc-900/30",
+    secondary:
+      "bg-white text-zinc-900 border border-zinc-200 hover:bg-zinc-50 shadow-sm",
+    ghost: "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100/50",
+    danger: "bg-red-500 text-white shadow-lg hover:bg-red-600",
+    success: "bg-emerald-500 text-white shadow-lg hover:bg-emerald-600"
   };
 
   return (
-    <button onClick={onClick} className={`${baseClass} ${variants[variant]} ${className}`}>
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`${baseClass} ${variants[variant]} ${className}`}
+    >
       <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent z-10" />
       <span className="relative z-20 flex items-center justify-center gap-2 px-6 py-3.5">
         {children}
@@ -565,30 +305,194 @@ const ShimmerButton = ({ children, onClick, variant = 'primary', className = '' 
   );
 };
 
-// --- INTERACTIVE MOCKUP COMPONENT ---
+const TiltCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [rotate, setRotate] = useState({ x: 0, y: 0 });
 
-const InteractivePhone = () => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    setRotate({ x: yPct * -16, y: xPct * 16 });
+  };
+
+  const handleMouseLeave = () => {
+    setRotate({ x: 0, y: 0 });
+  };
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: `perspective(1200px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+      }}
+      className={`transition-transform duration-200 ease-out will-change-transform ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
+
+const SpotlightCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = "" }) => {
+  const divRef = useRef<HTMLDivElement>(null);
+  const { position, opacity, handleMouseMove, handleMouseLeave } =
+    useSpotlight(divRef);
+
+  return (
+    <div
+      ref={divRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={`relative overflow-hidden rounded-2xl border border-white/40 bg-zinc-900/80 backdrop-blur-xl ${className}`}
+    >
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+        style={{
+          opacity,
+          background: `radial-gradient(500px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.18), transparent 45%)`,
+        }}
+      />
+      <div className="relative h-full">{children}</div>
+    </div>
+  );
+};
+
+interface ToastProps {
+  message: string;
+  type: "success" | "error" | "info";
+  onClose: () => void;
+}
+
+const Toast: React.FC<ToastProps> = ({ message, type, onClose }) => {
+  useEffect(() => {
+    const timer = setTimeout(onClose, 3000);
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
+  return (
+    <div className="fixed top-24 right-6 z-[100] animate-[slideIn_0.3s_ease-out]">
+      <div className="bg-white/90 backdrop-blur-xl border border-zinc-200 shadow-2xl rounded-2xl p-4 flex items-center gap-3 pr-8 min-w-[300px]">
+        <div className={`w-10 h-10 rounded-full flex items-center justify-center ${type === 'success' ? 'bg-green-100 text-green-600' : type === 'error' ? 'bg-red-100 text-red-600' : 'bg-blue-100 text-blue-600'}`}>
+          {type === 'success' ? <CheckCircle size={20} /> : type === 'error' ? <X size={20} /> : <Bell size={20} />}
+        </div>
+        <div>
+          <h4 className="font-bold text-sm text-zinc-900">
+            {type === 'success' ? 'Success' : type === 'error' ? 'Error' : 'Notification'}
+          </h4>
+          <p className="text-xs text-zinc-500">{message}</p>
+        </div>
+        <button onClick={onClose} className="absolute top-2 right-2 text-zinc-400 hover:text-zinc-900">
+          <X size={14} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+interface LiveTicketProps {
+  ticket: TicketData | null;
+  onCancel: () => void;
+}
+
+const LiveTicket: React.FC<LiveTicketProps> = ({ ticket, onCancel }) => {
+  const [timeLeft, setTimeLeft] = useState(ticket ? ticket.eta : 0);
+   
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => Math.max(0, prev - 1));
+    }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
+  if (!ticket) return null;
+
+  return (
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[95%] max-w-md z-50 animate-[slideUp_0.5s_cubic-bezier(0.16,1,0.3,1)]">
+      <div className="bg-zinc-900 text-white rounded-3xl p-5 shadow-2xl border border-white/10 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 animate-[shimmer_2s_infinite]"></div>
+        
+        <div className="flex justify-between items-start mb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center animate-pulse">
+              <Ticket className="text-white" size={24} />
+            </div>
+            <div>
+              <p className="text-zinc-400 text-xs font-bold uppercase tracking-wider">Current Ticket</p>
+              <h3 className="font-bold text-lg">{ticket.salonName}</h3>
+            </div>
+          </div>
+          <button onClick={onCancel} className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition">
+            <X size={16} />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 mb-4">
+          <div className="bg-white/5 rounded-2xl p-3 text-center border border-white/5">
+            <div className="text-2xl font-black">{timeLeft}</div>
+            <div className="text-[10px] text-zinc-400 uppercase">Mins Left</div>
+          </div>
+          <div className="bg-white/5 rounded-2xl p-3 text-center border border-white/5">
+            <div className="text-2xl font-black text-emerald-400">#{ticket.number}</div>
+            <div className="text-[10px] text-zinc-400 uppercase">Your Position</div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between text-xs text-zinc-500 bg-black/20 p-2 rounded-lg">
+          <span className="flex items-center gap-1"><Sparkles size={12} className="text-yellow-400"/> AI calculating speed</span>
+          <span>Updated live</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const InfiniteMarquee: React.FC = () => {
+  const logos = ["Glamour Zone", "The Barber", "Hair Masters", "Trimmed", "Urban Cut"];
+
+  return (
+    <div className="w-full overflow-hidden bg-white/50 backdrop-blur-sm py-10 border-y border-zinc-200/50 relative">
+      <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-zinc-50 to-transparent z-10"></div>
+      <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-zinc-50 to-transparent z-10"></div>
+      <div className="flex w-[200%] animate-scroll">
+        {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
+          <div
+            key={i}
+            className="flex-shrink-0 mx-8 flex items-center gap-2 text-zinc-400 font-bold text-xl uppercase tracking-tighter hover:text-zinc-900 transition-colors cursor-default"
+          >
+            <Scissors size={18} className="opacity-50" /> {logo}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const InteractivePhone: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [progress, setProgress] = useState(65);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress(p => (p >= 100 ? 0 : p + 1));
+      setProgress((p) => (p >= 100 ? 0 : p + 1));
     }, 100);
     return () => clearInterval(timer);
   }, []);
 
   return (
     <div className="relative mx-auto w-[320px] h-[640px] bg-zinc-900 rounded-[3rem] p-4 shadow-[0_0_50px_-12px_rgba(0,0,0,0.3)] border-[8px] border-zinc-950 ring-1 ring-white/20 select-none transform transition hover:scale-[1.02] duration-500">
-      {/* Dynamic Island */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-32 bg-black rounded-b-2xl z-50 flex items-center justify-center gap-2">
         <div className="w-1 h-1 rounded-full bg-green-500 animate-pulse"></div>
         <div className="w-10 h-1 rounded-full bg-zinc-800"></div>
       </div>
 
-      {/* Screen Content */}
       <div className="w-full h-full bg-zinc-950 rounded-[2.5rem] overflow-hidden relative flex flex-col">
-        {/* Header */}
         <div className="pt-10 px-6 pb-4 flex justify-between items-center bg-zinc-900/50 backdrop-blur-md">
           <div>
             <p className="text-xs text-zinc-400 font-medium">Welcome back,</p>
@@ -597,7 +501,6 @@ const InteractivePhone = () => {
           <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full ring-2 ring-white/10"></div>
         </div>
 
-        {/* Live Status Card */}
         <div className="px-4 mt-2">
           <div className="bg-gradient-to-br from-zinc-800 to-zinc-900 p-5 rounded-3xl border border-white/5 relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
@@ -617,47 +520,63 @@ const InteractivePhone = () => {
             </div>
 
             <div className="flex items-end gap-2 mb-3">
-              <span className="text-4xl font-bold text-white tracking-tighter">12<span className="text-sm text-zinc-500 font-normal ml-1">min</span></span>
+              <span className="text-4xl font-bold text-white tracking-tighter">
+                12
+                <span className="text-sm text-zinc-500 font-normal ml-1">
+                  min
+                </span>
+              </span>
             </div>
 
-            {/* Progress Bar */}
             <div className="h-2 w-full bg-zinc-950 rounded-full overflow-hidden">
-              <div 
+              <div
                 className="h-full bg-gradient-to-r from-green-400 to-emerald-500 rounded-full transition-all duration-300 relative"
                 style={{ width: `${progress}%` }}
               >
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_10px_white]"></div>
               </div>
             </div>
-            <p className="text-[10px] text-zinc-500 mt-2 text-center">2 people ahead of you</p>
+            <p className="text-[10px] text-zinc-500 mt-2 text-center">
+              2 people ahead of you
+            </p>
           </div>
         </div>
 
-        {/* List Items */}
         <div className="flex-1 overflow-hidden px-4 mt-6 space-y-3 relative">
-           <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-zinc-950 to-transparent z-10"></div>
-           {[1,2,3].map((_, i) => (
-             <div key={i} className="bg-white/5 p-3 rounded-2xl flex items-center gap-3 border border-white/5 hover:bg-white/10 transition cursor-pointer">
-               <div className="w-10 h-10 rounded-xl bg-zinc-800 flex items-center justify-center">
-                 <Store size={18} className="text-zinc-400" />
-               </div>
-               <div className="flex-1">
-                 <div className="h-2 w-24 bg-zinc-800 rounded mb-1"></div>
-                 <div className="h-2 w-16 bg-zinc-900 rounded"></div>
-               </div>
-               <div className="w-8 h-8 rounded-full border border-zinc-700 flex items-center justify-center">
-                 <ArrowRight size={14} className="text-zinc-600" />
-               </div>
-             </div>
-           ))}
+          <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-zinc-950 to-transparent z-10"></div>
+          {[1, 2, 3].map((_, i) => (
+            <div
+              key={i}
+              className="bg-white/5 p-3 rounded-2xl flex items-center gap-3 border border-white/5 hover:bg-white/10 transition cursor-pointer"
+            >
+              <div className="w-10 h-10 rounded-xl bg-zinc-800 flex items-center justify-center">
+                <Store size={18} className="text-zinc-400" />
+              </div>
+              <div className="flex-1">
+                <div className="h-2 w-24 bg-zinc-800 rounded mb-1"></div>
+                <div className="h-2 w-16 bg-zinc-900 rounded"></div>
+              </div>
+              <div className="w-8 h-8 rounded-full border border-zinc-700 flex items-center justify-center">
+                <ArrowRight size={14} className="text-zinc-600" />
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Bottom Nav */}
         <div className="h-16 bg-zinc-900/80 backdrop-blur-xl border-t border-white/5 grid grid-cols-4 items-center px-2">
           {[MapPin, Calendar, Bell, User].map((Icon, i) => (
-            <button key={i} onClick={() => setActiveTab(i)} className="flex flex-col items-center justify-center gap-1 h-full w-full">
-              <Icon size={20} className={activeTab === i ? "text-white" : "text-zinc-600"} />
-              {activeTab === i && <div className="w-1 h-1 rounded-full bg-white"></div>}
+            <button
+              key={i}
+              onClick={() => setActiveTab(i)}
+              className="flex flex-col items-center justify-center gap-1 h-full w-full"
+            >
+              <Icon
+                size={20}
+                className={activeTab === i ? "text-white" : "text-zinc-600"}
+              />
+              {activeTab === i && (
+                <div className="w-1 h-1 rounded-full bg-white"></div>
+              )}
             </button>
           ))}
         </div>
@@ -666,28 +585,34 @@ const InteractivePhone = () => {
   );
 };
 
-// --- SECTIONS ---
+interface FeatureCardProps {
+  icon: React.ElementType;
+  title: string;
+  desc: string;
+  delay: number;
+  colSpan?: string;
+}
 
-const FeatureCard = ({ icon: Icon, title, desc, delay, colSpan = "col-span-1" }) => {
+const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, desc, delay, colSpan = "col-span-1" }) => {
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
-  
+
   return (
-    <div 
+    <div
       ref={ref}
       className={`
         ${colSpan} group relative overflow-hidden p-8 rounded-[2rem] bg-white border border-zinc-100 shadow-xl shadow-zinc-200/50 
         transition-all duration-700 transform hover:shadow-2xl hover:shadow-zinc-200/80 hover:-translate-y-1
-        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
+        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
       `}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-zinc-100 to-transparent rounded-bl-[100px] -mr-8 -mt-8 transition-transform group-hover:scale-150 duration-700"></div>
-      
+
       <div className="relative z-10 flex flex-col h-full justify-between">
         <div className="w-14 h-14 rounded-2xl bg-zinc-900 text-white flex items-center justify-center mb-6 shadow-lg shadow-zinc-900/20 group-hover:rotate-6 transition-transform duration-300">
           <Icon size={28} strokeWidth={1.5} />
         </div>
-        
+
         <div>
           <h3 className="text-xl font-bold text-zinc-900 mb-2">{title}</h3>
           <p className="text-zinc-500 leading-relaxed text-sm">{desc}</p>
@@ -701,193 +626,205 @@ const FeatureCard = ({ icon: Icon, title, desc, delay, colSpan = "col-span-1" })
   );
 };
 
-// --- PAGES ---
+const AdvancedDashboardSection: React.FC = () => {
+  const [ref, isVisible] = useOnScreen({ threshold: 0.15 });
 
-const LandingPage = ({ onNavigateUser, onNavigateSalon }) => {
   return (
-    <div className="min-h-screen w-full font-sans selection:bg-zinc-900 selection:text-white overflow-x-hidden">
-      <BackgroundAurora />
+    <section className="relative py-24 px-6 max-w-7xl mx-auto">
+      <div className="absolute inset-0 -z-10">
+        <GlowBlob className="top-[-10%] left-[10%] w-[320px] h-[320px] bg-blue-300/40" />
+        <GlowBlob className="bottom-[-10%] right-[5%] w-[380px] h-[380px] bg-purple-300/40" />
+      </div>
 
-      {/* FLOATING NAVBAR */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 bg-white/60 backdrop-blur-xl border border-white/40 shadow-sm rounded-full px-6 py-4 flex justify-between items-center transition-all duration-300 hover:bg-white/80">
-        <Logo />
-        <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-600">
-          <a href="#features" className="hover:text-zinc-900 transition">Features</a>
-          <a href="#business" className="hover:text-zinc-900 transition">Business</a>
-          <a href="#testimonials" className="hover:text-zinc-900 transition">Stories</a>
-        </div>
-        <div className="flex gap-3">
-          <button className="hidden sm:block px-5 py-2.5 rounded-full text-zinc-900 text-sm font-bold hover:bg-zinc-100 transition">Log In</button>
-          <button onClick={onNavigateUser} className="px-6 py-2.5 rounded-full bg-zinc-900 text-white text-sm font-bold shadow-lg shadow-zinc-900/20 hover:scale-105 transition-transform">Get App</button>
-        </div>
-      </nav>
-
-      {/* HERO SECTION */}
-      <section className="relative pt-40 pb-20 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center min-h-[90vh]">
-        <div className="flex flex-col items-start z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 border border-zinc-200 backdrop-blur-sm text-zinc-600 text-xs font-bold mb-8 shadow-sm animate-fade-in-up">
-            <Sparkles size={14} className="text-yellow-500 fill-yellow-500" />
-            <span>#1 QUEUE MANAGEMENT SYSTEM IN INDIA</span>
-          </div>
-
-          <h1 className="text-6xl md:text-8xl font-black text-zinc-900 tracking-tighter leading-[0.95] mb-8">
-            Wait <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-400 to-zinc-600 font-serif italic pr-2">Less.</span><br />
-            Live <span className="relative inline-block">
-              More.
-              <svg className="absolute w-full h-3 -bottom-1 left-0 text-green-400 opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
-                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
-              </svg>
+      <div
+        ref={ref}
+        className={`
+          grid grid-cols-1 lg:grid-cols-2 gap-12 items-center 
+          transition-all duration-[900ms] 
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
+        `}
+      >
+        <div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 text-white text-xs font-semibold mb-4">
+            <span className="flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
-          </h1>
-
-          <p className="text-xl text-zinc-500 max-w-lg leading-relaxed mb-10 font-medium">
-            Stop wasting hours in salon waiting rooms. Book your spot digitally, track live wait times, and walk in like a VIP.
+            Live salon command center
+          </div>
+          <h2 className="text-3xl md:text-4xl font-black text-zinc-900 mb-4 tracking-tight">
+            See your queue, revenue and demand in one live dashboard.
+          </h2>
+          <p className="text-zinc-500 text-base md:text-lg max-w-xl mb-6">
+            We brought the 3D analytics feel from premium SaaS tools right
+            inside TrimGo. Owners get a real-time cockpit, while users enjoy
+            smoother, smarter wait times.
           </p>
 
-          <div className="flex flex-wrap gap-4 w-full sm:w-auto">
-            <ShimmerButton onClick={onNavigateUser} className="w-full sm:w-auto">
-              Join the Queue
-            </ShimmerButton>
-            <ShimmerButton variant="secondary" onClick={onNavigateSalon} className="w-full sm:w-auto">
-              Partner with Us <Building2 size={18} />
-            </ShimmerButton>
-          </div>
-
-          <div className="mt-12 flex items-center gap-4 pt-8 border-t border-zinc-200/60 w-full max-w-md">
-            <div className="flex -space-x-3">
-               {[1,2,3,4].map(i => (
-                 <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-zinc-200 shadow-sm" style={{backgroundImage: `url(https://i.pravatar.cc/150?img=${i+10})`, backgroundSize: 'cover'}}></div>
-               ))}
-            </div>
-            <div>
-              <div className="flex text-yellow-500 mb-1">
-                {[1,2,3,4,5].map(i => <Star key={i} size={14} fill="currentColor" />)}
+          <div className="grid sm:grid-cols-3 gap-4">
+            <SpotlightCard className="p-4 bg-zinc-900 text-white border-zinc-800">
+              <div className="text-xs text-zinc-400 mb-1 flex items-center gap-2">
+                <Clock size={14} /> Avg wait today
               </div>
-              <p className="text-xs font-bold text-zinc-600">Trusted by 12,000+ users</p>
+              <div className="text-2xl font-bold">
+                11
+                <span className="text-sm text-zinc-400 ml-1">min</span>
+              </div>
+            </SpotlightCard>
+
+            <SpotlightCard className="p-4 bg-zinc-900 text-white border-zinc-800">
+              <div className="text-xs text-zinc-400 mb-1 flex items-center gap-2">
+                <TrendingUp size={14} /> Revenue uplift
+              </div>
+              <div className="text-2xl font-bold">+28%</div>
+            </SpotlightCard>
+
+            <SpotlightCard className="p-4 bg-zinc-900 text-white border-zinc-800">
+              <div className="text-xs text-zinc-400 mb-1 flex items-center gap-2">
+                <Users size={14} /> Returning users
+              </div>
+              <div className="text-2xl font-bold">73%</div>
+            </SpotlightCard>
+          </div>
+        </div>
+
+        <div className="perspective-[1600px]">
+          <TiltCard className="w-full">
+            <div className="relative rounded-3xl border border-zinc-200 bg-white shadow-2xl overflow-hidden">
+              <div className="h-12 border-b border-zinc-200 flex items-center px-4 gap-2 bg-zinc-50/80 backdrop-blur">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-400/70 border border-red-500/70"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-400/70 border border-yellow-500/70"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-400/70 border border-green-500/70"></div>
+                </div>
+                <div className="mx-auto w-64 h-6 rounded-md bg-white border border-zinc-200 flex items-center justify-center text-[10px] text-zinc-500 font-mono">
+                  dashboard.trimgo.app
+                </div>
+              </div>
+
+              <div className="p-6 md:p-7 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+                <div className="space-y-4">
+                  <div className="p-4 rounded-xl border border-zinc-200 bg-zinc-50">
+                    <div className="text-zinc-500 text-[11px] uppercase font-bold tracking-wider mb-1.5">
+                      Current wait
+                    </div>
+                    <div className="text-3xl font-bold text-zinc-900">
+                      12{" "}
+                      <span className="text-base font-normal text-zinc-500">
+                        mins
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-4 rounded-xl border border-zinc-200 bg-zinc-50">
+                    <div className="text-zinc-500 text-[11px] uppercase font-bold tracking-wider mb-1.5">
+                      Queue depth
+                    </div>
+                    <div className="text-3xl font-bold text-zinc-900">
+                      4{" "}
+                      <span className="text-base font-normal text-zinc-500">
+                        people
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-4 rounded-xl border border-zinc-200 bg-gradient-to-br from-emerald-50 via-white to-sky-50">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold">
+                        AI
+                      </div>
+                      <span className="text-emerald-600 text-xs font-bold uppercase tracking-wide">
+                        Insight
+                      </span>
+                    </div>
+                    <p className="text-zinc-600 text-xs leading-relaxed">
+                      Peak traffic expected at{" "}
+                      <span className="font-semibold">5:00 PM</span> based on
+                      the last 30 days.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="md:col-span-2 rounded-xl border border-zinc-200 bg-zinc-900 text-white overflow-hidden flex flex-col">
+                  <div className="p-4 border-b border-white/10 flex justify-between items-center bg-zinc-950/60">
+                    <span className="font-semibold text-sm">Live Queue</span>
+                    <span className="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                      LIVE SYNCED
+                    </span>
+                  </div>
+                  <div className="p-2 space-y-1">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group"
+                      >
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center text-zinc-300 text-xs font-bold">
+                          #{i}
+                        </div>
+                        <div className="flex-1">
+                          <div className="h-2 w-24 bg-zinc-800 rounded mb-1 group-hover:bg-zinc-700 transition"></div>
+                          <div className="h-2 w-16 bg-zinc-900 rounded group-hover:bg-zinc-800 transition"></div>
+                        </div>
+                        <div className="text-[11px] font-mono text-zinc-500 group-hover:text-white transition">
+                          1{i}:0{i % 2 === 0 ? "5" : "0"} PM
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-auto px-4 py-3 border-t border-white/10 text-[11px] text-zinc-400 flex items-center justify-between bg-zinc-950/80">
+                    <span>Smart auto-assign is ON</span>
+                    <span className="flex items-center gap-1">
+                      <Sparkles size={12} /> <span>AI load balancing</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
             </div>
-          </div>
+          </TiltCard>
         </div>
-
-        {/* Hero Visual */}
-        <div className="relative z-10 flex justify-center perspective-1000">
-           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-purple-200 to-emerald-200 rounded-full blur-[100px] opacity-40 animate-pulse"></div>
-           <InteractivePhone />
-           
-           {/* Floating Badge 1 */}
-           <div className="absolute top-[20%] -left-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 animate-bounce delay-700 hidden md:block">
-             <div className="flex items-center gap-3">
-               <div className="bg-green-100 p-2 rounded-lg text-green-600"><Clock size={20} /></div>
-               <div>
-                 <p className="text-xs text-zinc-500 font-bold uppercase">Time Saved</p>
-                 <p className="text-lg font-bold text-zinc-900">45 mins</p>
-               </div>
-             </div>
-           </div>
-
-           {/* Floating Badge 2 */}
-           <div className="absolute bottom-[20%] -right-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 animate-bounce delay-1000 hidden md:block">
-             <div className="flex items-center gap-3">
-               <div className="bg-purple-100 p-2 rounded-lg text-purple-600"><TrendingUp size={20} /></div>
-               <div>
-                 <p className="text-xs text-zinc-500 font-bold uppercase">Salon Revenue</p>
-                 <p className="text-lg font-bold text-zinc-900">+30%</p>
-               </div>
-             </div>
-           </div>
-        </div>
-      </section>
-
-      {/* BENTO GRID FEATURES */}
-      <section id="features" className="py-32 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-black text-zinc-900 mb-6">Built for the Modern Era.</h2>
-          <p className="text-zinc-500 text-xl max-w-2xl mx-auto">We didn't just digitize the queue. We reinvented the entire salon experience for both customers and businesses.</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <FeatureCard 
-            icon={Zap}
-            title="Real-time Tracking"
-            desc="Watch the queue move in real-time. We calculate wait times using AI based on service type and barber speed."
-            delay={0}
-            colSpan="md:col-span-2"
-          />
-          <FeatureCard 
-            icon={MapPin}
-            title="Geo-Discovery"
-            desc="Find the best rated salons near you with filters for price, amenities, and wait times."
-            delay={100}
-          />
-          <FeatureCard 
-            icon={BarChart3}
-            title="Smart Analytics"
-            desc="For business owners: Track peak hours, staff performance, and daily revenue at a glance."
-            delay={200}
-          />
-          <FeatureCard 
-            icon={ShieldCheck}
-            title="Verified Reviews"
-            desc="No fake reviews. Only customers who have completed a service can leave feedback."
-            delay={300}
-            colSpan="md:col-span-2"
-          />
-        </div>
-      </section>
-
-      {/* CTA SECTION */}
-      <section className="py-20 px-6">
-        <div className="max-w-5xl mx-auto bg-zinc-900 rounded-[3rem] relative overflow-hidden text-center p-12 md:p-24 shadow-2xl">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
-          <div className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-gradient-to-br from-purple-500/20 via-transparent to-green-500/20 animate-spin-slow"></div>
-          
-          <div className="relative z-10">
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tight">Ready to skip the line?</h2>
-            <p className="text-zinc-400 text-xl mb-10 max-w-lg mx-auto">Join thousands of smart users saving time every single day.</p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button onClick={onNavigateUser} className="px-8 py-4 bg-white text-zinc-900 rounded-2xl font-bold hover:scale-105 transition-transform">Download for iOS</button>
-              <button onClick={onNavigateUser} className="px-8 py-4 bg-zinc-800 text-white border border-zinc-700 rounded-2xl font-bold hover:scale-105 transition-transform">Download for Android</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="w-full py-12 px-6 bg-white border-t border-zinc-100">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-col items-start gap-2">
-            <Logo />
-            <p className="text-sm text-zinc-400">© 2025 Wolars Infosys Pvt Ltd.</p>
-          </div>
-          <div className="flex gap-8">
-            <a href="#" className="text-zinc-500 hover:text-zinc-900 text-sm font-medium">Privacy</a>
-            <a href="#" className="text-zinc-500 hover:text-zinc-900 text-sm font-medium">Terms</a>
-            <a href="#" className="text-zinc-500 hover:text-zinc-900 text-sm font-medium">Instagram</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </section>
   );
 };
 
-const AuthLayout = ({ children, title, subtitle, onBack, illustration }) => (
+/* ---------------------------------
+   AUTH LAYOUT & FORMS
+---------------------------------- */
+
+interface AuthLayoutProps {
+  children: React.ReactNode;
+  title: string;
+  subtitle: string;
+  onBack: () => void;
+  illustration: React.ReactNode;
+}
+
+const AuthLayout: React.FC<AuthLayoutProps> = ({ children, title, subtitle, onBack, illustration }) => (
   <div className="min-h-screen w-full bg-zinc-50 flex items-center justify-center p-4 relative font-sans overflow-hidden">
     <BackgroundAurora />
-    
-    <button onClick={onBack} className="absolute top-8 left-8 flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition z-20 font-bold bg-white/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/50">
+    <NoiseOverlay />
+
+    <button
+      onClick={onBack}
+      className="absolute top-8 left-8 flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition z-20 font-bold bg-white/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/50"
+    >
       <ChevronLeft size={20} /> Home
     </button>
 
     <div className="w-full max-w-6xl bg-white/80 backdrop-blur-xl rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row relative z-10 border border-white/60">
-      {/* Form Side */}
       <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center">
         <div className="mb-10">
-          <h2 className="text-4xl font-black text-zinc-900 mb-3 tracking-tight">{title}</h2>
+          <h2 className="text-4xl font-black text-zinc-900 mb-3 tracking-tight">
+            {title}
+          </h2>
           <p className="text-zinc-500 font-medium">{subtitle}</p>
         </div>
         {children}
       </div>
 
-      {/* Illustration Side */}
       <div className="hidden md:flex w-1/2 bg-zinc-900 relative p-12 flex-col justify-between overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
         {illustration}
@@ -896,25 +833,61 @@ const AuthLayout = ({ children, title, subtitle, onBack, illustration }) => (
   </div>
 );
 
-const InputGroup = ({ icon: Icon, type, placeholder, label }) => (
+interface InputGroupProps {
+  icon: React.ElementType;
+  type: string;
+  placeholder: string;
+  label: string;
+  name?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const InputGroup: React.FC<InputGroupProps> = ({ icon: Icon, type, placeholder, label, name, value, onChange }) => (
   <div className="space-y-1.5">
-    <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider ml-1">{label}</label>
+    <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider ml-1">
+      {label}
+    </label>
     <div className="relative group">
-      <Icon className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-zinc-900 transition-colors" size={20} />
-      <input 
-        type={type} 
-        placeholder={placeholder} 
+      <Icon
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-zinc-900 transition-colors"
+        size={20}
+      />
+      <input
+        name={name}
+        value={value}
+        onChange={onChange}
+        type={type}
+        placeholder={placeholder}
         className="w-full bg-zinc-50 border border-zinc-200 rounded-xl py-4 pl-12 pr-4 text-zinc-900 font-medium focus:outline-none focus:ring-4 focus:ring-zinc-100 focus:border-zinc-900 transition-all placeholder:text-zinc-400"
       />
     </div>
   </div>
 );
 
-const UserRegistration = ({ onBack }) => {
+
+
+interface UserRegistrationProps {
+  onBack: () => void;
+  onSuccess?: () => void;
+  onRegisterUser?: (userData: { name: string; email: string }) => void;
+}
+
+const UserRegistration: React.FC<UserRegistrationProps> = ({ onBack, onSuccess, onRegisterUser }) => {
+  const [name, setName] = useState("");
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if(onRegisterUser) {
+        onRegisterUser({ name, email: name.toLowerCase().replace(" ", "") + "@gmail.com" });
+    }
+    if (onSuccess) onSuccess();
+  };
+
   return (
-    <AuthLayout 
-      title="Create Account" 
-      subtitle="Join the queue from anywhere." 
+    <AuthLayout
+      title="Create Account"
+      subtitle="Join the queue from anywhere."
       onBack={onBack}
       illustration={
         <>
@@ -922,7 +895,13 @@ const UserRegistration = ({ onBack }) => {
             <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 border border-white/20">
               <User className="text-white" size={32} />
             </div>
-            <h3 className="text-4xl font-bold text-white mb-4 leading-tight">Your time is<br/>too valuable<br/>to wait.</h3>
+            <h3 className="text-4xl font-bold text-white mb-4 leading-tight">
+              Your time is
+              <br />
+              too valuable
+              <br />
+              to wait.
+            </h3>
           </div>
           <div className="bg-zinc-800/50 backdrop-blur-md border border-white/10 p-6 rounded-3xl relative z-10">
             <div className="flex items-center gap-4 mb-4">
@@ -941,11 +920,28 @@ const UserRegistration = ({ onBack }) => {
         </>
       }
     >
-      <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-        <InputGroup icon={User} type="text" placeholder="Sanjay Choudhary" label="Full Name" />
-        <InputGroup icon={Phone} type="tel" placeholder="+91 98765 43210" label="Mobile Number" />
-        <InputGroup icon={Lock} type="password" placeholder="••••••••" label="Password" />
-        
+      <form className="space-y-5" onSubmit={handleSubmit}>
+        <InputGroup
+          icon={User}
+          type="text"
+          placeholder="Sanjay Choudhary"
+          label="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <InputGroup
+          icon={Phone}
+          type="tel"
+          placeholder="+91 98765 43210"
+          label="Mobile Number"
+        />
+        <InputGroup
+          icon={Lock}
+          type="password"
+          placeholder="••••••••"
+          label="Password"
+        />
+
         <ShimmerButton className="w-full py-4 mt-4">
           Create Free Account
         </ShimmerButton>
@@ -954,11 +950,54 @@ const UserRegistration = ({ onBack }) => {
   );
 };
 
-const SalonRegistration = ({ onBack }) => {
+/* ---------------------------------
+   SALON REGISTRATION
+---------------------------------- */
+
+interface SalonRegistrationProps {
+  onBack: () => void;
+  onRegister?: (salon: Salon) => void;
+}
+
+const SalonRegistration: React.FC<SalonRegistrationProps> = ({ onBack, onRegister }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    owner: "",
+    mobile: "",
+    city: "",
+    type: "Unisex",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newSalon: Salon = {
+      id: Date.now(),
+      name: formData.name || "New Salon",
+      area: formData.city.split(",")[1] || "Downtown",
+      city: formData.city.split(",")[0] || "City",
+      distance: "0.5 km",
+      waiting: 0,
+      eta: 0,
+      rating: 5.0,
+      reviews: 0,
+      tag: "New Partner",
+      price: "₹₹",
+      type: formData.type, 
+      verified: false,
+      revenue: 0
+    };
+     
+    if (onRegister) onRegister(newSalon);
+  };
+
   return (
-    <AuthLayout 
-      title="Partner With Us" 
-      subtitle="Transform your salon business today." 
+    <AuthLayout
+      title="Partner With Us"
+      subtitle="Transform your salon business today."
       onBack={onBack}
       illustration={
         <>
@@ -967,7 +1006,10 @@ const SalonRegistration = ({ onBack }) => {
             <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 border border-white/20">
               <Store className="text-white" size={32} />
             </div>
-            <h3 className="text-3xl font-bold text-white mb-6">"Since using TrimGo, our revenue increased by 30% in the first month."</h3>
+            <h3 className="text-3xl font-bold text-white mb-6">
+              "Since using TrimGo, our revenue increased by 30% in the first
+              month."
+            </h3>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-zinc-700 rounded-full"></div>
               <div>
@@ -979,21 +1021,63 @@ const SalonRegistration = ({ onBack }) => {
         </>
       }
     >
-      <form className="grid grid-cols-1 md:grid-cols-2 gap-5" onSubmit={(e) => e.preventDefault()}>
+      <form
+        className="grid grid-cols-1 md:grid-cols-2 gap-5"
+        onSubmit={handleSubmit}
+      >
         <div className="md:col-span-2">
-           <InputGroup icon={Store} type="text" placeholder="Urban Cut Pro" label="Salon Name" />
+          <InputGroup
+            icon={Store}
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            type="text"
+            placeholder="Urban Cut Pro"
+            label="Salon Name"
+          />
         </div>
-        <InputGroup icon={User} type="text" placeholder="Owner Name" label="Contact Person" />
-        <InputGroup icon={Phone} type="tel" placeholder="+91" label="Mobile" />
+        <InputGroup
+          icon={User}
+          name="owner"
+          value={formData.owner}
+          onChange={handleChange}
+          type="text"
+          placeholder="Owner Name"
+          label="Contact Person"
+        />
+        <InputGroup 
+          icon={Phone} 
+          name="mobile"
+          value={formData.mobile}
+          onChange={handleChange}
+          type="tel" 
+          placeholder="+91" 
+          label="Mobile" 
+        />
         <div className="md:col-span-2">
-           <InputGroup icon={MapPin} type="text" placeholder="City, Area" label="Location" />
+          <InputGroup
+            icon={MapPin}
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+            type="text"
+            placeholder="Jodhpur, Shastri Nagar"
+            label="Location (City, Area)"
+          />
         </div>
-        
+
         <div className="md:col-span-2 space-y-1.5">
-          <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider ml-1">Salon Type</label>
+          <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider ml-1">
+            Salon Type
+          </label>
           <div className="grid grid-cols-3 gap-3">
-            {['Unisex', 'Men Only', 'Women Only'].map(type => (
-              <button key={type} className="py-3 border border-zinc-200 rounded-xl text-sm font-bold hover:border-zinc-900 hover:bg-zinc-50 transition focus:ring-2 ring-zinc-900 ring-offset-2">
+            {["Unisex", "Men Only", "Women Only"].map((type) => (
+              <button
+                key={type}
+                type="button"
+                onClick={() => setFormData({...formData, type})}
+                className={`py-3 border rounded-xl text-sm font-bold transition focus:ring-2 ring-zinc-900 ring-offset-2 ${formData.type === type ? 'bg-zinc-900 text-white border-zinc-900' : 'bg-white border-zinc-200 text-zinc-900 hover:bg-zinc-50'}`}
+              >
                 {type}
               </button>
             ))}
@@ -1002,7 +1086,7 @@ const SalonRegistration = ({ onBack }) => {
 
         <div className="md:col-span-2 pt-4">
           <ShimmerButton className="w-full py-4">
-            Continue Registration <ArrowRight size={18} />
+            Complete Registration <ArrowRight size={18} />
           </ShimmerButton>
         </div>
       </form>
@@ -1010,577 +1094,1422 @@ const SalonRegistration = ({ onBack }) => {
   );
 };
 
-// --- MAIN APP ---
+/* ---------------------------------
+   SALON DASHBOARD
+---------------------------------- */
+
+interface SalonDashboardProps {
+  salon: Salon | null;
+  onLogout: () => void;
+}
+
+const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
+  const [requests, setRequests] = useState<SalonRequest[]>(INITIAL_SALON_REQUESTS);
+  const [activeQueue, setActiveQueue] = useState<QueueCustomer[]>(INITIAL_ACTIVE_QUEUE);
+  const [inChair, setInChair] = useState<QueueCustomer | null>(null);
+  const [isOnline, setIsOnline] = useState(true);
+  const [stats, setStats] = useState<Stats>({ revenue: 4500, customers: 12, waitTime: 25 });
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 60000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleAccept = (req: SalonRequest) => {
+    const newCustomer: QueueCustomer = { 
+      id: Date.now(), 
+      name: req.name,
+      service: req.service,
+      price: req.price,
+      status: 'waiting', 
+      waitTime: activeQueue.length * 15 + 15 
+    };
+    setActiveQueue([...activeQueue, newCustomer]);
+    setRequests(requests.filter(r => r.id !== req.id));
+  };
+
+  const handleReject = (id: number) => {
+    setRequests(requests.filter(r => r.id !== id));
+  };
+
+  const handleStartService = (customer: QueueCustomer) => {
+    if(inChair) {
+      alert("Chair is occupied! Please complete the current service first."); 
+      return;
+    }
+    setInChair({ ...customer, startTime: Date.now() });
+    setActiveQueue(activeQueue.filter(c => c.id !== customer.id));
+  };
+
+  const handleCompleteService = () => {
+    if(inChair) {
+      setStats(prev => ({
+        ...prev,
+        revenue: prev.revenue + inChair.price, 
+        customers: prev.customers + 1
+      }));
+      setInChair(null);
+    }
+  };
+
+  const getAvatarGradient = (name: string) => {
+    const gradients = [
+      "from-pink-500 to-rose-500",
+      "from-indigo-500 to-blue-500",
+      "from-emerald-500 to-teal-500",
+      "from-orange-500 to-amber-500"
+    ];
+    return gradients[name.length % gradients.length];
+  };
+
+  return (
+    <div className="min-h-screen w-full bg-zinc-950 font-sans text-white overflow-hidden flex selection:bg-emerald-500 selection:text-white">
+      {/* Dynamic Background */}
+      <div className="fixed inset-0 z-0">
+         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-zinc-950 to-black"></div>
+         <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] animate-pulse-slow"></div>
+         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-[120px] animate-pulse-slow animation-delay-2000"></div>
+         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
+      </div>
+
+      {/* Sidebar Navigation */}
+      <aside className="hidden lg:flex flex-col w-20 hover:w-64 transition-all duration-300 border-r border-white/5 bg-zinc-900/40 backdrop-blur-xl z-50 group">
+        <div className="h-20 flex items-center justify-center group-hover:justify-start group-hover:px-6 transition-all border-b border-white/5">
+           <div className="w-10 h-10 bg-white text-black rounded-xl flex items-center justify-center font-bold text-sm shadow-[0_0_20px_rgba(255,255,255,0.3)]">TG</div>
+           <span className="ml-3 font-bold text-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap overflow-hidden delay-100">TrimGo</span>
+        </div>
+
+        <nav className="flex-1 py-8 flex flex-col gap-2 px-3">
+           {[
+             { icon: Grid, label: "Dashboard", active: true },
+             { icon: Activity, label: "Analytics", active: false },
+             { icon: Users, label: "Customers", active: false },
+             { icon: Ticket, label: "Bookings", active: false },
+             { icon: Settings, label: "Settings", active: false },
+           ].map((item, idx) => (
+             <div key={idx} className={`flex items-center p-3 rounded-xl cursor-pointer transition-all ${item.active ? 'bg-white/10 text-white shadow-lg shadow-white/5 border border-white/5' : 'text-zinc-500 hover:text-white hover:bg-white/5'}`}>
+               <item.icon size={20} strokeWidth={2} />
+               <span className="ml-3 font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap overflow-hidden delay-75">{item.label}</span>
+               {item.active && <div className="ml-auto w-1.5 h-1.5 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 shadow-[0_0_10px_#10b981]"></div>}
+             </div>
+           ))}
+        </nav>
+
+        <div className="p-4 border-t border-white/5">
+          <button onClick={onLogout} className="flex items-center w-full p-3 rounded-xl text-zinc-500 hover:text-red-400 hover:bg-red-500/10 transition-colors">
+            <LogOut size={20} />
+            <span className="ml-3 font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap overflow-hidden delay-75">Sign Out</span>
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content Area */}
+      <main className="flex-1 relative z-10 flex flex-col h-screen overflow-hidden">
+        
+        {/* Top Header */}
+        <header className="h-20 border-b border-white/5 bg-zinc-900/30 backdrop-blur-md flex items-center justify-between px-6 lg:px-8">
+           <div className="flex flex-col">
+             <h1 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                {salon?.name || "My Salon"}
+                <ChevronRight size={16} className="text-zinc-600"/>
+                <span className="text-zinc-400 font-normal text-sm">Dashboard</span>
+             </h1>
+             <p className="text-xs text-zinc-500 font-mono mt-0.5">{currentTime.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+           </div>
+
+           <div className="flex items-center gap-4">
+             {/* Online Toggle */}
+             <div 
+               onClick={() => setIsOnline(!isOnline)}
+               className={`cursor-pointer px-4 py-2 rounded-full border flex items-center gap-2 transition-all ${isOnline ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20' : 'bg-red-500/10 border-red-500/30 text-red-400 hover:bg-red-500/20'}`}
+             >
+                 <span className={`w-2 h-2 rounded-full ${isOnline ? 'bg-emerald-400 animate-pulse' : 'bg-red-400'}`}></span>
+                 <span className="text-xs font-bold uppercase tracking-wider">{isOnline ? 'Accepting' : 'Offline'}</span>
+             </div>
+
+             <div className="w-px h-8 bg-white/10 mx-2"></div>
+             
+             <div className="relative cursor-pointer">
+                 <Bell size={20} className="text-zinc-400 hover:text-white transition" />
+                 <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-zinc-900"></span>
+             </div>
+             <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-zinc-700 to-zinc-600 p-0.5 cursor-pointer hover:scale-105 transition">
+               <div className="w-full h-full rounded-full bg-zinc-900 flex items-center justify-center text-xs font-bold text-white">SC</div>
+             </div>
+           </div>
+        </header>
+
+        {/* Dashboard Workspace */}
+        <div className="flex-1 overflow-y-auto p-4 lg:p-8 scrollbar-hide">
+           
+           {/* Stats Grid - Bento Style */}
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+             {/* Revenue Card */}
+             <div className="group relative bg-zinc-900/50 hover:bg-zinc-900/80 border border-white/5 hover:border-white/10 rounded-3xl p-6 transition-all duration-300">
+                 <div className="absolute top-0 right-0 p-5 opacity-20 group-hover:opacity-40 transition-opacity group-hover:scale-110 duration-500"><DollarSign size={40} className="text-emerald-500"/></div>
+                 <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest mb-2">Total Revenue</p>
+                 <div className="flex items-end gap-2">
+                   <h3 className="text-3xl font-black text-white">₹{stats.revenue}</h3>
+                   <span className="text-xs text-emerald-400 font-bold mb-1.5 bg-emerald-500/10 px-1.5 py-0.5 rounded flex items-center gap-1"><TrendingUp size={10}/> +12%</span>
+                 </div>
+             </div>
+
+             {/* Waiting Card */}
+             <div className="group relative bg-zinc-900/50 hover:bg-zinc-900/80 border border-white/5 hover:border-white/10 rounded-3xl p-6 transition-all duration-300">
+                 <div className="absolute top-0 right-0 p-5 opacity-20 group-hover:opacity-40 transition-opacity group-hover:scale-110 duration-500"><Users size={40} className="text-blue-500"/></div>
+                 <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest mb-2">In Queue</p>
+                 <div className="flex items-end gap-2">
+                   <h3 className="text-3xl font-black text-white">{activeQueue.length}</h3>
+                   <span className="text-xs text-zinc-400 font-medium mb-1.5">customers</span>
+                 </div>
+             </div>
+
+             {/* Wait Time Card */}
+             <div className="group relative bg-zinc-900/50 hover:bg-zinc-900/80 border border-white/5 hover:border-white/10 rounded-3xl p-6 transition-all duration-300">
+                 <div className="absolute top-0 right-0 p-5 opacity-20 group-hover:opacity-40 transition-opacity group-hover:scale-110 duration-500"><Clock size={40} className="text-amber-500"/></div>
+                 <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest mb-2">Avg Wait</p>
+                 <div className="flex items-end gap-2">
+                   <h3 className="text-3xl font-black text-white">{stats.waitTime}<span className="text-lg font-medium text-zinc-500 ml-1">m</span></h3>
+                   <span className="text-xs text-amber-400 font-bold mb-1.5 bg-amber-500/10 px-1.5 py-0.5 rounded">High Traffic</span>
+                 </div>
+             </div>
+
+             {/* Completed Card */}
+             <div className="group relative bg-zinc-900/50 hover:bg-zinc-900/80 border border-white/5 hover:border-white/10 rounded-3xl p-6 transition-all duration-300">
+                 <div className="absolute top-0 right-0 p-5 opacity-20 group-hover:opacity-40 transition-opacity group-hover:scale-110 duration-500"><CheckCircle size={40} className="text-violet-500"/></div>
+                 <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest mb-2">Completed</p>
+                 <div className="flex items-end gap-2">
+                   <h3 className="text-3xl font-black text-white">{stats.customers}</h3>
+                   <span className="text-xs text-zinc-400 font-medium mb-1.5">services done</span>
+                 </div>
+             </div>
+           </div>
+
+           {/* MAIN KANBAN BOARD */}
+           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-340px)] min-h-[500px]">
+             
+             {/* COLUMN 1: NEW REQUESTS */}
+             <div className="flex flex-col bg-zinc-900/30 border border-white/5 rounded-3xl overflow-hidden backdrop-blur-sm">
+                 <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/5">
+                   <h3 className="font-bold text-sm text-zinc-100 flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-yellow-500"></div> New Requests
+                   </h3>
+                   <span className="text-xs font-bold bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded-md">{requests.length}</span>
+                 </div>
+                 <div className="flex-1 overflow-y-auto p-3 space-y-3 custom-scrollbar">
+                   {requests.length === 0 ? (
+                      <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-2">
+                         <Bell size={32} className="opacity-20"/>
+                         <p className="text-sm">No new requests</p>
+                      </div>
+                   ) : (
+                      requests.map(req => (
+                         <div key={req.id} className="group bg-zinc-900 border border-white/10 hover:border-yellow-500/50 p-4 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(234,179,8,0.1)] animate-[slideIn_0.3s_ease-out]">
+                            <div className="flex justify-between items-start mb-3">
+                               <div className="flex items-center gap-3">
+                                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${getAvatarGradient(req.name)} flex items-center justify-center text-sm font-bold shadow-lg`}>
+                                     {req.name.charAt(0)}
+                                  </div>
+                                  <div>
+                                     <h4 className="font-bold text-sm text-white">{req.name}</h4>
+                                     <p className="text-xs text-zinc-400">{req.service}</p>
+                                  </div>
+                               </div>
+                               <span className="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">{req.time}</span>
+                            </div>
+                            <div className="flex items-center justify-between mt-3 gap-2">
+                               <div className="text-xs font-bold text-zinc-300 bg-zinc-800/50 px-2 py-1 rounded">₹{req.price}</div>
+                               <div className="flex gap-2">
+                                  <button onClick={() => handleReject(req.id)} className="p-2 rounded-lg bg-zinc-800 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 transition"><X size={16}/></button>
+                                  <button onClick={() => handleAccept(req)} className="px-4 py-2 rounded-lg bg-white text-black text-xs font-bold hover:bg-emerald-400 hover:shadow-[0_0_15px_#34d399] transition-all">Accept</button>
+                               </div>
+                            </div>
+                         </div>
+                      ))
+                   )}
+                 </div>
+             </div>
+
+             {/* COLUMN 2: WAITING QUEUE */}
+             <div className="flex flex-col bg-zinc-900/30 border border-white/5 rounded-3xl overflow-hidden backdrop-blur-sm">
+                 <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/5">
+                   <h3 className="font-bold text-sm text-zinc-100 flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-blue-500"></div> Waiting Queue
+                   </h3>
+                   <span className="text-xs font-bold bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded-md">{activeQueue.length}</span>
+                 </div>
+                 <div className="flex-1 overflow-y-auto p-3 space-y-3 custom-scrollbar">
+                   {activeQueue.length === 0 ? (
+                      <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-2">
+                         <Users size={32} className="opacity-20"/>
+                         <p className="text-sm">Queue is empty</p>
+                      </div>
+                   ) : (
+                      activeQueue.map((cust, idx) => (
+                         <div key={cust.id} className="relative group bg-zinc-900 border border-white/10 hover:border-blue-500/50 p-4 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]">
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500/50 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="flex items-center justify-between">
+                               <div className="flex items-center gap-3">
+                                  <span className="text-lg font-black text-zinc-700 w-6">#{idx+1}</span>
+                                  <div>
+                                     <h4 className="font-bold text-sm text-white">{cust.name}</h4>
+                                     <p className="text-xs text-zinc-400">{cust.service}</p>
+                                  </div>
+                               </div>
+                               <button onClick={() => handleStartService(cust)} className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition border border-white/5">
+                                  <Play size={14} fill="currentColor" />
+                               </button>
+                            </div>
+                         </div>
+                      ))
+                   )}
+                 </div>
+             </div>
+
+             {/* COLUMN 3: ACTIVE CHAIR (Featured) */}
+             <div className="flex flex-col bg-gradient-to-b from-zinc-900/50 to-zinc-900/20 border border-white/5 rounded-3xl overflow-hidden backdrop-blur-sm relative">
+                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 shadow-[0_0_15px_#10b981]"></div>
+                 <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/5">
+                   <h3 className="font-bold text-sm text-zinc-100 flex items-center gap-2">
+                      <Scissors size={14} className="text-emerald-400"/> In The Chair
+                   </h3>
+                   <div className="flex items-center gap-1 text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded animate-pulse">
+                      LIVE
+                   </div>
+                 </div>
+                 
+                 <div className="flex-1 flex flex-col items-center justify-center p-6 text-center relative">
+                   {inChair ? (
+                      <>
+                         {/* Glow effect behind avatar */}
+                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-emerald-500/20 rounded-full blur-[60px] animate-pulse-slow pointer-events-none"></div>
+                         
+                         <div className="relative mb-6">
+                            <div className="w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-emerald-400 to-cyan-400 shadow-2xl shadow-emerald-500/20">
+                               <div className="w-full h-full rounded-full bg-zinc-900 flex items-center justify-center text-4xl font-bold text-white relative overflow-hidden">
+                                  {inChair.name.charAt(0)}
+                                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
+                               </div>
+                            </div>
+                            <div className="absolute bottom-0 right-0 bg-zinc-900 rounded-full p-1 border border-zinc-700">
+                               <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center">
+                                  <Activity size={12} className="text-black animate-spin-slow"/>
+                               </div>
+                            </div>
+                         </div>
+
+                         <h2 className="text-2xl font-black text-white mb-1 tracking-tight">{inChair.name}</h2>
+                         <p className="text-emerald-400 font-medium text-sm mb-6">{inChair.service}</p>
+
+                         {/* Timer / Progress Bar Simulation */}
+                         <div className="w-full bg-zinc-800/50 rounded-full h-1.5 mb-2 overflow-hidden">
+                            <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 h-full w-[45%] rounded-full shadow-[0_0_10px_#10b981]"></div>
+                         </div>
+                         <div className="w-full flex justify-between text-[10px] text-zinc-500 font-mono mb-8">
+                            <span>12:30 min</span>
+                            <span>Est. 25:00</span>
+                         </div>
+
+                         <button 
+                            onClick={handleCompleteService}
+                            className="w-full py-4 rounded-xl bg-white text-black font-bold text-sm shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group"
+                         >
+                            <CheckSquare size={18} className="text-emerald-600 group-hover:scale-110 transition-transform"/> 
+                            Complete Service
+                         </button>
+                      </>
+                   ) : (
+                      <div className="text-zinc-600 flex flex-col items-center">
+                         <div className="w-20 h-20 rounded-full border-2 border-dashed border-zinc-800 flex items-center justify-center mb-4">
+                            <Scissors size={24} />
+                         </div>
+                         <p className="font-medium text-sm">Chair Empty</p>
+                         <p className="text-xs mt-1 max-w-[150px]">Select a customer from the queue to start.</p>
+                      </div>
+                   )}
+                 </div>
+             </div>
+
+           </div>
+        </div>
+      </main>
+    </div>
+  );
+};
+
+/* ---------------------------------
+   USER DASHBOARD
+---------------------------------- */
+
+interface UserDashboardProps {
+  onLogout: () => void;
+  salons: Salon[];
+  onJoinQueue: (salon: Salon) => void;
+}
+
+const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQueue }) => {
+  const [selectedCity] = useState("Jodhpur");
+  const [sortBy, setSortBy] = useState("waiting");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterType, setFilterType] = useState("All");
+
+  const filteredSalons = salons.filter(salon => {
+    // Check verification status too - only show verified salons to users!
+    if(!salon.verified) return false;
+
+    const matchesSearch = salon.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                          salon.area.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesType = filterType === "All" || salon.type === filterType;
+    return matchesSearch && matchesType;
+  });
+
+  const sortedSalons = [...filteredSalons].sort((a, b) => {
+    if (sortBy === "waiting") return a.waiting - b.waiting;
+    if (sortBy === "rating") return b.rating - a.rating;
+    if (sortBy === "distance") {
+      const da = parseFloat(a.distance);
+      const db = parseFloat(b.distance);
+      return da - db;
+    }
+    return 0;
+  });
+
+  return (
+    <div className="min-h-screen w-full bg-zinc-50 font-sans overflow-x-hidden pb-32">
+      <BackgroundAurora />
+      <NoiseOverlay />
+
+      <header className="fixed top-0 left-0 w-full z-40 bg-white/80 backdrop-blur-xl border-b border-zinc-200/60">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Logo />
+            <div className="hidden sm:flex flex-col">
+              <span className="text-xs text-zinc-400 font-medium">
+                Logged in as
+              </span>
+              <span className="text-sm font-semibold text-zinc-800">
+                Sanjay
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 text-xs text-zinc-600">
+              <MapPin size={14} />
+              <span>{selectedCity}</span>
+            </div>
+            <button
+              onClick={onLogout}
+              className="text-xs sm:text-sm font-bold px-4 py-2 rounded-full bg-zinc-900 text-white hover:scale-105 transition-transform"
+            >
+              Log out
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-4 pt-24 pb-16 relative z-10">
+        <div className="mb-10">
+          <div>
+            <p className="text-xs font-semibold text-zinc-500 mb-1 uppercase tracking-[0.16em]">
+              Nearby salons
+            </p>
+            <h1 className="text-3xl md:text-4xl font-black text-zinc-900 tracking-tight">
+              Pick a salon with{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-blue-500">
+                live waiting
+              </span>
+              .
+            </h1>
+            <p className="mt-3 text-sm md:text-base text-zinc-500 max-w-xl">
+              These salons are currently open and accepting walk-ins via
+              TrimGo. Choose the shortest line or your favourite spot.
+            </p>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-4 mt-6">
+            <div className="relative flex-1">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={20} />
+              <input 
+                type="text" 
+                placeholder="Search by salon name or area..." 
+                className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white border border-zinc-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+              {["All", "Unisex", "Men Only", "Women Only"].map(type => (
+                <button 
+                  key={type}
+                  onClick={() => setFilterType(type)}
+                  className={`px-4 py-3 rounded-2xl font-bold whitespace-nowrap border transition-all text-xs md:text-sm ${filterType === type ? 'bg-zinc-900 text-white border-zinc-900' : 'bg-white text-zinc-600 border-zinc-200 hover:bg-zinc-50'}`}
+                >
+                  {type}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="flex items-center gap-2 mt-4">
+              <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider">Sort by:</span>
+              {["waiting", "rating", "distance"].map(criteria => (
+                <button 
+                 key={criteria}
+                 onClick={() => setSortBy(criteria)}
+                 className={`text-xs px-3 py-1 rounded-full border ${sortBy === criteria ? 'bg-zinc-900 text-white border-zinc-900' : 'bg-transparent border-zinc-300 text-zinc-500'}`}
+                >
+                  {criteria.charAt(0).toUpperCase() + criteria.slice(1)}
+                </button>
+              ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {sortedSalons.map((salon) => (
+            <div
+              key={salon.id}
+              className="group relative rounded-2xl bg-white/80 backdrop-blur-sm border border-zinc-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/60 via-transparent to-sky-50/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative p-5 flex flex-col gap-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h2 className="text-base md:text-lg font-bold text-zinc-900 flex items-center gap-2">
+                      {salon.name}
+                      <span className="px-2 py-0.5 rounded-full bg-zinc-900 text-[10px] font-semibold text-white uppercase tracking-wide">
+                        LIVE
+                      </span>
+                    </h2>
+                    <div className="flex items-center gap-2 text-xs text-zinc-500 mt-1">
+                      <MapPin size={14} />
+                      <span>
+                        {salon.area}, {salon.city} • {salon.distance}
+                      </span>
+                    </div>
+                    <div className="mt-1 text-[10px] text-zinc-500 font-bold uppercase tracking-wider bg-zinc-100 inline-block px-2 py-0.5 rounded-md">
+                      {salon.type}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col items-end">
+                    <div className="flex items-center gap-1 text-sm font-semibold text-zinc-900">
+                      <Star className="text-yellow-400 fill-yellow-400" size={14} />
+                      {salon.rating.toFixed(1)}
+                    </div>
+                    <p className="text-[11px] text-zinc-500">
+                      {salon.reviews}+ ratings
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="flex flex-col">
+                      <span className="text-[11px] uppercase text-zinc-500 font-semibold tracking-[0.16em]">
+                        Current waiting
+                      </span>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-3xl font-black text-zinc-900">
+                          {salon.waiting}
+                        </span>
+                        <span className="text-xs text-zinc-500 font-medium">
+                          people in line
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="hidden sm:flex flex-col border-l border-dashed border-zinc-200 pl-4">
+                      <span className="text-[11px] uppercase text-zinc-500 font-semibold tracking-[0.16em]">
+                        Estimated time
+                      </span>
+                      <span className="text-sm font-semibold text-zinc-900">
+                        {salon.eta} mins
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="hidden md:flex flex-col items-end text-[11px] text-zinc-500">
+                    <div className="flex items-center gap-1">
+                      <Users size={14} />
+                      <span>Chairs free: {Math.max(0, 5 - salon.waiting)}</span>
+                    </div>
+                    <div className="flex items-center gap-1 mt-1">
+                      <Clock size={14} />
+                      <span>Updated just now</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-3 border-t border-zinc-100">
+                  <div className="flex items-center gap-2 text-xs text-emerald-700 font-semibold">
+                    <Sparkles size={14} />
+                    <span>{salon.tag}</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <button className="flex-1 sm:flex-none px-4 py-2 rounded-xl border border-zinc-200 text-xs font-semibold text-zinc-700 hover:bg-zinc-100 transition">
+                      View details
+                    </button>
+                    <button 
+                      onClick={() => onJoinQueue(salon)}
+                      className="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-zinc-900 text-white text-xs font-bold hover:scale-105 transition-transform flex items-center justify-center gap-1.5"
+                    >
+                      Join queue
+                      <Ticket size={14} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {sortedSalons.length === 0 && (
+           <div className="text-center py-20 opacity-50">
+             <Filter size={48} className="mx-auto mb-4" />
+             <p className="text-xl font-bold">No verified salons found</p>
+             <p>Try changing your filters.</p>
+           </div>
+        )}
+
+        <p className="mt-8 text-[11px] text-zinc-400 text-center">
+          This is demo data. In production, these numbers will come live from
+          each partner salon’s TrimGo system in real time.
+        </p>
+      </main>
+    </div>
+  );
+};
+
+
+/* ---------------------------------
+   ADMIN / FOUNDER COMPONENTS
+---------------------------------- */
+
+interface AdminLoginProps {
+  onBack: () => void;
+  onLogin: () => void;
+}
+
+const AdminLogin: React.FC<AdminLoginProps> = ({ onBack, onLogin }) => {
+  const [creds, setCreds] = useState({ username: "", password: "" });
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if(creds.username === "admin" && creds.password === "admin123") {
+      onLogin();
+    } else {
+      alert("Invalid Founder Credentials");
+    }
+  };
+
+  return (
+    <div className="min-h-screen w-full bg-black flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Matrix/Tech background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-800 via-black to-black opacity-80"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
+      
+      <div className="relative z-10 w-full max-w-md bg-zinc-900/50 backdrop-blur-xl border border-zinc-800 p-8 rounded-3xl shadow-2xl">
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 bg-gradient-to-tr from-purple-600 to-blue-600 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg shadow-purple-500/20">
+            <ShieldCheck className="text-white" size={32} />
+          </div>
+          <h2 className="text-2xl font-black text-white">Founder Access</h2>
+          <p className="text-zinc-500 text-sm mt-1">Wolars Infosys Private Limited</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="bg-black/40 border border-zinc-800 rounded-xl p-1 flex items-center">
+            <User className="text-zinc-500 ml-3" size={18} />
+            <input 
+              type="text" 
+              placeholder="Username" 
+              className="bg-transparent w-full p-3 text-white outline-none placeholder:text-zinc-600"
+              value={creds.username}
+              onChange={(e) => setCreds({...creds, username: e.target.value})}
+            />
+          </div>
+          <div className="bg-black/40 border border-zinc-800 rounded-xl p-1 flex items-center">
+            <Lock className="text-zinc-500 ml-3" size={18} />
+            <input 
+              type="password" 
+              placeholder="Password" 
+              className="bg-transparent w-full p-3 text-white outline-none placeholder:text-zinc-600"
+              value={creds.password}
+              onChange={(e) => setCreds({...creds, password: e.target.value})}
+            />
+          </div>
+          <button className="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-zinc-200 transition mt-4">
+            Enter God Mode
+          </button>
+        </form>
+        
+        <button onClick={onBack} className="w-full text-zinc-500 text-xs mt-6 hover:text-white transition">
+          Return to Platform
+        </button>
+      </div>
+    </div>
+  );
+};
+
+interface AdminDashboardProps {
+  salons: Salon[];
+  setSalons: React.Dispatch<React.SetStateAction<Salon[]>>;
+  users: UserData[];
+  onLogout: () => void;
+}
+
+const AdminDashboard: React.FC<AdminDashboardProps> = ({ salons, setSalons, users, onLogout }) => {
+  const [activeTab, setActiveTab] = useState<"overview" | "salons" | "users" | "financials">("overview");
+  const [liveUsers, setLiveUsers] = useState(124); // Simulated Live Users
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Simulated Real-time Logic: Updates "Live Users" count every few seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLiveUsers(prev => prev + (Math.random() > 0.5 ? 1 : -1));
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Stats Calculations
+  const totalRevenue = salons.reduce((acc, curr) => acc + (curr.revenue || 0), 0);
+  const totalWaitTime = salons.reduce((acc, curr) => acc + curr.waiting, 0);
+  const avgWaitTime = salons.length ? Math.round((totalWaitTime * 15) / salons.length) : 0;
+  
+  // Handlers
+  const toggleVerify = (id: number) => {
+    setSalons(prev => prev.map(s => s.id === id ? { ...s, verified: !s.verified } : s));
+  };
+
+  const deleteSalon = (id: number) => {
+    if(window.confirm("CONFIRM BAN: This will remove the salon and all its data immediately.")) {
+      setSalons(prev => prev.filter(s => s.id !== id));
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-indigo-500 selection:text-white flex overflow-hidden">
+      
+      {/* 1. SIDEBAR NAVIGATION */}
+      <aside className="w-64 border-r border-zinc-800 bg-zinc-900/30 flex flex-col backdrop-blur-xl z-20">
+        <div className="h-16 flex items-center px-6 border-b border-zinc-800">
+          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center font-bold text-white mr-3 shadow-[0_0_15px_rgba(79,70,229,0.4)]">W</div>
+          <span className="font-bold text-lg tracking-tight">Wolars<span className="text-zinc-500">OS</span></span>
+        </div>
+
+        <div className="p-4 space-y-1">
+          <p className="px-4 text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">Main Menu</p>
+          {[
+            { id: "overview", icon: LayoutDashboard, label: "Command Center" },
+            { id: "salons", icon: Store, label: "Partner Management" },
+            { id: "users", icon: Users, label: "User Base" },
+            { id: "financials", icon: CreditCard, label: "Financials" },
+          ].map((item) => (
+            <button
+              key={item.id}
+              onClick={() => setActiveTab(item.id as any)}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                activeTab === item.id 
+                  ? "bg-indigo-600/10 text-indigo-400 border border-indigo-600/20" 
+                  : "text-zinc-400 hover:text-white hover:bg-white/5"
+              }`}
+            >
+              <item.icon size={18} />
+              {item.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-auto p-4 border-t border-zinc-800">
+          <div className="bg-zinc-900 rounded-xl p-4 border border-zinc-800 mb-4">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+              <span className="text-xs font-bold text-zinc-400">SYSTEM STATUS</span>
+            </div>
+            <div className="flex justify-between text-xs text-zinc-500 mb-1">
+              <span>Database</span>
+              <span className="text-green-400">Healthy</span>
+            </div>
+            <div className="flex justify-between text-xs text-zinc-500">
+              <span>Latency</span>
+              <span className="text-green-400">24ms</span>
+            </div>
+          </div>
+          <button onClick={onLogout} className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-500/10 text-red-400 border border-red-500/20 text-sm font-bold hover:bg-red-500/20 transition">
+            <LogOut size={16} /> Exit Founder Mode
+          </button>
+        </div>
+      </aside>
+
+      {/* 2. MAIN CONTENT AREA */}
+      <main className="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none"></div>
+        
+        {/* Header */}
+        <header className="h-16 border-b border-zinc-800 flex items-center justify-between px-8 bg-zinc-900/30 backdrop-blur-md sticky top-0 z-10">
+          <h2 className="text-xl font-bold flex items-center gap-2">
+            {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
+            {activeTab === 'overview' && <span className="text-xs font-normal text-zinc-500 bg-zinc-800 px-2 py-0.5 rounded-full border border-zinc-700">Live Updates</span>}
+          </h2>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold">
+              <Globe2 size={14} /> Global: Jodhpur
+            </div>
+            <div className="w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center border border-zinc-700 text-zinc-400 hover:text-white cursor-pointer">
+              <Bell size={16} />
+            </div>
+            <div className="w-8 h-8 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full"></div>
+          </div>
+        </header>
+
+        <div className="flex-1 overflow-y-auto p-8 scrollbar-hide">
+          
+          {/* ---------------- OVERVIEW VIEW ---------------- */}
+          {activeTab === "overview" && (
+            <div className="space-y-8 animate-[slideUp_0.4s_ease-out]">
+              
+              {/* Top Stats Row */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                {[
+                  { label: "Total Revenue", val: `₹${totalRevenue.toLocaleString()}`, change: "+12.5%", icon: DollarSign, color: "text-green-400" },
+                  { label: "Active Salons", val: salons.length, change: "+2 this week", icon: Store, color: "text-purple-400" },
+                  { label: "Live Traffic", val: liveUsers, change: "Current Users", icon: Activity, color: "text-indigo-400", live: true },
+                  { label: "Avg Wait Time", val: `${avgWaitTime} min`, change: "-2.4% faster", icon: Clock, color: "text-blue-400" },
+                ].map((stat, i) => (
+                  <div key={i} className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-2xl relative overflow-hidden group hover:border-zinc-700 transition-all">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className={`p-3 rounded-xl bg-zinc-800/50 ${stat.color} group-hover:scale-110 transition-transform duration-300`}>
+                        <stat.icon size={24} />
+                      </div>
+                      {stat.live && <span className="flex h-3 w-3 relative"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span><span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span></span>}
+                    </div>
+                    <h3 className="text-3xl font-black text-white mb-1 tracking-tight">{stat.val}</h3>
+                    <p className="text-xs font-medium text-zinc-500">{stat.label}</p>
+                    <span className="absolute bottom-6 right-6 text-xs font-bold text-zinc-600 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">{stat.change}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                {/* Main Graph (Simulated with CSS) */}
+                <div className="lg:col-span-2 bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 relative overflow-hidden">
+                  <div className="flex justify-between items-center mb-8">
+                    <div>
+                      <h3 className="font-bold text-lg text-white">Revenue Growth</h3>
+                      <p className="text-zinc-500 text-xs">Simulated data for demonstration</p>
+                    </div>
+                    <button className="p-2 hover:bg-zinc-800 rounded-lg text-zinc-400 transition"><Download size={18}/></button>
+                  </div>
+                  
+                  <div className="h-64 flex items-end justify-between gap-2">
+                    {[35, 45, 30, 50, 45, 60, 55, 70, 65, 80, 75, 90, 85, 100].map((h, i) => (
+                      <div key={i} className="w-full bg-zinc-800/50 rounded-t-lg relative group hover:bg-indigo-600/50 transition-all duration-300" style={{ height: `${h}%` }}>
+                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-black font-bold text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                          ₹{h * 100}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Axis Label */}
+                  <div className="flex justify-between mt-4 text-xs font-mono text-zinc-600 uppercase">
+                    <span>01 Nov</span>
+                    <span>15 Nov</span>
+                    <span>30 Nov</span>
+                  </div>
+                </div>
+
+                {/* Live Activity Feed */}
+                <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6 flex flex-col">
+                  <h3 className="font-bold text-lg text-white mb-6 flex items-center gap-2">
+                    <Zap size={18} className="text-yellow-400" /> Live Activity
+                  </h3>
+                  <div className="space-y-6 flex-1 overflow-y-auto pr-2 custom-scrollbar">
+                    {[
+                      { user: "Suresh R.", action: "joined queue at", target: "Urban Cut Pro", time: "2s ago" },
+                      { user: "New Salon", action: "registered", target: "Style Studio", time: "45s ago", type: "alert" },
+                      { user: "Amit V.", action: "completed payment", target: "₹350.00", time: "2m ago", type: "success" },
+                      { user: "Rahul S.", action: "left queue at", target: "Fade & Blade", time: "5m ago", type: "error" },
+                      { user: "Admin", action: "verified", target: "Royal Cut", time: "12m ago" },
+                    ].map((log, i) => (
+                      <div key={i} className="flex gap-3 relative pl-4 border-l border-zinc-800">
+                        <div className={`absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full ${log.type === 'alert' ? 'bg-yellow-500' : log.type === 'success' ? 'bg-green-500' : log.type === 'error' ? 'bg-red-500' : 'bg-indigo-500'}`}></div>
+                        <div>
+                          <p className="text-sm text-zinc-300 leading-snug">
+                            <span className="font-bold text-white">{log.user}</span> {log.action} <span className="text-zinc-100 font-medium">{log.target}</span>
+                          </p>
+                          <p className="text-[10px] text-zinc-600 font-mono mt-1">{log.time}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ---------------- SALONS VIEW (Advanced CRM) ---------------- */}
+          {activeTab === "salons" && (
+            <div className="animate-[slideUp_0.4s_ease-out]">
+              <div className="flex justify-between items-center mb-6">
+                <div>
+                  <h2 className="text-2xl font-black text-white">Partner Management</h2>
+                  <p className="text-zinc-500 text-sm">Manage verification, bans, and payouts.</p>
+                </div>
+                <div className="flex gap-3">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={16}/>
+                    <input 
+                      type="text" 
+                      placeholder="Search salons..." 
+                      className="bg-zinc-900 border border-zinc-800 rounded-xl pl-10 pr-4 py-2 text-sm text-white focus:border-indigo-500 outline-none w-64"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                  <button className="bg-white text-black px-4 py-2 rounded-xl text-sm font-bold hover:bg-zinc-200 transition flex items-center gap-2">
+                    <Download size={16}/> Export CSV
+                  </button>
+                </div>
+              </div>
+
+              <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl overflow-hidden">
+                <table className="w-full text-left text-sm text-zinc-400">
+                  <thead className="bg-zinc-900 text-zinc-500 font-bold uppercase text-[10px] tracking-wider">
+                    <tr>
+                      <th className="px-6 py-4">Salon Details</th>
+                      <th className="px-6 py-4">Status</th>
+                      <th className="px-6 py-4">Stats</th>
+                      <th className="px-6 py-4">Revenue</th>
+                      <th className="px-6 py-4 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-zinc-800/50">
+                    {salons.filter(s => s.name.toLowerCase().includes(searchQuery.toLowerCase())).map(salon => (
+                      <tr key={salon.id} className="hover:bg-white/[0.02] transition">
+                        <td className="px-6 py-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center font-bold text-white text-xs border border-zinc-700">
+                              {salon.name.substring(0, 2).toUpperCase()}
+                            </div>
+                            <div>
+                              <p className="font-bold text-white text-sm">{salon.name}</p>
+                              <p className="text-xs text-zinc-500">{salon.area}, {salon.city}</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          {salon.verified ? (
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 text-xs font-bold">
+                              <CheckCircle size={12}/> Verified
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 text-xs font-bold">
+                              <AlertTriangle size={12}/> Pending
+                            </span>
+                          )}
+                        </td>
+                        <td className="px-6 py-4">
+                          <div className="flex flex-col gap-1">
+                            <span className="text-white font-medium flex items-center gap-1"><Star size={12} className="text-yellow-500 fill-yellow-500"/> {salon.rating}</span>
+                            <span className="text-xs text-zinc-600">{salon.reviews} reviews</span>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          <p className="text-white font-mono">₹{salon.revenue.toLocaleString()}</p>
+                        </td>
+                        <td className="px-6 py-4 text-right">
+                          <div className="flex items-center justify-end gap-2">
+                            <button onClick={() => toggleVerify(salon.id)} className={`p-2 rounded-lg border transition ${salon.verified ? 'bg-yellow-500/10 border-yellow-500/20 text-yellow-500 hover:bg-yellow-500/20' : 'bg-green-500/10 border-green-500/20 text-green-500 hover:bg-green-500/20'}`}>
+                              {salon.verified ? "Revoke" : "Verify"}
+                            </button>
+                            <button onClick={() => deleteSalon(salon.id)} className="p-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-red-500/20 hover:text-red-500 hover:border-red-500/20 border border-transparent transition">
+                              <Ban size={16}/>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* ---------------- USERS & FINANCIALS PLACEHOLDERS ---------------- */}
+          {(activeTab === "users" || activeTab === "financials") && (
+             <div className="flex flex-col items-center justify-center h-full text-zinc-500 animate-[slideUp_0.4s_ease-out]">
+                <div className="w-24 h-24 bg-zinc-900 rounded-full flex items-center justify-center mb-6 border border-zinc-800">
+                   <Settings size={40} className="animate-spin-slow"/>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Module Under Construction</h3>
+                <p className="max-w-md text-center">You are in Founder Mode. This module is being connected to the Supabase backend for real-time analytics.</p>
+             </div>
+          )}
+
+        </div>
+      </main>
+    </div>
+  );
+};
+
+
+interface LandingPageProps {
+  onNavigateUser: () => void;
+  onNavigateSalon: () => void;
+  onNavigateAdmin: () => void;
+}
+
+const LandingPage: React.FC<LandingPageProps> = ({ onNavigateUser, onNavigateSalon, onNavigateAdmin }) => {
+  return (
+    <div className="min-h-screen w-full font-sans selection:bg-zinc-900 selection:text-white overflow-x-hidden bg-zinc-50">
+      <BackgroundAurora />
+      <NoiseOverlay />
+
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 bg-white/70 backdrop-blur-xl border border-white/40 shadow-sm rounded-full px-6 py-4 flex justify-between items-center transition-all duration-300 hover:bg-white/90">
+        <Logo />
+        <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-600">
+          <a href="#features" className="hover:text-zinc-900 transition">
+            Features
+          </a>
+          <a href="#business" className="hover:text-zinc-900 transition">
+            Business
+          </a>
+          <a href="#advanced" className="hover:text-zinc-900 transition">
+            Dashboard
+          </a>
+          <a href="#testimonials" className="hover:text-zinc-900 transition">
+            Stories
+          </a>
+        </div>
+        <div className="flex gap-3">
+          <button className="hidden sm:block px-5 py-2.5 rounded-full text-zinc-900 text-sm font-bold hover:bg-zinc-100 transition">
+            Log In
+          </button>
+          <button
+            onClick={onNavigateUser}
+            className="px-6 py-2.5 rounded-full bg-zinc-900 text-white text-sm font-bold shadow-lg shadow-zinc-900/20 hover:scale-105 transition-transform"
+          >
+            Get App
+          </button>
+        </div>
+      </nav>
+
+      <section className="relative pt-24 md:pt-28 pb-16 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center min-h-[90vh]">
+        <div className="flex flex-col items-start z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-zinc-200 backdrop-blur-sm text-zinc-600 text-xs font-bold mb-4 shadow-sm">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            TrimGo • Live queue
+          </div>
+
+          <h1 className="text-6xl md:text-8xl font-black text-zinc-900 tracking-tighter leading-[0.95] mb-8">
+            Wait{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-400 to-zinc-600 font-serif italic pr-2">
+              Less.
+            </span>
+            <br />
+            Live{" "}
+            <span className="relative inline-block">
+              More.
+              <svg
+                className="absolute w-full h-3 -bottom-1 left-0 text-green-400 opacity-50"
+                viewBox="0 0 100 10"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0 5 Q 50 10 100 5"
+                  stroke="currentColor"
+                  strokeWidth="8"
+                  fill="none"
+                />
+              </svg>
+            </span>
+          </h1>
+
+          <p className="text-xl text-zinc-500 max-w-lg leading-relaxed mb-10 font-medium">
+            Stop wasting hours in salon waiting rooms. Book your spot
+            digitally, track live wait times, and walk in like a VIP.
+          </p>
+
+          <div className="flex flex-wrap gap-4 w-full sm:w-auto">
+            <ShimmerButton onClick={onNavigateUser} className="w-full sm:w-auto">
+              Join the Queue
+            </ShimmerButton>
+            <ShimmerButton
+              variant="secondary"
+              onClick={onNavigateSalon}
+              className="w-full sm:w-auto"
+            >
+              Partner with Us <Building2 size={18} />
+            </ShimmerButton>
+          </div>
+
+          <div className=" mt-12 flex items-center gap-4 pt-8 border-t border-zinc-200/60 w-full max-w-md">
+            <div className="flex -space-x-3">
+              {[1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className="w-10 h-10 rounded-full border-2 border-white bg-zinc-200 shadow-sm"
+                  style={{
+                    backgroundImage: `url(https://i.pravatar.cc/150?img=${
+                      i + 10
+                    })`,
+                    backgroundSize: "cover",
+                  }}
+                />
+              ))}
+            </div>
+            <div>
+              <div className="flex text-yellow-500 mb-1">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} size={14} fill="currentColor" />
+                ))}
+              </div>
+              <p className="text-xs font-bold text-zinc-600">
+                Trusted by 12,000+ users
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative z-10 flex justify-center perspective-1000">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-purple-200 to-emerald-200 rounded-full blur-[100px] opacity-40 animate-pulse"></div>
+          <InteractivePhone />
+
+          <div className="absolute top-[20%] -left-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 animate-bounce delay-700 hidden md:block">
+            <div className="flex items-center gap-3">
+              <div className="bg-green-100 p-2 rounded-lg text-green-600">
+                <Clock size={20} />
+              </div>
+              <div>
+                <p className="text-xs text-zinc-500 font-bold uppercase">
+                  Time Saved
+                </p>
+                <p className="text-lg font-bold text-zinc-900">45 mins</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute bottom-[20%] -right-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 animate-bounce delay-1000 hidden md:block">
+            <div className="flex items-center gap-3">
+              <div className="bg-purple-100 p-2 rounded-lg text-purple-600">
+                <TrendingUp size={20} />
+              </div>
+              <div>
+                <p className="text-xs text-zinc-500 font-bold uppercase">
+                  Salon Revenue
+                </p>
+                <p className="text-lg font-bold text-zinc-900">+30%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <InfiniteMarquee />
+
+      <div id="advanced">
+        <AdvancedDashboardSection />
+      </div>
+
+      <section id="features" className="py-32 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-black text-zinc-900 mb-6">
+            Built for the Modern Era.
+          </h2>
+          <p className="text-zinc-500 text-xl max-w-2xl mx-auto">
+            We didn't just digitize the queue. We reinvented the entire salon
+            experience for both customers and businesses.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <FeatureCard
+            icon={Zap}
+            title="Real-time Tracking"
+            desc="Watch the queue move in real-time. We calculate wait times using AI based on service type and barber speed."
+            delay={0}
+            colSpan="md:col-span-2"
+          />
+          <FeatureCard
+            icon={MapPin}
+            title="Geo-Discovery"
+            desc="Find the best rated salons near you with filters for price, amenities, and wait times."
+            delay={100}
+          />
+          <FeatureCard
+            icon={BarChart3}
+            title="Smart Analytics"
+            desc="For business owners: Track peak hours, staff performance, and daily revenue at a glance."
+            delay={200}
+          />
+          <FeatureCard
+            icon={ShieldCheck}
+            title="Verified Reviews"
+            desc="No fake reviews. Only customers who have completed a service can leave feedback."
+            delay={300}
+            colSpan="md:col-span-2"
+          />
+        </div>
+      </section>
+
+      <footer className="bg-white border-t border-zinc-200 pt-20 pb-10 px-6 relative z-10">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-16">
+          <div className="col-span-1 md:col-span-2">
+            <Logo />
+            <p className="mt-6 text-zinc-500 max-w-sm leading-relaxed">
+              Wolars Infosys Pvt Ltd. is dedicated to solving everyday
+              inefficiencies with elegant software. TrimGo is our flagship
+              product for the grooming industry.
+            </p>
+            <div className="flex gap-4 mt-6">
+              <div className="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center hover:bg-zinc-900 hover:text-white transition cursor-pointer">
+                <Globe size={18} />
+              </div>
+              <div className="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center hover:bg-zinc-900 hover:text-white transition cursor-pointer">
+                <Mail size={18} />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-bold text-zinc-900 mb-6">Product</h4>
+            <ul className="space-y-4 text-zinc-500 text-sm font-medium">
+              <li className="hover:text-zinc-900 cursor-pointer">For Users</li>
+              <li className="hover:text-zinc-900 cursor-pointer">For Salons</li>
+              <li className="hover:text-zinc-900 cursor-pointer">Pricing</li>
+              <li className="hover:text-zinc-900 cursor-pointer">Download</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-bold text-zinc-900 mb-6">Company</h4>
+            <ul className="space-y-4 text-zinc-500 text-sm font-medium">
+              <li className="hover:text-zinc-900 cursor-pointer">
+                About Wolars
+              </li>
+              <li className="hover:text-zinc-900 cursor-pointer">Careers</li>
+              <li className="hover:text-zinc-900 cursor-pointer">Contact</li>
+              <li className="hover:text-zinc-900 cursor-pointer">
+                Privacy Policy
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto pt-8 border-t border-zinc-100 flex flex-col md:flex-row justify-between items-center text-sm text-zinc-400">
+          <p>© 2025 Wolars Infosys Private Limited. All rights reserved.</p>
+          <div className="flex flex-col items-end">
+             <p className="flex items-center gap-1">
+               Made with{" "}
+               <Heart size={12} className="text-red-400 fill-red-400" /> in India
+             </p>
+             {/* Admin Login Link Hidden in Footer */}
+             <button onClick={onNavigateAdmin} className="mt-2 text-[10px] uppercase font-bold text-zinc-300 hover:text-zinc-900 transition">
+                Founder Login
+             </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
 
 export default function App() {
-  const [currentView, setCurrentView] = useState('home');
+  const [currentView, setCurrentView] = useState("home");
+  
+  // SHARED STATE FOR ADMIN PANEL AND USER PANEL
+  const [salons, setSalons] = useState<Salon[]>(INITIAL_SALON_DATA);
+  const [users, setUsers] = useState<UserData[]>(INITIAL_USERS);
+
+  const [toast, setToast] = useState<{ msg: string; type: "success" | "error" | "info" } | null>(null);
+  const [activeTicket, setActiveTicket] = useState<TicketData | null>(null);
+  const [registeredSalon, setRegisteredSalon] = useState<Salon | null>(null);
+
+  const showToast = (msg: string, type: "success" | "error" | "info" = "success") => {
+    setToast({ msg, type });
+    setTimeout(() => setToast(null), 3000);
+  };
+
+  const handleRegisterSalon = (newSalon: Salon) => {
+    // Add to global list for Admin to see
+    setSalons(prev => [...prev, newSalon]);
+    
+    setRegisteredSalon(newSalon);
+    showToast("Salon registered successfully!");
+    setCurrentView("salon-dashboard"); 
+  };
+
+  const handleRegisterUser = (userData: { name: string; email: string }) => {
+    // Add to global users list for Admin
+    const newUser: UserData = { 
+        id: Date.now(), 
+        name: userData.name, 
+        email: userData.email, 
+        joined: new Date().toISOString().split('T')[0],
+        status: "Active"
+    };
+    setUsers(prev => [...prev, newUser]);
+    showToast("Account created!");
+    setCurrentView("user-dashboard");
+  };
+
+  const handleJoinQueue = (salon: Salon) => {
+    if(activeTicket) {
+      showToast("You are already in a queue!", "error");
+      return;
+    }
+    showToast(`Joined queue for ${salon.name}`);
+    setActiveTicket({
+      salonName: salon.name,
+      number: salon.waiting + 1,
+      eta: salon.eta
+    });
+  };
 
   return (
     <>
       <style jsx global>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
+        }
+
         @keyframes blob {
-          0% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-          100% { transform: translate(0px, 0px) scale(1); }
+          0% {
+            transform: translate(0px, 0px) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+          100% {
+            transform: translate(0px, 0px) scale(1);
+          }
         }
         .animate-blob {
           animation: blob 7s infinite;
         }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
-        
-        @keyframes shimmer {
-          100% { transform: translateX(100%); }
+        .animation-delay-2000 {
+          animation-delay: 2s;
         }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+
+        @keyframes shimmer {
+          100% {
+            transform: translateX(100%);
+          }
+        }
+
+        @keyframes pulse-slow {
+          0%,
+          100% {
+            opacity: 0.6;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.05);
+          }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 6s ease-in-out infinite;
+        }
+
+        @keyframes spin-slow {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 40s linear infinite;
+        }
+
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideUp { from { transform: translate(-50%, 100%); } to { transform: translate(-50%, 0); } }
+        
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
       `}</style>
+
+      {toast && <Toast message={toast.msg} type={toast.type} onClose={() => setToast(null)} />}
       
-      {currentView === 'home' && (
-        <LandingPage 
-          onNavigateUser={() => setCurrentView('user-register')} 
-          onNavigateSalon={() => setCurrentView('salon-register')} 
-        />
-      )}
-      
-      {currentView === 'user-register' && (
-        <UserRegistration onBack={() => setCurrentView('home')} />
+      {activeTicket && !['salon-dashboard', 'admin-dashboard', 'admin-login'].includes(currentView) && (
+        <LiveTicket ticket={activeTicket} onCancel={() => { setActiveTicket(null); showToast("Queue left", "info"); }} />
       )}
 
-      {currentView === 'salon-register' && (
-        <SalonRegistration onBack={() => setCurrentView('home')} />
+      {currentView === "home" && (
+        <LandingPage
+          onNavigateUser={() => setCurrentView("user-register")}
+          onNavigateSalon={() => setCurrentView("salon-register")}
+          onNavigateAdmin={() => setCurrentView("admin-login")} // New Link
+        />
+      )}
+
+      {currentView === "admin-login" && (
+        <AdminLogin 
+            onBack={() => setCurrentView("home")}
+            onLogin={() => { showToast("Welcome, Founder Sanjay."); setCurrentView("admin-dashboard"); }}
+        />
+      )}
+
+      {currentView === "admin-dashboard" && (
+        <AdminDashboard 
+            salons={salons} 
+            setSalons={setSalons} // Founder can ban/verify salons here
+            users={users}
+            onLogout={() => { showToast("Founder logged out."); setCurrentView("home"); }}
+        />
+      )}
+
+      {currentView === "user-register" && (
+        <UserRegistration
+          onBack={() => setCurrentView("home")}
+          onRegisterUser={handleRegisterUser} // Pass data handler
+        />
+      )}
+
+      {currentView === "salon-register" && (
+        <SalonRegistration 
+          onBack={() => setCurrentView("home")} 
+          onRegister={handleRegisterSalon}
+        />
+      )}
+
+      {currentView === "user-dashboard" && (
+        <UserDashboard 
+          onLogout={() => { showToast("Logged out"); setCurrentView("home"); }} 
+          salons={salons}
+          onJoinQueue={handleJoinQueue}
+        />
+      )}
+
+      {currentView === "salon-dashboard" && (
+        <SalonDashboard 
+           salon={registeredSalon}
+           onLogout={() => { showToast("Logged out"); setCurrentView("home"); setRegisteredSalon(null); }}
+        />
       )}
     </>
   );
 }
-
-
-
-
-
-// "use client"
-// import React, { useState, useEffect, useRef } from 'react';
-// import { 
-//   MapPin, Clock, Users, ArrowRight, CheckCircle, 
-//   Scissors, Star, TrendingUp, Bell, ShieldCheck, 
-//   ChevronLeft, Building2, User, Phone, Lock, Store, Zap,
-//   BarChart3, Search, Command, Sparkles, Menu, X
-// } from 'lucide-react';
-
-// // --- ADVANCED HOOKS ---
-
-// // Hook to track mouse position for 3D tilt effects
-// const useMousePosition = () => {
-//   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-//   useEffect(() => {
-//     const updateMousePosition = (ev) => {
-//       setMousePosition({ x: ev.clientX, y: ev.clientY });
-//     };
-//     window.addEventListener('mousemove', updateMousePosition);
-//     return () => window.removeEventListener('mousemove', updateMousePosition);
-//   }, []);
-//   return mousePosition;
-// };
-
-// // Hook for spotlight effects on cards
-// const useSpotlight = (divRef) => {
-//   const [position, setPosition] = useState({ x: 0, y: 0 });
-//   const [opacity, setOpacity] = useState(0);
-
-//   const handleMouseMove = (e) => {
-//     if (!divRef.current) return;
-//     const div = divRef.current;
-//     const rect = div.getBoundingClientRect();
-//     setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-//     setOpacity(1);
-//   };
-
-//   const handleMouseLeave = () => {
-//     setOpacity(0);
-//   };
-
-//   return { position, opacity, handleMouseMove, handleMouseLeave };
-// };
-
-// // --- VISUAL PRIMITIVES ---
-
-// const NoiseOverlay = () => (
-//   <div className="fixed inset-0 z-[9999] pointer-events-none opacity-[0.03] mix-blend-overlay">
-//     <svg className="w-full h-full">
-//       <filter id="noise">
-//         <feTurbulence type="fractalNoise" baseFrequency="0.80" numOctaves="4" stitchTiles="stitch" />
-//       </filter>
-//       <rect width="100%" height="100%" filter="url(#noise)" />
-//     </svg>
-//   </div>
-// );
-
-// const GlowBlob = ({ className }) => (
-//   <div className={`absolute rounded-full blur-[100px] opacity-40 animate-pulse-slow pointer-events-none ${className}`} />
-// );
-
-// // --- 3D TILT CARD COMPONENT ---
-
-// const TiltCard = ({ children, className }) => {
-//   const ref = useRef(null);
-//   const [rotate, setRotate] = useState({ x: 0, y: 0 });
-
-//   const handleMouseMove = (e) => {
-//     if (!ref.current) return;
-//     const rect = ref.current.getBoundingClientRect();
-//     const width = rect.width;
-//     const height = rect.height;
-//     const mouseX = e.clientX - rect.left;
-//     const mouseY = e.clientY - rect.top;
-//     const xPct = mouseX / width - 0.5;
-//     const yPct = mouseY / height - 0.5;
-//     setRotate({ x: yPct * -20, y: xPct * 20 });
-//   };
-
-//   const handleMouseLeave = () => {
-//     setRotate({ x: 0, y: 0 });
-//   };
-
-//   return (
-//     <div
-//       ref={ref}
-//       onMouseMove={handleMouseMove}
-//       onMouseLeave={handleMouseLeave}
-//       style={{
-//         transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
-//       }}
-//       className={`transition-transform duration-200 ease-out will-change-transform ${className}`}
-//     >
-//       {children}
-//     </div>
-//   );
-// };
-
-// // --- SPOTLIGHT CARD COMPONENT ---
-
-// const SpotlightCard = ({ children, className = "", noHover = false }) => {
-//   const divRef = useRef(null);
-//   const { position, opacity, handleMouseMove, handleMouseLeave } = useSpotlight(divRef);
-
-//   return (
-//     <div
-//       ref={divRef}
-//       onMouseMove={handleMouseMove}
-//       onMouseLeave={handleMouseLeave}
-//       className={`relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-xl ${className}`}
-//     >
-//       <div
-//         className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
-//         style={{
-//           opacity,
-//           background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.1), transparent 40%)`,
-//         }}
-//       />
-//       <div className="relative h-full">{children}</div>
-//     </div>
-//   );
-// };
-
-// // --- UI COMPONENTS ---
-
-// const Logo = () => (
-//   <div className="flex items-center gap-3 select-none">
-//     <div className="relative w-8 h-8 flex items-center justify-center">
-//       <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500 to-blue-500 rounded-lg blur opacity-50"></div>
-//       <div className="relative w-full h-full bg-black rounded-lg border border-white/20 flex items-center justify-center text-white font-bold text-xs">
-//         TG
-//       </div>
-//     </div>
-//     <span className="font-bold text-lg tracking-tight text-white">TrimGo</span>
-//   </div>
-// );
-
-// const Navbar = ({ onAuth }) => (
-//   <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/50 backdrop-blur-xl">
-//     <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-//       <Logo />
-//       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-//         <a href="#" className="hover:text-white transition-colors">Product</a>
-//         <a href="#" className="hover:text-white transition-colors">Solutions</a>
-//         <a href="#" className="hover:text-white transition-colors">Pricing</a>
-//         <a href="#" className="hover:text-white transition-colors">Company</a>
-//       </div>
-//       <div className="flex items-center gap-4">
-//         <button onClick={() => onAuth('login')} className="text-sm font-medium text-zinc-400 hover:text-white transition">Log in</button>
-//         <button 
-//           onClick={() => onAuth('register')}
-//           className="group relative px-4 py-2 bg-white text-black text-sm font-bold rounded-full overflow-hidden transition-transform active:scale-95"
-//         >
-//           <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 to-blue-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg"></div>
-//           <span className="relative z-10 flex items-center gap-2">
-//             Get Started <ArrowRight size={14} />
-//           </span>
-//         </button>
-//       </div>
-//     </div>
-//   </nav>
-// );
-
-// // --- HERO SECTION ---
-
-// const Hero = ({ onNavigateUser, onNavigateSalon }) => {
-//   return (
-//     <section className="relative min-h-screen pt-32 pb-20 px-6 flex flex-col items-center justify-center overflow-hidden">
-//       <GlowBlob className="top-[-20%] left-[20%] w-[500px] h-[500px] bg-blue-600/20" />
-//       <GlowBlob className="bottom-[-10%] right-[10%] w-[600px] h-[600px] bg-purple-600/20" />
-
-//       {/* Pill Badge */}
-//       <div className="relative mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-zinc-300 backdrop-blur-md hover:bg-white/10 transition-colors cursor-pointer">
-//         <span className="flex h-2 w-2 relative">
-//           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-//           <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-//         </span>
-//         TrimGo v2.0 is now live
-//         <ArrowRight size={12} className="text-zinc-500" />
-//       </div>
-
-//       {/* Main Heading */}
-//       <h1 className="text-center text-5xl md:text-8xl font-bold tracking-tight text-white max-w-5xl z-10">
-//         Queue less. <br />
-//         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-500 to-purple-600 animate-gradient-x">
-//           Experience more.
-//         </span>
-//       </h1>
-
-//       <p className="mt-8 text-center text-lg text-zinc-400 max-w-2xl leading-relaxed z-10">
-//         The intelligent operating system for modern salons. 
-//         Real-time wait tracking, AI-powered scheduling, and seamless walk-in management.
-//       </p>
-
-//       {/* Buttons */}
-//       <div className="mt-10 flex flex-col sm:flex-row gap-4 z-10">
-//         <button 
-//           onClick={onNavigateUser}
-//           className="px-8 py-4 bg-white text-black rounded-full font-bold text-sm hover:scale-105 transition-transform duration-200 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]"
-//         >
-//           Download App
-//         </button>
-//         <button 
-//           onClick={onNavigateSalon}
-//           className="px-8 py-4 bg-black border border-zinc-800 text-white rounded-full font-bold text-sm hover:bg-zinc-900 hover:border-zinc-700 transition-all"
-//         >
-//           For Business
-//         </button>
-//       </div>
-
-//       {/* 3D Dashboard Mockup */}
-//       <div className="mt-20 w-full max-w-5xl relative z-10 perspective-[2000px]">
-//         <TiltCard className="w-full">
-//           <div className="relative rounded-xl border border-white/10 bg-[#0A0A0A] shadow-2xl overflow-hidden">
-//              {/* Mockup Header */}
-//              <div className="h-12 border-b border-white/10 flex items-center px-4 gap-2">
-//                <div className="flex gap-2">
-//                  <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
-//                  <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
-//                  <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
-//                </div>
-//                <div className="mx-auto w-64 h-6 rounded-md bg-white/5 border border-white/5 flex items-center justify-center text-[10px] text-zinc-500 font-mono">
-//                  salonqueue.app/dashboard
-//                </div>
-//              </div>
-
-//              {/* Mockup Body */}
-//              <div className="p-8 grid grid-cols-1 md:grid-cols-3 gap-6 h-[500px] overflow-hidden">
-//                 {/* Left Col */}
-//                 <div className="space-y-4">
-//                   <div className="p-4 rounded-xl border border-white/5 bg-white/5">
-//                     <div className="text-zinc-500 text-xs uppercase font-bold tracking-wider mb-2">Wait Time</div>
-//                     <div className="text-3xl font-bold text-white">12 <span className="text-base font-normal text-zinc-500">mins</span></div>
-//                   </div>
-//                   <div className="p-4 rounded-xl border border-white/5 bg-white/5">
-//                     <div className="text-zinc-500 text-xs uppercase font-bold tracking-wider mb-2">Queue Depth</div>
-//                     <div className="text-3xl font-bold text-white">4 <span className="text-base font-normal text-zinc-500">people</span></div>
-//                   </div>
-//                   <div className="p-4 rounded-xl border border-white/5 bg-gradient-to-br from-cyan-900/20 to-blue-900/20">
-//                     <div className="flex items-center gap-3 mb-2">
-//                       <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-black font-bold text-xs">AI</div>
-//                       <span className="text-cyan-400 text-xs font-bold">Insight</span>
-//                     </div>
-//                     <p className="text-zinc-400 text-xs leading-relaxed">Peak traffic expected at 5:00 PM based on historical data.</p>
-//                   </div>
-//                 </div>
-
-//                 {/* Center Col - List */}
-//                 <div className="md:col-span-2 rounded-xl border border-white/5 bg-black/40 overflow-hidden flex flex-col">
-//                   <div className="p-4 border-b border-white/5 flex justify-between items-center">
-//                     <span className="text-white font-bold text-sm">Live Queue</span>
-//                     <span className="text-xs text-green-400 font-mono flex items-center gap-1">
-//                       <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-//                       LIVE UPDATES
-//                     </span>
-//                   </div>
-//                   <div className="p-2 space-y-1">
-//                     {[1, 2, 3, 4, 5].map((i) => (
-//                       <div key={i} className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group">
-//                         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center text-zinc-400 text-xs font-bold">
-//                           {i}
-//                         </div>
-//                         <div className="flex-1">
-//                           <div className="h-2 w-24 bg-zinc-800 rounded mb-1 group-hover:bg-zinc-700 transition"></div>
-//                           <div className="h-2 w-16 bg-zinc-900 rounded group-hover:bg-zinc-800 transition"></div>
-//                         </div>
-//                         <div className="text-xs font-mono text-zinc-600 group-hover:text-white transition">
-//                           1{i}:00 PM
-//                         </div>
-//                       </div>
-//                     ))}
-//                   </div>
-//                 </div>
-//              </div>
-             
-//              {/* Gradient Overlay for "Fade" look at bottom of dashboard */}
-//              <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0A0A0A] to-transparent pointer-events-none"></div>
-//           </div>
-//         </TiltCard>
-//       </div>
-//     </section>
-//   );
-// };
-
-// // --- FEATURES SECTION (Bento Grid) ---
-
-// const Features = () => (
-//   <section className="py-32 px-6 max-w-7xl mx-auto relative z-10">
-//     <div className="mb-20">
-//       <h2 className="text-4xl font-bold text-white mb-6">Engineered for efficiency.</h2>
-//       <p className="text-zinc-400 text-lg max-w-2xl">
-//         We stripped away the clutter and built a system that respects your time. 
-//         Powerful features, wrapped in a beautiful interface.
-//       </p>
-//     </div>
-
-//     <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 h-auto md:h-[600px]">
-      
-//       {/* Large Card */}
-//       <SpotlightCard className="md:col-span-6 lg:col-span-8 p-8 flex flex-col justify-between group">
-//         <div>
-//           <div className="w-12 h-12 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6">
-//             <Clock size={24} />
-//           </div>
-//           <h3 className="text-2xl font-bold text-white mb-2">Predictive Wait Times</h3>
-//           <p className="text-zinc-400 max-w-md">Our algorithm analyzes historical service data, barber speed, and shop occupancy to predict wait times with 95% accuracy.</p>
-//         </div>
-//         <div className="mt-8 relative h-32 w-full overflow-hidden rounded-lg border border-white/5 bg-black/50">
-//           {/* Animated Graph Line */}
-//           <svg className="absolute bottom-0 left-0 w-full h-full" preserveAspectRatio="none">
-//              <path d="M0,100 C100,50 200,80 300,20 400,60 500,10 600,40 L600,128 L0,128 Z" fill="url(#grad1)" />
-//              <defs>
-//                <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-//                  <stop offset="0%" style={{stopColor:'rgba(59, 130, 246, 0.5)', stopOpacity:1}} />
-//                  <stop offset="100%" style={{stopColor:'rgba(59, 130, 246, 0)', stopOpacity:1}} />
-//                </linearGradient>
-//              </defs>
-//              <path d="M0,100 C100,50 200,80 300,20 400,60 500,10 600,40" stroke="#3b82f6" strokeWidth="2" fill="none" className="drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
-//           </svg>
-//         </div>
-//       </SpotlightCard>
-
-//       {/* Tall Card */}
-//       <SpotlightCard className="md:col-span-3 lg:col-span-4 p-8 flex flex-col justify-end group">
-//          <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
-//          <div className="relative z-10">
-//            <div className="w-12 h-12 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-6">
-//              <MapPin size={24} />
-//            </div>
-//            <h3 className="text-xl font-bold text-white mb-2">Geo-Fenced Check-in</h3>
-//            <p className="text-zinc-400 text-sm">Automatically check in when you are within 100m of the salon.</p>
-//          </div>
-//       </SpotlightCard>
-
-//       {/* Small Card 1 */}
-//       <SpotlightCard className="md:col-span-3 lg:col-span-4 p-8">
-//         <div className="w-12 h-12 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 mb-6">
-//           <ShieldCheck size={24} />
-//         </div>
-//         <h3 className="text-xl font-bold text-white mb-2">Verified Reviews</h3>
-//         <p className="text-zinc-400 text-sm">No bots. Only real customers.</p>
-//       </SpotlightCard>
-
-//       {/* Small Card 2 */}
-//       <SpotlightCard className="md:col-span-3 lg:col-span-4 p-8">
-//         <div className="w-12 h-12 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 mb-6">
-//           <BarChart3 size={24} />
-//         </div>
-//         <h3 className="text-xl font-bold text-white mb-2">Revenue Analytics</h3>
-//         <p className="text-zinc-400 text-sm">Track daily earnings live.</p>
-//       </SpotlightCard>
-
-//       {/* Small Card 3 */}
-//       <SpotlightCard className="md:col-span-3 lg:col-span-4 p-8 flex items-center justify-center text-center cursor-pointer hover:bg-white/5 transition">
-//          <div className="group-hover:scale-110 transition-transform duration-300">
-//            <div className="text-3xl font-bold text-white mb-1">10k+</div>
-//            <div className="text-zinc-500 text-sm">Active Users</div>
-//          </div>
-//       </SpotlightCard>
-
-//     </div>
-//   </section>
-// );
-
-// // --- AUTH PAGES (Floating Glass) ---
-
-// const AuthPage = ({ type, onBack }) => (
-//   <div className="min-h-screen w-full flex items-center justify-center p-6 relative overflow-hidden">
-//     <button 
-//       onClick={onBack}
-//       className="absolute top-8 left-8 text-zinc-400 hover:text-white flex items-center gap-2 transition z-50"
-//     >
-//       <ChevronLeft size={20} /> Back
-//     </button>
-    
-//     {/* Background FX */}
-//     <div className="absolute inset-0 bg-black">
-//       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[120px]"></div>
-//       <NoiseOverlay />
-//     </div>
-
-//     <SpotlightCard className="w-full max-w-md p-8 md:p-12 relative z-10 bg-black/80">
-//       <div className="text-center mb-10">
-//         <Logo />
-//         <h2 className="text-2xl font-bold text-white mt-8">
-//           {type === 'register' ? 'Create your account' : 'Welcome back'}
-//         </h2>
-//         <p className="text-zinc-400 text-sm mt-2">
-//           {type === 'register' ? 'Join the future of salon management.' : 'Enter your details to access your dashboard.'}
-//         </p>
-//       </div>
-
-//       <div className="space-y-4">
-//         {type === 'register' && (
-//           <div className="group relative">
-//             <User className="absolute left-4 top-3.5 text-zinc-500 transition-colors group-focus-within:text-cyan-400" size={18} />
-//             <input 
-//               type="text" 
-//               placeholder="Full Name" 
-//               className="w-full bg-zinc-900/50 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all"
-//             />
-//           </div>
-//         )}
-        
-//         <div className="group relative">
-//           <Phone className="absolute left-4 top-3.5 text-zinc-500 transition-colors group-focus-within:text-cyan-400" size={18} />
-//           <input 
-//             type="tel" 
-//             placeholder="Mobile Number" 
-//             className="w-full bg-zinc-900/50 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all"
-//           />
-//         </div>
-
-//         <div className="group relative">
-//           <Lock className="absolute left-4 top-3.5 text-zinc-500 transition-colors group-focus-within:text-cyan-400" size={18} />
-//           <input 
-//             type="password" 
-//             placeholder="Password" 
-//             className="w-full bg-zinc-900/50 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-white placeholder:text-zinc-600 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 transition-all"
-//           />
-//         </div>
-
-//         <button className="w-full bg-white text-black font-bold py-3.5 rounded-xl hover:bg-zinc-200 transition active:scale-95 mt-4">
-//           {type === 'register' ? 'Sign Up' : 'Sign In'}
-//         </button>
-//       </div>
-
-//       <div className="mt-8 text-center text-xs text-zinc-500">
-//         By continuing, you agree to our Terms of Service and Privacy Policy.
-//       </div>
-//     </SpotlightCard>
-//   </div>
-// );
-
-// // --- SALON REGISTRATION (Advanced Form) ---
-
-// const SalonRegistration = ({ onBack }) => (
-//   <div className="min-h-screen w-full flex p-6 relative overflow-hidden bg-black font-sans">
-//     <NoiseOverlay />
-//     <button onClick={onBack} className="absolute top-8 left-8 text-zinc-400 z-50 hover:text-white flex items-center gap-2 transition"><ChevronLeft size={20} /> Back</button>
-
-//     <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-      
-//       <div className="order-2 lg:order-1">
-//         <h1 className="text-5xl font-bold text-white mb-6">Scale your business <br/> with intelligence.</h1>
-//         <ul className="space-y-6">
-//            <li className="flex items-start gap-4">
-//              <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 mt-1"><TrendingUp size={16} /></div>
-//              <div>
-//                <h4 className="text-white font-bold">Increase Revenue</h4>
-//                <p className="text-zinc-400 text-sm">Fill empty slots dynamically.</p>
-//              </div>
-//            </li>
-//            <li className="flex items-start gap-4">
-//              <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 mt-1"><Users size={16} /></div>
-//              <div>
-//                <h4 className="text-white font-bold">Customer Retention</h4>
-//                <p className="text-zinc-400 text-sm">Automated loyalty tracking.</p>
-//              </div>
-//            </li>
-//         </ul>
-//       </div>
-
-//       <SpotlightCard className="order-1 lg:order-2 p-8 lg:p-12">
-//         <h2 className="text-2xl font-bold text-white mb-6">Partner Registration</h2>
-//         <div className="space-y-4">
-//           <div className="grid grid-cols-2 gap-4">
-//             <input type="text" placeholder="Salon Name" className="bg-zinc-900/50 border border-white/10 rounded-lg p-3 text-white focus:border-blue-500 outline-none" />
-//             <input type="text" placeholder="Owner Name" className="bg-zinc-900/50 border border-white/10 rounded-lg p-3 text-white focus:border-blue-500 outline-none" />
-//           </div>
-//           <input type="tel" placeholder="Mobile (+91)" className="w-full bg-zinc-900/50 border border-white/10 rounded-lg p-3 text-white focus:border-blue-500 outline-none" />
-//           <input type="text" placeholder="City / Area" className="w-full bg-zinc-900/50 border border-white/10 rounded-lg p-3 text-white focus:border-blue-500 outline-none" />
-          
-//           <div className="pt-4">
-//             <label className="text-xs text-zinc-500 uppercase font-bold tracking-wider mb-2 block">Salon Type</label>
-//             <div className="grid grid-cols-3 gap-3">
-//               <button className="p-3 rounded-lg border border-white/10 text-zinc-400 hover:bg-white/5 hover:text-white transition text-sm">Unisex</button>
-//               <button className="p-3 rounded-lg bg-blue-600 text-white font-bold text-sm shadow-lg shadow-blue-900/20">Men</button>
-//               <button className="p-3 rounded-lg border border-white/10 text-zinc-400 hover:bg-white/5 hover:text-white transition text-sm">Women</button>
-//             </div>
-//           </div>
-
-//           <button className="w-full mt-6 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold py-4 rounded-lg shadow-lg shadow-blue-500/20 hover:scale-[1.02] transition-transform">
-//             Verify & Continue
-//           </button>
-//         </div>
-//       </SpotlightCard>
-
-//     </div>
-//   </div>
-// );
-
-// // --- MAIN CONTROLLER ---
-
-// export default function App() {
-//   const [view, setView] = useState('home');
-
-//   return (
-//     <div className="bg-black min-h-screen text-white selection:bg-cyan-500/30 selection:text-cyan-200 font-sans">
-//       <NoiseOverlay />
-      
-//       {view === 'home' && (
-//         <>
-//           <Navbar onAuth={(type) => setView(type)} />
-//           <Hero 
-//             onNavigateUser={() => setView('register')} 
-//             onNavigateSalon={() => setView('salon-register')}
-//           />
-//           <Features />
-          
-//           {/* Footer */}
-//           <footer className="border-t border-white/10 py-12 text-center text-zinc-600 text-sm relative z-10 bg-black">
-//             <p>© 2025 Wolars Infosys Pvt Ltd. All rights reserved.</p>
-//           </footer>
-//         </>
-//       )}
-
-//       {(view === 'login' || view === 'register') && (
-//         <AuthPage type={view} onBack={() => setView('home')} />
-//       )}
-
-//       {view === 'salon-register' && (
-//         <SalonRegistration onBack={() => setView('home')} />
-//       )}
-//     </div>
-//   );
-// }
