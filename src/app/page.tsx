@@ -1,46 +1,29 @@
 "use client";
-import React, { useState, useEffect, useRef, FormEvent, ChangeEvent } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   MapPin, Clock, Users, Calendar, ArrowRight, CheckCircle, Scissors, Star,
   TrendingUp, Bell, Smartphone, ShieldCheck, Menu, ChevronLeft, Building2,
   User, Phone, Mail, Lock, Store, Zap, BarChart3, Sparkles, Check, Globe,
   Heart, Search, Filter, Ticket, X, Play, CheckSquare, XSquare, PauseCircle,
   Timer, DollarSign, LogOut, MoreVertical, ChevronRight, Settings, Grid,
-  Activity, Shield, Database, Ban, AlertTriangle, Eye, LucideIcon
-} from "lucide-react";
-import { 
-  Download, RefreshCcw, MoreHorizontal, TrendingDown, 
+  Activity, Shield, Database, Ban, AlertTriangle, Eye, LucideIcon,
+  Download, RefreshCcw, MoreHorizontal, TrendingDown,
   CreditCard, Globe2, LayoutDashboard
 } from "lucide-react";
 
+// EXISTING IMPORTS
+import SalonRegistration, { Salon } from "../components/SalonRegistration";
+import UserRegistration from "../components/UserRegistration";
+
+// NEW IMPORT FOR PROFILE
+import { UserProfile } from "../components/UserProfile";
+
+// NEW IMPORT FOR ADMIN
+import { AdminLogin, AdminDashboard, UserData } from "../components/AdminDashboard";
+
 /* ---------------------------------
-   TYPES & INTERFACES (TYPESCRIPT DEFINITIONS)
+   INTERFACES & TYPES (Only local ones left)
 ---------------------------------- */
-
-interface Salon {
-  id: number;
-  name: string;
-  area: string;
-  city: string;
-  distance: string;
-  waiting: number;
-  eta: number;
-  rating: number;
-  reviews: number;
-  tag: string;
-  price: string;
-  type: string;
-  verified: boolean;
-  revenue: number;
-}
-
-interface UserData {
-  id: number;
-  name: string;
-  email: string;
-  joined: string;
-  status: "Active" | "Inactive";
-}
 
 interface SalonRequest {
   id: number;
@@ -403,7 +386,7 @@ interface LiveTicketProps {
 
 const LiveTicket: React.FC<LiveTicketProps> = ({ ticket, onCancel }) => {
   const [timeLeft, setTimeLeft] = useState(ticket ? ticket.eta : 0);
-   
+    
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => Math.max(0, prev - 1));
@@ -791,310 +774,6 @@ const AdvancedDashboardSection: React.FC = () => {
 };
 
 /* ---------------------------------
-   AUTH LAYOUT & FORMS
----------------------------------- */
-
-interface AuthLayoutProps {
-  children: React.ReactNode;
-  title: string;
-  subtitle: string;
-  onBack: () => void;
-  illustration: React.ReactNode;
-}
-
-const AuthLayout: React.FC<AuthLayoutProps> = ({ children, title, subtitle, onBack, illustration }) => (
-  <div className="min-h-screen w-full bg-zinc-50 flex items-center justify-center p-4 relative font-sans overflow-hidden">
-    <BackgroundAurora />
-    <NoiseOverlay />
-
-    <button
-      onClick={onBack}
-      className="absolute top-8 left-8 flex items-center gap-2 text-zinc-500 hover:text-zinc-900 transition z-20 font-bold bg-white/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/50"
-    >
-      <ChevronLeft size={20} /> Home
-    </button>
-
-    <div className="w-full max-w-6xl bg-white/80 backdrop-blur-xl rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row relative z-10 border border-white/60">
-      <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center">
-        <div className="mb-10">
-          <h2 className="text-4xl font-black text-zinc-900 mb-3 tracking-tight">
-            {title}
-          </h2>
-          <p className="text-zinc-500 font-medium">{subtitle}</p>
-        </div>
-        {children}
-      </div>
-
-      <div className="hidden md:flex w-1/2 bg-zinc-900 relative p-12 flex-col justify-between overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
-        {illustration}
-      </div>
-    </div>
-  </div>
-);
-
-interface InputGroupProps {
-  icon: React.ElementType;
-  type: string;
-  placeholder: string;
-  label: string;
-  name?: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const InputGroup: React.FC<InputGroupProps> = ({ icon: Icon, type, placeholder, label, name, value, onChange }) => (
-  <div className="space-y-1.5">
-    <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider ml-1">
-      {label}
-    </label>
-    <div className="relative group">
-      <Icon
-        className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-zinc-900 transition-colors"
-        size={20}
-      />
-      <input
-        name={name}
-        value={value}
-        onChange={onChange}
-        type={type}
-        placeholder={placeholder}
-        className="w-full bg-zinc-50 border border-zinc-200 rounded-xl py-4 pl-12 pr-4 text-zinc-900 font-medium focus:outline-none focus:ring-4 focus:ring-zinc-100 focus:border-zinc-900 transition-all placeholder:text-zinc-400"
-      />
-    </div>
-  </div>
-);
-
-
-
-interface UserRegistrationProps {
-  onBack: () => void;
-  onSuccess?: () => void;
-  onRegisterUser?: (userData: { name: string; email: string }) => void;
-}
-
-const UserRegistration: React.FC<UserRegistrationProps> = ({ onBack, onSuccess, onRegisterUser }) => {
-  const [name, setName] = useState("");
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if(onRegisterUser) {
-        onRegisterUser({ name, email: name.toLowerCase().replace(" ", "") + "@gmail.com" });
-    }
-    if (onSuccess) onSuccess();
-  };
-
-  return (
-    <AuthLayout
-      title="Create Account"
-      subtitle="Join the queue from anywhere."
-      onBack={onBack}
-      illustration={
-        <>
-          <div className="relative z-10">
-            <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 border border-white/20">
-              <User className="text-white" size={32} />
-            </div>
-            <h3 className="text-4xl font-bold text-white mb-4 leading-tight">
-              Your time is
-              <br />
-              too valuable
-              <br />
-              to wait.
-            </h3>
-          </div>
-          <div className="bg-zinc-800/50 backdrop-blur-md border border-white/10 p-6 rounded-3xl relative z-10">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-green-400 to-emerald-600 flex items-center justify-center">
-                <CheckCircle className="text-white" size={24} />
-              </div>
-              <div>
-                <p className="text-white font-bold">Booking Confirmed</p>
-                <p className="text-zinc-400 text-sm">You are #3 in line</p>
-              </div>
-            </div>
-            <div className="h-2 w-full bg-zinc-700 rounded-full overflow-hidden">
-              <div className="h-full w-2/3 bg-green-500 rounded-full"></div>
-            </div>
-          </div>
-        </>
-      }
-    >
-      <form className="space-y-5" onSubmit={handleSubmit}>
-        <InputGroup
-          icon={User}
-          type="text"
-          placeholder="Sanjay Choudhary"
-          label="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <InputGroup
-          icon={Phone}
-          type="tel"
-          placeholder="+91 98765 43210"
-          label="Mobile Number"
-        />
-        <InputGroup
-          icon={Lock}
-          type="password"
-          placeholder="••••••••"
-          label="Password"
-        />
-
-        <ShimmerButton className="w-full py-4 mt-4">
-          Create Free Account
-        </ShimmerButton>
-      </form>
-    </AuthLayout>
-  );
-};
-
-/* ---------------------------------
-   SALON REGISTRATION
----------------------------------- */
-
-interface SalonRegistrationProps {
-  onBack: () => void;
-  onRegister?: (salon: Salon) => void;
-}
-
-const SalonRegistration: React.FC<SalonRegistrationProps> = ({ onBack, onRegister }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    owner: "",
-    mobile: "",
-    city: "",
-    type: "Unisex",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const newSalon: Salon = {
-      id: Date.now(),
-      name: formData.name || "New Salon",
-      area: formData.city.split(",")[1] || "Downtown",
-      city: formData.city.split(",")[0] || "City",
-      distance: "0.5 km",
-      waiting: 0,
-      eta: 0,
-      rating: 5.0,
-      reviews: 0,
-      tag: "New Partner",
-      price: "₹₹",
-      type: formData.type, 
-      verified: false,
-      revenue: 0
-    };
-     
-    if (onRegister) onRegister(newSalon);
-  };
-
-  return (
-    <AuthLayout
-      title="Partner With Us"
-      subtitle="Transform your salon business today."
-      onBack={onBack}
-      illustration={
-        <>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-900/90 z-0"></div>
-          <div className="relative z-10">
-            <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 border border-white/20">
-              <Store className="text-white" size={32} />
-            </div>
-            <h3 className="text-3xl font-bold text-white mb-6">
-              "Since using TrimGo, our revenue increased by 30% in the first
-              month."
-            </h3>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-zinc-700 rounded-full"></div>
-              <div>
-                <p className="text-white font-bold text-sm">Rajesh Kumar</p>
-                <p className="text-zinc-500 text-xs">Owner, The Royal Cut</p>
-              </div>
-            </div>
-          </div>
-        </>
-      }
-    >
-      <form
-        className="grid grid-cols-1 md:grid-cols-2 gap-5"
-        onSubmit={handleSubmit}
-      >
-        <div className="md:col-span-2">
-          <InputGroup
-            icon={Store}
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            type="text"
-            placeholder="Urban Cut Pro"
-            label="Salon Name"
-          />
-        </div>
-        <InputGroup
-          icon={User}
-          name="owner"
-          value={formData.owner}
-          onChange={handleChange}
-          type="text"
-          placeholder="Owner Name"
-          label="Contact Person"
-        />
-        <InputGroup 
-          icon={Phone} 
-          name="mobile"
-          value={formData.mobile}
-          onChange={handleChange}
-          type="tel" 
-          placeholder="+91" 
-          label="Mobile" 
-        />
-        <div className="md:col-span-2">
-          <InputGroup
-            icon={MapPin}
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            type="text"
-            placeholder="Jodhpur, Shastri Nagar"
-            label="Location (City, Area)"
-          />
-        </div>
-
-        <div className="md:col-span-2 space-y-1.5">
-          <label className="text-xs font-bold text-zinc-500 uppercase tracking-wider ml-1">
-            Salon Type
-          </label>
-          <div className="grid grid-cols-3 gap-3">
-            {["Unisex", "Men Only", "Women Only"].map((type) => (
-              <button
-                key={type}
-                type="button"
-                onClick={() => setFormData({...formData, type})}
-                className={`py-3 border rounded-xl text-sm font-bold transition focus:ring-2 ring-zinc-900 ring-offset-2 ${formData.type === type ? 'bg-zinc-900 text-white border-zinc-900' : 'bg-white border-zinc-200 text-zinc-900 hover:bg-zinc-50'}`}
-              >
-                {type}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="md:col-span-2 pt-4">
-          <ShimmerButton className="w-full py-4">
-            Complete Registration <ArrowRight size={18} />
-          </ShimmerButton>
-        </div>
-      </form>
-    </AuthLayout>
-  );
-};
-
-/* ---------------------------------
    SALON DASHBOARD
 ---------------------------------- */
 
@@ -1167,10 +846,10 @@ const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
     <div className="min-h-screen w-full bg-zinc-950 font-sans text-white overflow-hidden flex selection:bg-emerald-500 selection:text-white">
       {/* Dynamic Background */}
       <div className="fixed inset-0 z-0">
-         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-zinc-950 to-black"></div>
-         <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] animate-pulse-slow"></div>
-         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-[120px] animate-pulse-slow animation-delay-2000"></div>
-         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-zinc-950 to-black"></div>
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] animate-pulse-slow"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-[120px] animate-pulse-slow animation-delay-2000"></div>
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
       </div>
 
       {/* Sidebar Navigation */}
@@ -1293,40 +972,40 @@ const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
              <div className="flex flex-col bg-zinc-900/30 border border-white/5 rounded-3xl overflow-hidden backdrop-blur-sm">
                  <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/5">
                    <h3 className="font-bold text-sm text-zinc-100 flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-yellow-500"></div> New Requests
+                     <div className="w-2 h-2 rounded-full bg-yellow-500"></div> New Requests
                    </h3>
                    <span className="text-xs font-bold bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded-md">{requests.length}</span>
                  </div>
                  <div className="flex-1 overflow-y-auto p-3 space-y-3 custom-scrollbar">
                    {requests.length === 0 ? (
-                      <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-2">
-                         <Bell size={32} className="opacity-20"/>
-                         <p className="text-sm">No new requests</p>
-                      </div>
+                     <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-2">
+                        <Bell size={32} className="opacity-20"/>
+                        <p className="text-sm">No new requests</p>
+                     </div>
                    ) : (
-                      requests.map(req => (
-                         <div key={req.id} className="group bg-zinc-900 border border-white/10 hover:border-yellow-500/50 p-4 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(234,179,8,0.1)] animate-[slideIn_0.3s_ease-out]">
-                            <div className="flex justify-between items-start mb-3">
-                               <div className="flex items-center gap-3">
-                                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${getAvatarGradient(req.name)} flex items-center justify-center text-sm font-bold shadow-lg`}>
-                                     {req.name.charAt(0)}
-                                  </div>
-                                  <div>
-                                     <h4 className="font-bold text-sm text-white">{req.name}</h4>
-                                     <p className="text-xs text-zinc-400">{req.service}</p>
-                                  </div>
-                               </div>
-                               <span className="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">{req.time}</span>
-                            </div>
-                            <div className="flex items-center justify-between mt-3 gap-2">
-                               <div className="text-xs font-bold text-zinc-300 bg-zinc-800/50 px-2 py-1 rounded">₹{req.price}</div>
-                               <div className="flex gap-2">
-                                  <button onClick={() => handleReject(req.id)} className="p-2 rounded-lg bg-zinc-800 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 transition"><X size={16}/></button>
-                                  <button onClick={() => handleAccept(req)} className="px-4 py-2 rounded-lg bg-white text-black text-xs font-bold hover:bg-emerald-400 hover:shadow-[0_0_15px_#34d399] transition-all">Accept</button>
-                               </div>
-                            </div>
-                         </div>
-                      ))
+                     requests.map(req => (
+                        <div key={req.id} className="group bg-zinc-900 border border-white/10 hover:border-yellow-500/50 p-4 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(234,179,8,0.1)] animate-[slideIn_0.3s_ease-out]">
+                           <div className="flex justify-between items-start mb-3">
+                              <div className="flex items-center gap-3">
+                                 <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${getAvatarGradient(req.name)} flex items-center justify-center text-sm font-bold shadow-lg`}>
+                                    {req.name.charAt(0)}
+                                 </div>
+                                 <div>
+                                    <h4 className="font-bold text-sm text-white">{req.name}</h4>
+                                    <p className="text-xs text-zinc-400">{req.service}</p>
+                                 </div>
+                              </div>
+                              <span className="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">{req.time}</span>
+                           </div>
+                           <div className="flex items-center justify-between mt-3 gap-2">
+                              <div className="text-xs font-bold text-zinc-300 bg-zinc-800/50 px-2 py-1 rounded">₹{req.price}</div>
+                              <div className="flex gap-2">
+                                 <button onClick={() => handleReject(req.id)} className="p-2 rounded-lg bg-zinc-800 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 transition"><X size={16}/></button>
+                                 <button onClick={() => handleAccept(req)} className="px-4 py-2 rounded-lg bg-white text-black text-xs font-bold hover:bg-emerald-400 hover:shadow-[0_0_15px_#34d399] transition-all">Accept</button>
+                              </div>
+                           </div>
+                        </div>
+                     ))
                    )}
                  </div>
              </div>
@@ -1335,34 +1014,34 @@ const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
              <div className="flex flex-col bg-zinc-900/30 border border-white/5 rounded-3xl overflow-hidden backdrop-blur-sm">
                  <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/5">
                    <h3 className="font-bold text-sm text-zinc-100 flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-blue-500"></div> Waiting Queue
+                     <div className="w-2 h-2 rounded-full bg-blue-500"></div> Waiting Queue
                    </h3>
                    <span className="text-xs font-bold bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded-md">{activeQueue.length}</span>
                  </div>
                  <div className="flex-1 overflow-y-auto p-3 space-y-3 custom-scrollbar">
                    {activeQueue.length === 0 ? (
-                      <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-2">
-                         <Users size={32} className="opacity-20"/>
-                         <p className="text-sm">Queue is empty</p>
-                      </div>
+                     <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-2">
+                        <Users size={32} className="opacity-20"/>
+                        <p className="text-sm">Queue is empty</p>
+                     </div>
                    ) : (
-                      activeQueue.map((cust, idx) => (
-                         <div key={cust.id} className="relative group bg-zinc-900 border border-white/10 hover:border-blue-500/50 p-4 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]">
-                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500/50 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <div className="flex items-center justify-between">
-                               <div className="flex items-center gap-3">
-                                  <span className="text-lg font-black text-zinc-700 w-6">#{idx+1}</span>
-                                  <div>
-                                     <h4 className="font-bold text-sm text-white">{cust.name}</h4>
-                                     <p className="text-xs text-zinc-400">{cust.service}</p>
-                                  </div>
-                               </div>
-                               <button onClick={() => handleStartService(cust)} className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition border border-white/5">
-                                  <Play size={14} fill="currentColor" />
-                               </button>
-                            </div>
-                         </div>
-                      ))
+                     activeQueue.map((cust, idx) => (
+                        <div key={cust.id} className="relative group bg-zinc-900 border border-white/10 hover:border-blue-500/50 p-4 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]">
+                           <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500/50 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                           <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-3">
+                                 <span className="text-lg font-black text-zinc-700 w-6">#{idx+1}</span>
+                                 <div>
+                                    <h4 className="font-bold text-sm text-white">{cust.name}</h4>
+                                    <p className="text-xs text-zinc-400">{cust.service}</p>
+                                 </div>
+                              </div>
+                              <button onClick={() => handleStartService(cust)} className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition border border-white/5">
+                                 <Play size={14} fill="currentColor" />
+                              </button>
+                           </div>
+                        </div>
+                     ))
                    )}
                  </div>
              </div>
@@ -1372,61 +1051,61 @@ const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 shadow-[0_0_15px_#10b981]"></div>
                  <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/5">
                    <h3 className="font-bold text-sm text-zinc-100 flex items-center gap-2">
-                      <Scissors size={14} className="text-emerald-400"/> In The Chair
+                     <Scissors size={14} className="text-emerald-400"/> In The Chair
                    </h3>
                    <div className="flex items-center gap-1 text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded animate-pulse">
-                      LIVE
+                     LIVE
                    </div>
                  </div>
                  
                  <div className="flex-1 flex flex-col items-center justify-center p-6 text-center relative">
                    {inChair ? (
-                      <>
-                         {/* Glow effect behind avatar */}
-                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-emerald-500/20 rounded-full blur-[60px] animate-pulse-slow pointer-events-none"></div>
-                         
-                         <div className="relative mb-6">
-                            <div className="w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-emerald-400 to-cyan-400 shadow-2xl shadow-emerald-500/20">
-                               <div className="w-full h-full rounded-full bg-zinc-900 flex items-center justify-center text-4xl font-bold text-white relative overflow-hidden">
-                                  {inChair.name.charAt(0)}
-                                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
-                               </div>
-                            </div>
-                            <div className="absolute bottom-0 right-0 bg-zinc-900 rounded-full p-1 border border-zinc-700">
-                               <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center">
-                                  <Activity size={12} className="text-black animate-spin-slow"/>
-                               </div>
-                            </div>
-                         </div>
+                     <>
+                        {/* Glow effect behind avatar */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-emerald-500/20 rounded-full blur-[60px] animate-pulse-slow pointer-events-none"></div>
+                        
+                        <div className="relative mb-6">
+                           <div className="w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-emerald-400 to-cyan-400 shadow-2xl shadow-emerald-500/20">
+                              <div className="w-full h-full rounded-full bg-zinc-900 flex items-center justify-center text-4xl font-bold text-white relative overflow-hidden">
+                                 {inChair.name.charAt(0)}
+                                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
+                              </div>
+                           </div>
+                           <div className="absolute bottom-0 right-0 bg-zinc-900 rounded-full p-1 border border-zinc-700">
+                              <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center">
+                                 <Activity size={12} className="text-black animate-spin-slow"/>
+                              </div>
+                           </div>
+                        </div>
 
-                         <h2 className="text-2xl font-black text-white mb-1 tracking-tight">{inChair.name}</h2>
-                         <p className="text-emerald-400 font-medium text-sm mb-6">{inChair.service}</p>
+                        <h2 className="text-2xl font-black text-white mb-1 tracking-tight">{inChair.name}</h2>
+                        <p className="text-emerald-400 font-medium text-sm mb-6">{inChair.service}</p>
 
-                         {/* Timer / Progress Bar Simulation */}
-                         <div className="w-full bg-zinc-800/50 rounded-full h-1.5 mb-2 overflow-hidden">
-                            <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 h-full w-[45%] rounded-full shadow-[0_0_10px_#10b981]"></div>
-                         </div>
-                         <div className="w-full flex justify-between text-[10px] text-zinc-500 font-mono mb-8">
-                            <span>12:30 min</span>
-                            <span>Est. 25:00</span>
-                         </div>
+                        {/* Timer / Progress Bar Simulation */}
+                        <div className="w-full bg-zinc-800/50 rounded-full h-1.5 mb-2 overflow-hidden">
+                           <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 h-full w-[45%] rounded-full shadow-[0_0_10px_#10b981]"></div>
+                        </div>
+                        <div className="w-full flex justify-between text-[10px] text-zinc-500 font-mono mb-8">
+                           <span>12:30 min</span>
+                           <span>Est. 25:00</span>
+                        </div>
 
-                         <button 
-                            onClick={handleCompleteService}
-                            className="w-full py-4 rounded-xl bg-white text-black font-bold text-sm shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group"
-                         >
-                            <CheckSquare size={18} className="text-emerald-600 group-hover:scale-110 transition-transform"/> 
-                            Complete Service
-                         </button>
-                      </>
+                        <button 
+                           onClick={handleCompleteService}
+                           className="w-full py-4 rounded-xl bg-white text-black font-bold text-sm shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group"
+                        >
+                           <CheckSquare size={18} className="text-emerald-600 group-hover:scale-110 transition-transform"/> 
+                           Complete Service
+                        </button>
+                     </>
                    ) : (
-                      <div className="text-zinc-600 flex flex-col items-center">
-                         <div className="w-20 h-20 rounded-full border-2 border-dashed border-zinc-800 flex items-center justify-center mb-4">
-                            <Scissors size={24} />
-                         </div>
-                         <p className="font-medium text-sm">Chair Empty</p>
-                         <p className="text-xs mt-1 max-w-[150px]">Select a customer from the queue to start.</p>
-                      </div>
+                     <div className="text-zinc-600 flex flex-col items-center">
+                        <div className="w-20 h-20 rounded-full border-2 border-dashed border-zinc-800 flex items-center justify-center mb-4">
+                           <Scissors size={24} />
+                        </div>
+                        <p className="font-medium text-sm">Chair Empty</p>
+                        <p className="text-xs mt-1 max-w-[150px]">Select a customer from the queue to start.</p>
+                     </div>
                    )}
                  </div>
              </div>
@@ -1446,9 +1125,10 @@ interface UserDashboardProps {
   onLogout: () => void;
   salons: Salon[];
   onJoinQueue: (salon: Salon) => void;
+  onProfileClick: () => void; // Added prop for navigation
 }
 
-const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQueue }) => {
+const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQueue, onProfileClick }) => {
   const [selectedCity] = useState("Jodhpur");
   const [sortBy, setSortBy] = useState("waiting");
   const [searchTerm, setSearchTerm] = useState("");
@@ -1482,15 +1162,34 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQ
 
       <header className="fixed top-0 left-0 w-full z-40 bg-white/80 backdrop-blur-xl border-b border-zinc-200/60">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4"> {/* Increased gap */}
             <Logo />
-            <div className="hidden sm:flex flex-col">
-              <span className="text-xs text-zinc-400 font-medium">
-                Logged in as
-              </span>
-              <span className="text-sm font-semibold text-zinc-800">
-                Sanjay
-              </span>
+            
+            <div className="h-6 w-px bg-zinc-200 hidden sm:block"></div> {/* Separator */}
+
+            {/* Clickable Profile Area - UPDATED WITH PHOTO */}
+            <div 
+              onClick={onProfileClick}
+              className="flex items-center gap-3 cursor-pointer group"
+            >
+              <div className="relative">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 p-[2px] shadow-lg group-hover:shadow-indigo-500/20 transition-all duration-300">
+                  <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+                     {/* Simulating a photo with a gradient or Initials if no photo */}
+                     <img 
+                       src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sanjay" 
+                       alt="Sanjay"
+                       className="w-full h-full object-cover"
+                     />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+              </div>
+
+              <div className="hidden sm:flex flex-col">
+                <span className="text-sm font-bold text-zinc-900 group-hover:text-indigo-600 transition-colors">Sanjay</span>
+                <span className="text-[10px] font-medium text-zinc-500">Free Plan</span>
+              </div>
             </div>
           </div>
 
@@ -1681,379 +1380,9 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQ
   );
 };
 
-
 /* ---------------------------------
-   ADMIN / FOUNDER COMPONENTS
+   LANDING PAGE (Maintained Here)
 ---------------------------------- */
-
-interface AdminLoginProps {
-  onBack: () => void;
-  onLogin: () => void;
-}
-
-const AdminLogin: React.FC<AdminLoginProps> = ({ onBack, onLogin }) => {
-  const [creds, setCreds] = useState({ username: "", password: "" });
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if(creds.username === "admin" && creds.password === "admin123") {
-      onLogin();
-    } else {
-      alert("Invalid Founder Credentials");
-    }
-  };
-
-  return (
-    <div className="min-h-screen w-full bg-black flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Matrix/Tech background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-800 via-black to-black opacity-80"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
-      
-      <div className="relative z-10 w-full max-w-md bg-zinc-900/50 backdrop-blur-xl border border-zinc-800 p-8 rounded-3xl shadow-2xl">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-tr from-purple-600 to-blue-600 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg shadow-purple-500/20">
-            <ShieldCheck className="text-white" size={32} />
-          </div>
-          <h2 className="text-2xl font-black text-white">Founder Access</h2>
-          <p className="text-zinc-500 text-sm mt-1">Wolars Infosys Private Limited</p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="bg-black/40 border border-zinc-800 rounded-xl p-1 flex items-center">
-            <User className="text-zinc-500 ml-3" size={18} />
-            <input 
-              type="text" 
-              placeholder="Username" 
-              className="bg-transparent w-full p-3 text-white outline-none placeholder:text-zinc-600"
-              value={creds.username}
-              onChange={(e) => setCreds({...creds, username: e.target.value})}
-            />
-          </div>
-          <div className="bg-black/40 border border-zinc-800 rounded-xl p-1 flex items-center">
-            <Lock className="text-zinc-500 ml-3" size={18} />
-            <input 
-              type="password" 
-              placeholder="Password" 
-              className="bg-transparent w-full p-3 text-white outline-none placeholder:text-zinc-600"
-              value={creds.password}
-              onChange={(e) => setCreds({...creds, password: e.target.value})}
-            />
-          </div>
-          <button className="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-zinc-200 transition mt-4">
-            Enter God Mode
-          </button>
-        </form>
-        
-        <button onClick={onBack} className="w-full text-zinc-500 text-xs mt-6 hover:text-white transition">
-          Return to Platform
-        </button>
-      </div>
-    </div>
-  );
-};
-
-interface AdminDashboardProps {
-  salons: Salon[];
-  setSalons: React.Dispatch<React.SetStateAction<Salon[]>>;
-  users: UserData[];
-  onLogout: () => void;
-}
-
-const AdminDashboard: React.FC<AdminDashboardProps> = ({ salons, setSalons, users, onLogout }) => {
-  const [activeTab, setActiveTab] = useState<"overview" | "salons" | "users" | "financials">("overview");
-  const [liveUsers, setLiveUsers] = useState(124); // Simulated Live Users
-  const [searchQuery, setSearchQuery] = useState("");
-
-  // Simulated Real-time Logic: Updates "Live Users" count every few seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLiveUsers(prev => prev + (Math.random() > 0.5 ? 1 : -1));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Stats Calculations
-  const totalRevenue = salons.reduce((acc, curr) => acc + (curr.revenue || 0), 0);
-  const totalWaitTime = salons.reduce((acc, curr) => acc + curr.waiting, 0);
-  const avgWaitTime = salons.length ? Math.round((totalWaitTime * 15) / salons.length) : 0;
-  
-  // Handlers
-  const toggleVerify = (id: number) => {
-    setSalons(prev => prev.map(s => s.id === id ? { ...s, verified: !s.verified } : s));
-  };
-
-  const deleteSalon = (id: number) => {
-    if(window.confirm("CONFIRM BAN: This will remove the salon and all its data immediately.")) {
-      setSalons(prev => prev.filter(s => s.id !== id));
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-indigo-500 selection:text-white flex overflow-hidden">
-      
-      {/* 1. SIDEBAR NAVIGATION */}
-      <aside className="w-64 border-r border-zinc-800 bg-zinc-900/30 flex flex-col backdrop-blur-xl z-20">
-        <div className="h-16 flex items-center px-6 border-b border-zinc-800">
-          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center font-bold text-white mr-3 shadow-[0_0_15px_rgba(79,70,229,0.4)]">W</div>
-          <span className="font-bold text-lg tracking-tight">Wolars<span className="text-zinc-500">OS</span></span>
-        </div>
-
-        <div className="p-4 space-y-1">
-          <p className="px-4 text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2">Main Menu</p>
-          {[
-            { id: "overview", icon: LayoutDashboard, label: "Command Center" },
-            { id: "salons", icon: Store, label: "Partner Management" },
-            { id: "users", icon: Users, label: "User Base" },
-            { id: "financials", icon: CreditCard, label: "Financials" },
-          ].map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setActiveTab(item.id as any)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
-                activeTab === item.id 
-                  ? "bg-indigo-600/10 text-indigo-400 border border-indigo-600/20" 
-                  : "text-zinc-400 hover:text-white hover:bg-white/5"
-              }`}
-            >
-              <item.icon size={18} />
-              {item.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="mt-auto p-4 border-t border-zinc-800">
-          <div className="bg-zinc-900 rounded-xl p-4 border border-zinc-800 mb-4">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-              <span className="text-xs font-bold text-zinc-400">SYSTEM STATUS</span>
-            </div>
-            <div className="flex justify-between text-xs text-zinc-500 mb-1">
-              <span>Database</span>
-              <span className="text-green-400">Healthy</span>
-            </div>
-            <div className="flex justify-between text-xs text-zinc-500">
-              <span>Latency</span>
-              <span className="text-green-400">24ms</span>
-            </div>
-          </div>
-          <button onClick={onLogout} className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-500/10 text-red-400 border border-red-500/20 text-sm font-bold hover:bg-red-500/20 transition">
-            <LogOut size={16} /> Exit Founder Mode
-          </button>
-        </div>
-      </aside>
-
-      {/* 2. MAIN CONTENT AREA */}
-      <main className="flex-1 flex flex-col h-screen overflow-hidden relative">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none"></div>
-        
-        {/* Header */}
-        <header className="h-16 border-b border-zinc-800 flex items-center justify-between px-8 bg-zinc-900/30 backdrop-blur-md sticky top-0 z-10">
-          <h2 className="text-xl font-bold flex items-center gap-2">
-            {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
-            {activeTab === 'overview' && <span className="text-xs font-normal text-zinc-500 bg-zinc-800 px-2 py-0.5 rounded-full border border-zinc-700">Live Updates</span>}
-          </h2>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold">
-              <Globe2 size={14} /> Global: Jodhpur
-            </div>
-            <div className="w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center border border-zinc-700 text-zinc-400 hover:text-white cursor-pointer">
-              <Bell size={16} />
-            </div>
-            <div className="w-8 h-8 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full"></div>
-          </div>
-        </header>
-
-        <div className="flex-1 overflow-y-auto p-8 scrollbar-hide">
-          
-          {/* ---------------- OVERVIEW VIEW ---------------- */}
-          {activeTab === "overview" && (
-            <div className="space-y-8 animate-[slideUp_0.4s_ease-out]">
-              
-              {/* Top Stats Row */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {[
-                  { label: "Total Revenue", val: `₹${totalRevenue.toLocaleString()}`, change: "+12.5%", icon: DollarSign, color: "text-green-400" },
-                  { label: "Active Salons", val: salons.length, change: "+2 this week", icon: Store, color: "text-purple-400" },
-                  { label: "Live Traffic", val: liveUsers, change: "Current Users", icon: Activity, color: "text-indigo-400", live: true },
-                  { label: "Avg Wait Time", val: `${avgWaitTime} min`, change: "-2.4% faster", icon: Clock, color: "text-blue-400" },
-                ].map((stat, i) => (
-                  <div key={i} className="bg-zinc-900/50 border border-zinc-800 p-6 rounded-2xl relative overflow-hidden group hover:border-zinc-700 transition-all">
-                    <div className="flex justify-between items-start mb-4">
-                      <div className={`p-3 rounded-xl bg-zinc-800/50 ${stat.color} group-hover:scale-110 transition-transform duration-300`}>
-                        <stat.icon size={24} />
-                      </div>
-                      {stat.live && <span className="flex h-3 w-3 relative"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span><span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span></span>}
-                    </div>
-                    <h3 className="text-3xl font-black text-white mb-1 tracking-tight">{stat.val}</h3>
-                    <p className="text-xs font-medium text-zinc-500">{stat.label}</p>
-                    <span className="absolute bottom-6 right-6 text-xs font-bold text-zinc-600 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">{stat.change}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                
-                {/* Main Graph (Simulated with CSS) */}
-                <div className="lg:col-span-2 bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 relative overflow-hidden">
-                  <div className="flex justify-between items-center mb-8">
-                    <div>
-                      <h3 className="font-bold text-lg text-white">Revenue Growth</h3>
-                      <p className="text-zinc-500 text-xs">Simulated data for demonstration</p>
-                    </div>
-                    <button className="p-2 hover:bg-zinc-800 rounded-lg text-zinc-400 transition"><Download size={18}/></button>
-                  </div>
-                  
-                  <div className="h-64 flex items-end justify-between gap-2">
-                    {[35, 45, 30, 50, 45, 60, 55, 70, 65, 80, 75, 90, 85, 100].map((h, i) => (
-                      <div key={i} className="w-full bg-zinc-800/50 rounded-t-lg relative group hover:bg-indigo-600/50 transition-all duration-300" style={{ height: `${h}%` }}>
-                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-black font-bold text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                          ₹{h * 100}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  {/* Axis Label */}
-                  <div className="flex justify-between mt-4 text-xs font-mono text-zinc-600 uppercase">
-                    <span>01 Nov</span>
-                    <span>15 Nov</span>
-                    <span>30 Nov</span>
-                  </div>
-                </div>
-
-                {/* Live Activity Feed */}
-                <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-6 flex flex-col">
-                  <h3 className="font-bold text-lg text-white mb-6 flex items-center gap-2">
-                    <Zap size={18} className="text-yellow-400" /> Live Activity
-                  </h3>
-                  <div className="space-y-6 flex-1 overflow-y-auto pr-2 custom-scrollbar">
-                    {[
-                      { user: "Suresh R.", action: "joined queue at", target: "Urban Cut Pro", time: "2s ago" },
-                      { user: "New Salon", action: "registered", target: "Style Studio", time: "45s ago", type: "alert" },
-                      { user: "Amit V.", action: "completed payment", target: "₹350.00", time: "2m ago", type: "success" },
-                      { user: "Rahul S.", action: "left queue at", target: "Fade & Blade", time: "5m ago", type: "error" },
-                      { user: "Admin", action: "verified", target: "Royal Cut", time: "12m ago" },
-                    ].map((log, i) => (
-                      <div key={i} className="flex gap-3 relative pl-4 border-l border-zinc-800">
-                        <div className={`absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full ${log.type === 'alert' ? 'bg-yellow-500' : log.type === 'success' ? 'bg-green-500' : log.type === 'error' ? 'bg-red-500' : 'bg-indigo-500'}`}></div>
-                        <div>
-                          <p className="text-sm text-zinc-300 leading-snug">
-                            <span className="font-bold text-white">{log.user}</span> {log.action} <span className="text-zinc-100 font-medium">{log.target}</span>
-                          </p>
-                          <p className="text-[10px] text-zinc-600 font-mono mt-1">{log.time}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* ---------------- SALONS VIEW (Advanced CRM) ---------------- */}
-          {activeTab === "salons" && (
-            <div className="animate-[slideUp_0.4s_ease-out]">
-              <div className="flex justify-between items-center mb-6">
-                <div>
-                  <h2 className="text-2xl font-black text-white">Partner Management</h2>
-                  <p className="text-zinc-500 text-sm">Manage verification, bans, and payouts.</p>
-                </div>
-                <div className="flex gap-3">
-                  <div className="relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={16}/>
-                    <input 
-                      type="text" 
-                      placeholder="Search salons..." 
-                      className="bg-zinc-900 border border-zinc-800 rounded-xl pl-10 pr-4 py-2 text-sm text-white focus:border-indigo-500 outline-none w-64"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                  </div>
-                  <button className="bg-white text-black px-4 py-2 rounded-xl text-sm font-bold hover:bg-zinc-200 transition flex items-center gap-2">
-                    <Download size={16}/> Export CSV
-                  </button>
-                </div>
-              </div>
-
-              <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl overflow-hidden">
-                <table className="w-full text-left text-sm text-zinc-400">
-                  <thead className="bg-zinc-900 text-zinc-500 font-bold uppercase text-[10px] tracking-wider">
-                    <tr>
-                      <th className="px-6 py-4">Salon Details</th>
-                      <th className="px-6 py-4">Status</th>
-                      <th className="px-6 py-4">Stats</th>
-                      <th className="px-6 py-4">Revenue</th>
-                      <th className="px-6 py-4 text-right">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-zinc-800/50">
-                    {salons.filter(s => s.name.toLowerCase().includes(searchQuery.toLowerCase())).map(salon => (
-                      <tr key={salon.id} className="hover:bg-white/[0.02] transition">
-                        <td className="px-6 py-4">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center font-bold text-white text-xs border border-zinc-700">
-                              {salon.name.substring(0, 2).toUpperCase()}
-                            </div>
-                            <div>
-                              <p className="font-bold text-white text-sm">{salon.name}</p>
-                              <p className="text-xs text-zinc-500">{salon.area}, {salon.city}</p>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4">
-                          {salon.verified ? (
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 text-xs font-bold">
-                              <CheckCircle size={12}/> Verified
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 text-xs font-bold">
-                              <AlertTriangle size={12}/> Pending
-                            </span>
-                          )}
-                        </td>
-                        <td className="px-6 py-4">
-                          <div className="flex flex-col gap-1">
-                            <span className="text-white font-medium flex items-center gap-1"><Star size={12} className="text-yellow-500 fill-yellow-500"/> {salon.rating}</span>
-                            <span className="text-xs text-zinc-600">{salon.reviews} reviews</span>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4">
-                          <p className="text-white font-mono">₹{salon.revenue.toLocaleString()}</p>
-                        </td>
-                        <td className="px-6 py-4 text-right">
-                          <div className="flex items-center justify-end gap-2">
-                            <button onClick={() => toggleVerify(salon.id)} className={`p-2 rounded-lg border transition ${salon.verified ? 'bg-yellow-500/10 border-yellow-500/20 text-yellow-500 hover:bg-yellow-500/20' : 'bg-green-500/10 border-green-500/20 text-green-500 hover:bg-green-500/20'}`}>
-                              {salon.verified ? "Revoke" : "Verify"}
-                            </button>
-                            <button onClick={() => deleteSalon(salon.id)} className="p-2 rounded-lg bg-zinc-800 text-zinc-400 hover:bg-red-500/20 hover:text-red-500 hover:border-red-500/20 border border-transparent transition">
-                              <Ban size={16}/>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-
-          {/* ---------------- USERS & FINANCIALS PLACEHOLDERS ---------------- */}
-          {(activeTab === "users" || activeTab === "financials") && (
-             <div className="flex flex-col items-center justify-center h-full text-zinc-500 animate-[slideUp_0.4s_ease-out]">
-                <div className="w-24 h-24 bg-zinc-900 rounded-full flex items-center justify-center mb-6 border border-zinc-800">
-                   <Settings size={40} className="animate-spin-slow"/>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Module Under Construction</h3>
-                <p className="max-w-md text-center">You are in Founder Mode. This module is being connected to the Supabase backend for real-time analytics.</p>
-             </div>
-          )}
-
-        </div>
-      </main>
-    </div>
-  );
-};
-
 
 interface LandingPageProps {
   onNavigateUser: () => void;
@@ -2310,7 +1639,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigateUser, onNavigateSal
              </p>
              {/* Admin Login Link Hidden in Footer */}
              <button onClick={onNavigateAdmin} className="mt-2 text-[10px] uppercase font-bold text-zinc-300 hover:text-zinc-900 transition">
-                Founder Login
+               Founder Login
              </button>
           </div>
         </div>
@@ -2454,62 +1783,84 @@ export default function App() {
 
       {toast && <Toast message={toast.msg} type={toast.type} onClose={() => setToast(null)} />}
       
-      {activeTicket && !['salon-dashboard', 'admin-dashboard', 'admin-login'].includes(currentView) && (
-        <LiveTicket ticket={activeTicket} onCancel={() => { setActiveTicket(null); showToast("Queue left", "info"); }} />
+      {activeTicket && !['salon-dashboard', 'admin-login', 'admin-dashboard'].includes(currentView) && (
+        <LiveTicket ticket={activeTicket} onCancel={() => setActiveTicket(null)} />
       )}
-
+      
       {currentView === "home" && (
         <LandingPage
           onNavigateUser={() => setCurrentView("user-register")}
           onNavigateSalon={() => setCurrentView("salon-register")}
-          onNavigateAdmin={() => setCurrentView("admin-login")} // New Link
-        />
-      )}
-
-      {currentView === "admin-login" && (
-        <AdminLogin 
-            onBack={() => setCurrentView("home")}
-            onLogin={() => { showToast("Welcome, Founder Sanjay."); setCurrentView("admin-dashboard"); }}
-        />
-      )}
-
-      {currentView === "admin-dashboard" && (
-        <AdminDashboard 
-            salons={salons} 
-            setSalons={setSalons} // Founder can ban/verify salons here
-            users={users}
-            onLogout={() => { showToast("Founder logged out."); setCurrentView("home"); }}
+          onNavigateAdmin={() => setCurrentView("admin-login")}
         />
       )}
 
       {currentView === "user-register" && (
         <UserRegistration
           onBack={() => setCurrentView("home")}
-          onRegisterUser={handleRegisterUser} // Pass data handler
+          onRegisterUser={handleRegisterUser}
         />
       )}
 
       {currentView === "salon-register" && (
-        <SalonRegistration 
-          onBack={() => setCurrentView("home")} 
+        <SalonRegistration
+          onBack={() => setCurrentView("home")}
           onRegister={handleRegisterSalon}
         />
       )}
 
       {currentView === "user-dashboard" && (
-        <UserDashboard 
-          onLogout={() => { showToast("Logged out"); setCurrentView("home"); }} 
-          salons={salons}
+        <UserDashboard
+          onLogout={() => setCurrentView("home")}
+          salons={salons} // Pass global salons state
           onJoinQueue={handleJoinQueue}
+          onProfileClick={() => setCurrentView("user-profile")} // Added navigation
+        />
+      )}
+
+      {currentView === "user-profile" && (
+        <UserProfile 
+          user={{
+            name: "Sanjay Choudhary",
+            email: "sanjay@example.com",
+            phone: "+91 7568045830",
+            location: "Jodhpur, Rajasthan",
+            joinDate: "August 2025",
+            avatar: "" // Empty string will show initials
+          }}
+          onBack={() => setCurrentView("user-dashboard")} 
+          onLogout={() => {
+            showToast("Logged out successfully");
+            setCurrentView("home");
+          }}
         />
       )}
 
       {currentView === "salon-dashboard" && (
-        <SalonDashboard 
-           salon={registeredSalon}
-           onLogout={() => { showToast("Logged out"); setCurrentView("home"); setRegisteredSalon(null); }}
+        <SalonDashboard
+          salon={registeredSalon} // Pass the newly registered salon
+          onLogout={() => setCurrentView("home")}
         />
       )}
+
+      {/* MODIFIED: Using Imported Component */}
+      {currentView === "admin-login" && (
+        <AdminLogin 
+          onBack={() => setCurrentView("home")}
+          onLogin={() => setCurrentView("admin-dashboard")}
+        />
+      )}
+
+      {/* MODIFIED: Using Imported Component */}
+      {currentView === "admin-dashboard" && (
+        <AdminDashboard 
+          salons={salons}
+          setSalons={setSalons} 
+          users={users}
+          onLogout={() => setCurrentView("home")}
+        />
+      )}
+
     </>
   );
 }
