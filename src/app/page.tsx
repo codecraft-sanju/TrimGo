@@ -1,28 +1,27 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import {
-  MapPin, Clock, Users, Calendar, ArrowRight, CheckCircle, Scissors, Star,
-  TrendingUp, Bell, Smartphone, ShieldCheck, Menu, ChevronLeft, Building2,
-  User, Phone, Mail, Lock, Store, Zap, BarChart3, Sparkles, Check, Globe,
-  Heart, Search, Filter, Ticket, X, Play, CheckSquare, XSquare, PauseCircle,
-  Timer, DollarSign, LogOut, MoreVertical, ChevronRight, Settings, Grid,
-  Activity, Shield, Database, Ban, AlertTriangle, Eye, LucideIcon,
-  Download, RefreshCcw, MoreHorizontal, TrendingDown,
-  CreditCard, Globe2, LayoutDashboard
+  MapPin, Clock, Users, ArrowRight, CheckCircle, Scissors, Star,
+  TrendingUp, Bell, ShieldCheck, ChevronRight, Building2,
+  Ticket, X, Play, CheckSquare, Settings, Grid,
+  Activity, DollarSign, LogOut, Sparkles, Globe,
+  Heart, Search, Filter, Mail, BarChart3, Zap
 } from "lucide-react";
 
 // EXISTING IMPORTS
 import SalonRegistration, { Salon } from "../components/SalonRegistration";
 import UserRegistration from "../components/UserRegistration";
-
-// NEW IMPORT FOR PROFILE
 import { UserProfile } from "../components/UserProfile";
-
-// NEW IMPORT FOR ADMIN
 import { AdminLogin, AdminDashboard, UserData } from "../components/AdminDashboard";
+import MapSalon from "../components/MapSalon";
+
+// NEW IMPORTS
+import HeroSection from "../components/HeroSection";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 /* ---------------------------------
-   INTERFACES & TYPES (Only local ones left)
+   INTERFACES & TYPES
 ---------------------------------- */
 
 interface SalonRequest {
@@ -228,6 +227,7 @@ interface LogoProps {
   dark?: boolean;
 }
 
+// Logo kept here for UserDashboard Header usage
 const Logo: React.FC<LogoProps> = ({ dark = false }) => (
   <div className="flex items-center gap-2 group cursor-pointer select-none">
     <div
@@ -246,47 +246,6 @@ const Logo: React.FC<LogoProps> = ({ dark = false }) => (
     </span>
   </div>
 );
-
-interface ShimmerButtonProps {
-  children: React.ReactNode;
-  onClick?: () => void;
-  variant?: "primary" | "secondary" | "ghost" | "danger" | "success";
-  className?: string;
-  disabled?: boolean;
-}
-
-const ShimmerButton: React.FC<ShimmerButtonProps> = ({
-  children,
-  onClick,
-  variant = "primary",
-  className = "",
-  disabled = false
-}) => {
-  const baseClass =
-    "group relative overflow-hidden rounded-xl font-bold transition-all duration-300 hover:-translate-y-1 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed";
-  const variants = {
-    primary:
-      "bg-zinc-900 text-white shadow-xl shadow-zinc-900/20 hover:shadow-2xl hover:shadow-zinc-900/30",
-    secondary:
-      "bg-white text-zinc-900 border border-zinc-200 hover:bg-zinc-50 shadow-sm",
-    ghost: "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100/50",
-    danger: "bg-red-500 text-white shadow-lg hover:bg-red-600",
-    success: "bg-emerald-500 text-white shadow-lg hover:bg-emerald-600"
-  };
-
-  return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      className={`${baseClass} ${variants[variant]} ${className}`}
-    >
-      <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent z-10" />
-      <span className="relative z-20 flex items-center justify-center gap-2 px-6 py-3.5">
-        {children}
-      </span>
-    </button>
-  );
-};
 
 const TiltCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -379,14 +338,9 @@ const Toast: React.FC<ToastProps> = ({ message, type, onClose }) => {
   );
 };
 
-interface LiveTicketProps {
-  ticket: TicketData | null;
-  onCancel: () => void;
-}
-
 const LiveTicket: React.FC<LiveTicketProps> = ({ ticket, onCancel }) => {
   const [timeLeft, setTimeLeft] = useState(ticket ? ticket.eta : 0);
-    
+      
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => Math.max(0, prev - 1));
@@ -397,7 +351,7 @@ const LiveTicket: React.FC<LiveTicketProps> = ({ ticket, onCancel }) => {
   if (!ticket) return null;
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[95%] max-w-md z-50 animate-[slideUp_0.5s_cubic-bezier(0.16,1,0.3,1)]">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[95%] max-w-md z-50">
       <div className="bg-zinc-900 text-white rounded-3xl p-5 shadow-2xl border border-white/10 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-blue-500 animate-[shimmer_2s_infinite]"></div>
         
@@ -457,117 +411,6 @@ const InfiniteMarquee: React.FC = () => {
   );
 };
 
-const InteractivePhone: React.FC = () => {
-  const [activeTab, setActiveTab] = useState(0);
-  const [progress, setProgress] = useState(65);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((p) => (p >= 100 ? 0 : p + 1));
-    }, 100);
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="relative mx-auto w-[320px] h-[640px] bg-zinc-900 rounded-[3rem] p-4 shadow-[0_0_50px_-12px_rgba(0,0,0,0.3)] border-[8px] border-zinc-950 ring-1 ring-white/20 select-none transform transition hover:scale-[1.02] duration-500">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-32 bg-black rounded-b-2xl z-50 flex items-center justify-center gap-2">
-        <div className="w-1 h-1 rounded-full bg-green-500 animate-pulse"></div>
-        <div className="w-10 h-1 rounded-full bg-zinc-800"></div>
-      </div>
-
-      <div className="w-full h-full bg-zinc-950 rounded-[2.5rem] overflow-hidden relative flex flex-col">
-        <div className="pt-10 px-6 pb-4 flex justify-between items-center bg-zinc-900/50 backdrop-blur-md">
-          <div>
-            <p className="text-xs text-zinc-400 font-medium">Welcome back,</p>
-            <h3 className="text-white font-bold">Sanjay C.</h3>
-          </div>
-          <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full ring-2 ring-white/10"></div>
-        </div>
-
-        <div className="px-4 mt-2">
-          <div className="bg-gradient-to-br from-zinc-800 to-zinc-900 p-5 rounded-3xl border border-white/5 relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <div className="flex justify-between items-start mb-4 relative z-10">
-              <div className="flex gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white">
-                  <Scissors size={20} />
-                </div>
-                <div>
-                  <h4 className="text-white font-bold text-sm">Urban Cut Pro</h4>
-                  <p className="text-zinc-400 text-xs">Haircut & Beard</p>
-                </div>
-              </div>
-              <span className="px-2 py-1 bg-green-500/20 text-green-400 text-[10px] font-bold rounded-lg border border-green-500/20 animate-pulse">
-                LIVE
-              </span>
-            </div>
-
-            <div className="flex items-end gap-2 mb-3">
-              <span className="text-4xl font-bold text-white tracking-tighter">
-                12
-                <span className="text-sm text-zinc-500 font-normal ml-1">
-                  min
-                </span>
-              </span>
-            </div>
-
-            <div className="h-2 w-full bg-zinc-950 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-green-400 to-emerald-500 rounded-full transition-all duration-300 relative"
-                style={{ width: `${progress}%` }}
-              >
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_10px_white]"></div>
-              </div>
-            </div>
-            <p className="text-[10px] text-zinc-500 mt-2 text-center">
-              2 people ahead of you
-            </p>
-          </div>
-        </div>
-
-        <div className="flex-1 overflow-hidden px-4 mt-6 space-y-3 relative">
-          <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-zinc-950 to-transparent z-10"></div>
-          {[1, 2, 3].map((_, i) => (
-            <div
-              key={i}
-              className="bg-white/5 p-3 rounded-2xl flex items-center gap-3 border border-white/5 hover:bg-white/10 transition cursor-pointer"
-            >
-              <div className="w-10 h-10 rounded-xl bg-zinc-800 flex items-center justify-center">
-                <Store size={18} className="text-zinc-400" />
-              </div>
-              <div className="flex-1">
-                <div className="h-2 w-24 bg-zinc-800 rounded mb-1"></div>
-                <div className="h-2 w-16 bg-zinc-900 rounded"></div>
-              </div>
-              <div className="w-8 h-8 rounded-full border border-zinc-700 flex items-center justify-center">
-                <ArrowRight size={14} className="text-zinc-600" />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="h-16 bg-zinc-900/80 backdrop-blur-xl border-t border-white/5 grid grid-cols-4 items-center px-2">
-          {[MapPin, Calendar, Bell, User].map((Icon, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveTab(i)}
-              className="flex flex-col items-center justify-center gap-1 h-full w-full"
-            >
-              <Icon
-                size={20}
-                className={activeTab === i ? "text-white" : "text-zinc-600"}
-              />
-              {activeTab === i && (
-                <div className="w-1 h-1 rounded-full bg-white"></div>
-              )}
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
 interface FeatureCardProps {
   icon: React.ElementType;
   title: string;
@@ -580,15 +423,16 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, desc, dela
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
 
   return (
-    <div
+    <div 
       ref={ref}
       className={`
-        ${colSpan} group relative overflow-hidden p-8 rounded-[2rem] bg-white border border-zinc-100 shadow-xl shadow-zinc-200/50 
+        ${colSpan}group relative overflow-hidden p-8 rounded-[2rem] bg-white border border-zinc-100 shadow-xl shadow-zinc-200/50 
         transition-all duration-700 transform hover:shadow-2xl hover:shadow-zinc-200/80 hover:-translate-y-1
         ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
       `}
       style={{ transitionDelay: `${delay}ms` }}
     >
+       
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-zinc-100 to-transparent rounded-bl-[100px] -mr-8 -mt-8 transition-transform group-hover:scale-150 duration-700"></div>
 
       <div className="relative z-10 flex flex-col h-full justify-between">
@@ -613,7 +457,7 @@ const AdvancedDashboardSection: React.FC = () => {
   const [ref, isVisible] = useOnScreen({ threshold: 0.15 });
 
   return (
-    <section className="relative py-24 px-6 max-w-7xl mx-auto">
+    <section className="relative pt-24 pb-0 px-6 max-w-7xl mx-auto ">
       <div className="absolute inset-0 -z-10">
         <GlowBlob className="top-[-10%] left-[10%] w-[320px] h-[320px] bg-blue-300/40" />
         <GlowBlob className="bottom-[-10%] right-[5%] w-[380px] h-[380px] bg-purple-300/40" />
@@ -773,6 +617,99 @@ const AdvancedDashboardSection: React.FC = () => {
   );
 };
 
+const AIConcierge: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<{role: 'ai'|'user', text: string}[]>([
+    { role: 'ai', text: "Hi Sanjay! Looking for a haircut? I can find the shortest queue for you." }
+  ]);
+  const [input, setInput] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+
+  const handleSend = () => {
+    if (!input.trim()) return;
+    const userMsg = input;
+    setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
+    setInput("");
+    setIsTyping(true);
+
+    setTimeout(() => {
+      let response = "I can help with that.";
+      if (userMsg.toLowerCase().includes("urgent") || userMsg.toLowerCase().includes("fast")) {
+        response = "I found 'Fade & Blade' nearby with only 5 min waiting. Should I book it?";
+      } else if (userMsg.toLowerCase().includes("cheap") || userMsg.toLowerCase().includes("price")) {
+        response = "Urban Cut Pro offers the best rates starting at ₹150.";
+      }
+      setMessages(prev => [...prev, { role: 'ai', text: response }]);
+      setIsTyping(false);
+    }, 1500);
+  };
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+      {isOpen && (
+        <div className="mb-4 w-80 h-96 bg-white rounded-3xl shadow-2xl border border-zinc-200 overflow-hidden flex flex-col">
+          <div className="bg-zinc-900 p-4 flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+              <h3 className="text-white font-bold text-sm">TrimGo AI</h3>
+            </div>
+            <button onClick={() => setIsOpen(false)}><X className="text-zinc-400 hover:text-white" size={16}/></button>
+          </div>
+           
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-zinc-50">
+            {messages.map((m, i) => (
+              <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`max-w-[80%] p-3 rounded-2xl text-xs font-medium ${m.role === 'user' ? 'bg-zinc-900 text-white rounded-tr-none' : 'bg-white border border-zinc-200 text-zinc-600 rounded-tl-none'}`}>
+                  {m.text}
+                </div>
+              </div>
+            ))}
+            {isTyping && <div className="text-xs text-zinc-400 ml-2 animate-pulse">AI is typing...</div>}
+          </div>
+
+          <div className="p-3 bg-white border-t border-zinc-100 flex gap-2">
+            <input 
+              className="flex-1 bg-zinc-100 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-zinc-900"
+              placeholder="Type a message..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+            />
+            <button onClick={handleSend} className="p-2 bg-zinc-900 text-white rounded-xl hover:bg-zinc-800"><ArrowRight size={14}/></button>
+          </div>
+        </div>
+      )}
+
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-14 h-14 rounded-full bg-zinc-900 text-white shadow-xl shadow-zinc-900/30 flex items-center justify-center hover:scale-110 transition-transform group"
+      >
+        {isOpen ? <X size={24}/> : <Sparkles size={24} className="group-hover:rotate-12 transition-transform"/>}
+      </button>
+    </div>
+  );
+};
+
+const AnalyticsChart: React.FC = () => {
+  return (
+    <div className="w-full h-32 mt-4 relative overflow-hidden rounded-xl bg-gradient-to-b from-emerald-500/10 to-transparent border border-emerald-500/20">
+      <svg viewBox="0 0 100 40" className="w-full h-full absolute bottom-0 left-0" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#10b981" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <path d="M0 35 Q 10 30, 20 25 T 40 20 T 60 15 T 80 25 T 100 10 V 40 H 0 Z" fill="url(#chartGradient)" />
+        <path d="M0 35 Q 10 30, 20 25 T 40 20 T 60 15 T 80 25 T 100 10" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+      <div className="absolute top-2 left-4 text-[10px] font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1">
+        <Activity size={10} /> Real-time Demand
+      </div>
+    </div>
+  );
+};
+
 /* ---------------------------------
    SALON DASHBOARD
 ---------------------------------- */
@@ -853,10 +790,10 @@ const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
       </div>
 
       {/* Sidebar Navigation */}
-      <aside className="hidden lg:flex flex-col w-20 hover:w-64 transition-all duration-300 border-r border-white/5 bg-zinc-900/40 backdrop-blur-xl z-50 group">
-        <div className="h-20 flex items-center justify-center group-hover:justify-start group-hover:px-6 transition-all border-b border-white/5">
+      <aside className="hidden lg:flex flex-col w-64 border-r border-white/5 bg-zinc-900/40 backdrop-blur-xl z-50">
+        <div className="h-20 flex items-center px-6 border-b border-white/5 gap-3">
            <div className="w-10 h-10 bg-white text-black rounded-xl flex items-center justify-center font-bold text-sm shadow-[0_0_20px_rgba(255,255,255,0.3)]">TG</div>
-           <span className="ml-3 font-bold text-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap overflow-hidden delay-100">TrimGo</span>
+           <span className="font-bold text-lg">TrimGo</span>
         </div>
 
         <nav className="flex-1 py-8 flex flex-col gap-2 px-3">
@@ -869,8 +806,8 @@ const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
            ].map((item, idx) => (
              <div key={idx} className={`flex items-center p-3 rounded-xl cursor-pointer transition-all ${item.active ? 'bg-white/10 text-white shadow-lg shadow-white/5 border border-white/5' : 'text-zinc-500 hover:text-white hover:bg-white/5'}`}>
                <item.icon size={20} strokeWidth={2} />
-               <span className="ml-3 font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap overflow-hidden delay-75">{item.label}</span>
-               {item.active && <div className="ml-auto w-1.5 h-1.5 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 shadow-[0_0_10px_#10b981]"></div>}
+               <span className="ml-3 font-medium">{item.label}</span>
+               {item.active && <div className="ml-auto w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_10px_#10b981]"></div>}
              </div>
            ))}
         </nav>
@@ -878,7 +815,7 @@ const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
         <div className="p-4 border-t border-white/5">
           <button onClick={onLogout} className="flex items-center w-full p-3 rounded-xl text-zinc-500 hover:text-red-400 hover:bg-red-500/10 transition-colors">
             <LogOut size={20} />
-            <span className="ml-3 font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap overflow-hidden delay-75">Sign Out</span>
+            <span className="ml-3 font-medium">Sign Out</span>
           </button>
         </div>
       </aside>
@@ -922,8 +859,21 @@ const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
         {/* Dashboard Workspace */}
         <div className="flex-1 overflow-y-auto p-4 lg:p-8 scrollbar-hide">
            
-           {/* Stats Grid - Bento Style */}
+           {/* Stats Grid */}
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+             
+             {/* Analytics Chart */}
+             <div className="col-span-1 md:col-span-2 lg:col-span-4 bg-zinc-900/50 border border-white/5 rounded-3xl p-6">
+               <div className="flex justify-between items-center mb-2">
+                 <h3 className="font-bold text-zinc-300">Live Traffic Analytics</h3>
+                 <select className="bg-zinc-950 text-xs text-zinc-400 border border-white/10 rounded-lg p-1">
+                   <option>Last Hour</option>
+                   <option>Today</option>
+                 </select>
+               </div>
+               <AnalyticsChart />
+             </div>
+
              {/* Revenue Card */}
              <div className="group relative bg-zinc-900/50 hover:bg-zinc-900/80 border border-white/5 hover:border-white/10 rounded-3xl p-6 transition-all duration-300">
                  <div className="absolute top-0 right-0 p-5 opacity-20 group-hover:opacity-40 transition-opacity group-hover:scale-110 duration-500"><DollarSign size={40} className="text-emerald-500"/></div>
@@ -986,23 +936,23 @@ const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
                      requests.map(req => (
                         <div key={req.id} className="group bg-zinc-900 border border-white/10 hover:border-yellow-500/50 p-4 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(234,179,8,0.1)] animate-[slideIn_0.3s_ease-out]">
                            <div className="flex justify-between items-start mb-3">
-                              <div className="flex items-center gap-3">
-                                 <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${getAvatarGradient(req.name)} flex items-center justify-center text-sm font-bold shadow-lg`}>
-                                    {req.name.charAt(0)}
-                                 </div>
-                                 <div>
-                                    <h4 className="font-bold text-sm text-white">{req.name}</h4>
-                                    <p className="text-xs text-zinc-400">{req.service}</p>
-                                 </div>
-                              </div>
-                              <span className="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">{req.time}</span>
+                             <div className="flex items-center gap-3">
+                                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${getAvatarGradient(req.name)} flex items-center justify-center text-sm font-bold shadow-lg`}>
+                                   {req.name.charAt(0)}
+                                </div>
+                                <div>
+                                  <h4 className="font-bold text-sm text-white">{req.name}</h4>
+                                  <p className="text-xs text-zinc-400">{req.service}</p>
+                                </div>
+                             </div>
+                             <span className="text-[10px] font-mono text-zinc-500 bg-zinc-950 px-2 py-1 rounded">{req.time}</span>
                            </div>
                            <div className="flex items-center justify-between mt-3 gap-2">
-                              <div className="text-xs font-bold text-zinc-300 bg-zinc-800/50 px-2 py-1 rounded">₹{req.price}</div>
-                              <div className="flex gap-2">
-                                 <button onClick={() => handleReject(req.id)} className="p-2 rounded-lg bg-zinc-800 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 transition"><X size={16}/></button>
-                                 <button onClick={() => handleAccept(req)} className="px-4 py-2 rounded-lg bg-white text-black text-xs font-bold hover:bg-emerald-400 hover:shadow-[0_0_15px_#34d399] transition-all">Accept</button>
-                              </div>
+                             <div className="text-xs font-bold text-zinc-300 bg-zinc-800/50 px-2 py-1 rounded">₹{req.price}</div>
+                             <div className="flex gap-2">
+                                <button onClick={() => handleReject(req.id)} className="p-2 rounded-lg bg-zinc-800 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 transition"><X size={16}/></button>
+                                <button onClick={() => handleAccept(req)} className="px-4 py-2 rounded-lg bg-white text-black text-xs font-bold hover:bg-emerald-400 hover:shadow-[0_0_15px_#34d399] transition-all">Accept</button>
+                             </div>
                            </div>
                         </div>
                      ))
@@ -1029,16 +979,16 @@ const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
                         <div key={cust.id} className="relative group bg-zinc-900 border border-white/10 hover:border-blue-500/50 p-4 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]">
                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-500/50 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-3">
-                                 <span className="text-lg font-black text-zinc-700 w-6">#{idx+1}</span>
-                                 <div>
-                                    <h4 className="font-bold text-sm text-white">{cust.name}</h4>
-                                    <p className="text-xs text-zinc-400">{cust.service}</p>
-                                 </div>
-                              </div>
-                              <button onClick={() => handleStartService(cust)} className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition border border-white/5">
-                                 <Play size={14} fill="currentColor" />
-                              </button>
+                             <div className="flex items-center gap-3">
+                                <span className="text-lg font-black text-zinc-700 w-6">#{idx+1}</span>
+                                <div>
+                                  <h4 className="font-bold text-sm text-white">{cust.name}</h4>
+                                  <p className="text-xs text-zinc-400">{cust.service}</p>
+                                </div>
+                             </div>
+                             <button onClick={() => handleStartService(cust)} className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition border border-white/5">
+                                <Play size={14} fill="currentColor" />
+                             </button>
                            </div>
                         </div>
                      ))
@@ -1061,42 +1011,42 @@ const SalonDashboard: React.FC<SalonDashboardProps> = ({ salon, onLogout }) => {
                  <div className="flex-1 flex flex-col items-center justify-center p-6 text-center relative">
                    {inChair ? (
                      <>
-                        {/* Glow effect behind avatar */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-emerald-500/20 rounded-full blur-[60px] animate-pulse-slow pointer-events-none"></div>
-                        
-                        <div className="relative mb-6">
-                           <div className="w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-emerald-400 to-cyan-400 shadow-2xl shadow-emerald-500/20">
-                              <div className="w-full h-full rounded-full bg-zinc-900 flex items-center justify-center text-4xl font-bold text-white relative overflow-hidden">
-                                 {inChair.name.charAt(0)}
-                                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
-                              </div>
-                           </div>
-                           <div className="absolute bottom-0 right-0 bg-zinc-900 rounded-full p-1 border border-zinc-700">
-                              <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center">
-                                 <Activity size={12} className="text-black animate-spin-slow"/>
-                              </div>
-                           </div>
-                        </div>
+                       {/* Glow effect behind avatar */}
+                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-emerald-500/20 rounded-full blur-[60px] animate-pulse-slow pointer-events-none"></div>
+                       
+                       <div className="relative mb-6">
+                          <div className="w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-emerald-400 to-cyan-400 shadow-2xl shadow-emerald-500/20">
+                             <div className="w-full h-full rounded-full bg-zinc-900 flex items-center justify-center text-4xl font-bold text-white relative overflow-hidden">
+                                {inChair.name.charAt(0)}
+                                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50"></div>
+                             </div>
+                          </div>
+                          <div className="absolute bottom-0 right-0 bg-zinc-900 rounded-full p-1 border border-zinc-700">
+                             <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center">
+                                <Activity size={12} className="text-black animate-spin-slow"/>
+                             </div>
+                          </div>
+                       </div>
 
-                        <h2 className="text-2xl font-black text-white mb-1 tracking-tight">{inChair.name}</h2>
-                        <p className="text-emerald-400 font-medium text-sm mb-6">{inChair.service}</p>
+                       <h2 className="text-2xl font-black text-white mb-1 tracking-tight">{inChair.name}</h2>
+                       <p className="text-emerald-400 font-medium text-sm mb-6">{inChair.service}</p>
 
-                        {/* Timer / Progress Bar Simulation */}
-                        <div className="w-full bg-zinc-800/50 rounded-full h-1.5 mb-2 overflow-hidden">
-                           <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 h-full w-[45%] rounded-full shadow-[0_0_10px_#10b981]"></div>
-                        </div>
-                        <div className="w-full flex justify-between text-[10px] text-zinc-500 font-mono mb-8">
-                           <span>12:30 min</span>
-                           <span>Est. 25:00</span>
-                        </div>
+                       {/* Timer / Progress Bar Simulation */}
+                       <div className="w-full bg-zinc-800/50 rounded-full h-1.5 mb-2 overflow-hidden">
+                          <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 h-full w-[45%] rounded-full shadow-[0_0_10px_#10b981]"></div>
+                       </div>
+                       <div className="w-full flex justify-between text-[10px] text-zinc-500 font-mono mb-8">
+                          <span>12:30 min</span>
+                          <span>Est. 25:00</span>
+                       </div>
 
-                        <button 
-                           onClick={handleCompleteService}
-                           className="w-full py-4 rounded-xl bg-white text-black font-bold text-sm shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group"
-                        >
-                           <CheckSquare size={18} className="text-emerald-600 group-hover:scale-110 transition-transform"/> 
-                           Complete Service
-                        </button>
+                       <button 
+                          onClick={handleCompleteService}
+                          className="w-full py-4 rounded-xl bg-white text-black font-bold text-sm shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 group"
+                       >
+                          <CheckSquare size={18} className="text-emerald-600 group-hover:scale-110 transition-transform"/> 
+                          Complete Service
+                       </button>
                      </>
                    ) : (
                      <div className="text-zinc-600 flex flex-col items-center">
@@ -1125,7 +1075,7 @@ interface UserDashboardProps {
   onLogout: () => void;
   salons: Salon[];
   onJoinQueue: (salon: Salon) => void;
-  onProfileClick: () => void; // Added prop for navigation
+  onProfileClick: () => void;
 }
 
 const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQueue, onProfileClick }) => {
@@ -1162,12 +1112,12 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQ
 
       <header className="fixed top-0 left-0 w-full z-40 bg-white/80 backdrop-blur-xl border-b border-zinc-200/60">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-4"> {/* Increased gap */}
+          <div className="flex items-center gap-4"> 
             <Logo />
             
-            <div className="h-6 w-px bg-zinc-200 hidden sm:block"></div> {/* Separator */}
+            <div className="h-6 w-px bg-zinc-200 hidden sm:block"></div> 
 
-            {/* Clickable Profile Area - UPDATED WITH PHOTO */}
+            {/* Clickable Profile Area */}
             <div 
               onClick={onProfileClick}
               className="flex items-center gap-3 cursor-pointer group"
@@ -1175,12 +1125,11 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQ
               <div className="relative">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 p-[2px] shadow-lg group-hover:shadow-indigo-500/20 transition-all duration-300">
                   <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
-                     {/* Simulating a photo with a gradient or Initials if no photo */}
-                     <img 
-                       src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sanjay" 
-                       alt="Sanjay"
-                       className="w-full h-full object-cover"
-                     />
+                      <img 
+                        src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sanjay" 
+                        alt="Sanjay"
+                        className="w-full h-full object-cover"
+                      />
                   </div>
                 </div>
                 <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
@@ -1210,33 +1159,16 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQ
 
       <main className="max-w-6xl mx-auto px-4 pt-24 pb-16 relative z-10">
         <div className="mb-10">
-          <div>
-            <p className="text-xs font-semibold text-zinc-500 mb-1 uppercase tracking-[0.16em]">
-              Nearby salons
-            </p>
-            <h1 className="text-3xl md:text-4xl font-black text-zinc-900 tracking-tight">
-              Pick a salon with{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-blue-500">
-                live waiting
-              </span>
-              .
-            </h1>
-            <p className="mt-3 text-sm md:text-base text-zinc-500 max-w-xl">
-              These salons are currently open and accepting walk-ins via
-              TrimGo. Choose the shortest line or your favourite spot.
-            </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-4 mt-6">
-            <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={20} />
-              <input 
-                type="text" 
-                placeholder="Search by salon name or area..." 
-                className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white border border-zinc-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
+           
+          {/* HEADER AREA WITH MAP INTEGRATION */}
+          <div className="flex flex-col md:flex-row justify-between items-end mb-6">
+            <div>
+              <p className="text-xs font-semibold text-zinc-500 mb-1 uppercase tracking-[0.16em]">
+                Live Availability
+              </p>
+              <h1 className="text-3xl md:text-4xl font-black text-zinc-900 tracking-tight">
+                Find a salon near you.
+              </h1>
             </div>
             <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
               {["All", "Unisex", "Men Only", "Women Only"].map(type => (
@@ -1250,8 +1182,23 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQ
               ))}
             </div>
           </div>
-          <div className="flex items-center gap-2 mt-4">
-              <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider">Sort by:</span>
+
+          <MapSalon salons={filteredSalons} onSelect={(s) => onJoinQueue(s)} />
+
+          <div className="flex flex-col md:flex-row gap-4 mt-6">
+            <div className="relative flex-1">
+              <Search className="absolute left-4 top-1/2 -translate-x-0 -translate-y-1/2 text-zinc-400" size={20} />
+              <input 
+                type="text" 
+                placeholder="Search by salon name or area..." 
+                className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white border border-zinc-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+              
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-zinc-500 font-bold uppercase tracking-wider whitespace-nowrap">Sort by:</span>
               {["waiting", "rating", "distance"].map(criteria => (
                 <button 
                  key={criteria}
@@ -1261,6 +1208,7 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQ
                   {criteria.charAt(0).toUpperCase() + criteria.slice(1)}
                 </button>
               ))}
+            </div>
           </div>
         </div>
 
@@ -1375,15 +1323,13 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ onLogout, salons, onJoinQ
           This is demo data. In production, these numbers will come live from
           each partner salon’s TrimGo system in real time.
         </p>
+
+        {/* AI CONCIERGE BUTTON */}
+        <AIConcierge />
       </main>
     </div>
   );
 };
-
-/* ---------------------------------
-   LANDING PAGE (Maintained Here)
----------------------------------- */
-
 interface LandingPageProps {
   onNavigateUser: () => void;
   onNavigateSalon: () => void;
@@ -1396,148 +1342,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigateUser, onNavigateSal
       <BackgroundAurora />
       <NoiseOverlay />
 
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 bg-white/70 backdrop-blur-xl border border-white/40 shadow-sm rounded-full px-6 py-4 flex justify-between items-center transition-all duration-300 hover:bg-white/90">
-        <Logo />
-        <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-600">
-          <a href="#features" className="hover:text-zinc-900 transition">
-            Features
-          </a>
-          <a href="#business" className="hover:text-zinc-900 transition">
-            Business
-          </a>
-          <a href="#advanced" className="hover:text-zinc-900 transition">
-            Dashboard
-          </a>
-          <a href="#testimonials" className="hover:text-zinc-900 transition">
-            Stories
-          </a>
-        </div>
-        <div className="flex gap-3">
-          <button className="hidden sm:block px-5 py-2.5 rounded-full text-zinc-900 text-sm font-bold hover:bg-zinc-100 transition">
-            Log In
-          </button>
-          <button
-            onClick={onNavigateUser}
-            className="px-6 py-2.5 rounded-full bg-zinc-900 text-white text-sm font-bold shadow-lg shadow-zinc-900/20 hover:scale-105 transition-transform"
-          >
-            Get App
-          </button>
-        </div>
-      </nav>
+      {/* --- NAVBAR COMPONENT --- */}
+      <Navbar onNavigateUser={onNavigateUser} />
 
-      <section className="relative pt-24 md:pt-28 pb-16 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center min-h-[90vh]">
-        <div className="flex flex-col items-start z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-zinc-200 backdrop-blur-sm text-zinc-600 text-xs font-bold mb-4 shadow-sm">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            TrimGo • Live queue
-          </div>
-
-          <h1 className="text-6xl md:text-8xl font-black text-zinc-900 tracking-tighter leading-[0.95] mb-8">
-            Wait{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-400 to-zinc-600 font-serif italic pr-2">
-              Less.
-            </span>
-            <br />
-            Live{" "}
-            <span className="relative inline-block">
-              More.
-              <svg
-                className="absolute w-full h-3 -bottom-1 left-0 text-green-400 opacity-50"
-                viewBox="0 0 100 10"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0 5 Q 50 10 100 5"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                  fill="none"
-                />
-              </svg>
-            </span>
-          </h1>
-
-          <p className="text-xl text-zinc-500 max-w-lg leading-relaxed mb-10 font-medium">
-            Stop wasting hours in salon waiting rooms. Book your spot
-            digitally, track live wait times, and walk in like a VIP.
-          </p>
-
-          <div className="flex flex-wrap gap-4 w-full sm:w-auto">
-            <ShimmerButton onClick={onNavigateUser} className="w-full sm:w-auto">
-              Join the Queue
-            </ShimmerButton>
-            <ShimmerButton
-              variant="secondary"
-              onClick={onNavigateSalon}
-              className="w-full sm:w-auto"
-            >
-              Partner with Us <Building2 size={18} />
-            </ShimmerButton>
-          </div>
-
-          <div className=" mt-12 flex items-center gap-4 pt-8 border-t border-zinc-200/60 w-full max-w-md">
-            <div className="flex -space-x-3">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="w-10 h-10 rounded-full border-2 border-white bg-zinc-200 shadow-sm"
-                  style={{
-                    backgroundImage: `url(https://i.pravatar.cc/150?img=${
-                      i + 10
-                    })`,
-                    backgroundSize: "cover",
-                  }}
-                />
-              ))}
-            </div>
-            <div>
-              <div className="flex text-yellow-500 mb-1">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} size={14} fill="currentColor" />
-                ))}
-              </div>
-              <p className="text-xs font-bold text-zinc-600">
-                Trusted by 12,000+ users
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="relative z-10 flex justify-center perspective-1000">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-purple-200 to-emerald-200 rounded-full blur-[100px] opacity-40 animate-pulse"></div>
-          <InteractivePhone />
-
-          <div className="absolute top-[20%] -left-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 animate-bounce delay-700 hidden md:block">
-            <div className="flex items-center gap-3">
-              <div className="bg-green-100 p-2 rounded-lg text-green-600">
-                <Clock size={20} />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-500 font-bold uppercase">
-                  Time Saved
-                </p>
-                <p className="text-lg font-bold text-zinc-900">45 mins</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute bottom-[20%] -right-4 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50 animate-bounce delay-1000 hidden md:block">
-            <div className="flex items-center gap-3">
-              <div className="bg-purple-100 p-2 rounded-lg text-purple-600">
-                <TrendingUp size={20} />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-500 font-bold uppercase">
-                  Salon Revenue
-                </p>
-                <p className="text-lg font-bold text-zinc-900">+30%</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* --- HERO SECTION COMPONENT --- */}
+      <HeroSection 
+        onNavigateUser={onNavigateUser} 
+        onNavigateSalon={onNavigateSalon} 
+      />
 
       <InfiniteMarquee />
 
@@ -1545,7 +1357,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigateUser, onNavigateSal
         <AdvancedDashboardSection />
       </div>
 
-      <section id="features" className="py-32 px-6 max-w-7xl mx-auto">
+      <section id="features" className="pt-8 pb-32 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-black text-zinc-900 mb-6">
             Built for the Modern Era.
@@ -1586,71 +1398,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigateUser, onNavigateSal
         </div>
       </section>
 
-      <footer className="bg-white border-t border-zinc-200 pt-20 pb-10 px-6 relative z-10">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-2">
-            <Logo />
-            <p className="mt-6 text-zinc-500 max-w-sm leading-relaxed">
-              Wolars Infosys Pvt Ltd. is dedicated to solving everyday
-              inefficiencies with elegant software. TrimGo is our flagship
-              product for the grooming industry.
-            </p>
-            <div className="flex gap-4 mt-6">
-              <div className="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center hover:bg-zinc-900 hover:text-white transition cursor-pointer">
-                <Globe size={18} />
-              </div>
-              <div className="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center hover:bg-zinc-900 hover:text-white transition cursor-pointer">
-                <Mail size={18} />
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-bold text-zinc-900 mb-6">Product</h4>
-            <ul className="space-y-4 text-zinc-500 text-sm font-medium">
-              <li className="hover:text-zinc-900 cursor-pointer">For Users</li>
-              <li className="hover:text-zinc-900 cursor-pointer">For Salons</li>
-              <li className="hover:text-zinc-900 cursor-pointer">Pricing</li>
-              <li className="hover:text-zinc-900 cursor-pointer">Download</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold text-zinc-900 mb-6">Company</h4>
-            <ul className="space-y-4 text-zinc-500 text-sm font-medium">
-              <li className="hover:text-zinc-900 cursor-pointer">
-                About Wolars
-              </li>
-              <li className="hover:text-zinc-900 cursor-pointer">Careers</li>
-              <li className="hover:text-zinc-900 cursor-pointer">Contact</li>
-              <li className="hover:text-zinc-900 cursor-pointer">
-                Privacy Policy
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto pt-8 border-t border-zinc-100 flex flex-col md:flex-row justify-between items-center text-sm text-zinc-400">
-          <p>© 2025 Wolars Infosys Private Limited. All rights reserved.</p>
-          <div className="flex flex-col items-end">
-             <p className="flex items-center gap-1">
-               Made with{" "}
-               <Heart size={12} className="text-red-400 fill-red-400" /> in India
-             </p>
-             {/* Admin Login Link Hidden in Footer */}
-             <button onClick={onNavigateAdmin} className="mt-2 text-[10px] uppercase font-bold text-zinc-300 hover:text-zinc-900 transition">
-               Founder Login
-             </button>
-          </div>
-        </div>
-      </footer>
+      {/* --- FOOTER COMPONENT --- */}
+      <Footer onNavigateAdmin={onNavigateAdmin} />
     </div>
   );
 };
 
 export default function App() {
   const [currentView, setCurrentView] = useState("home");
-  
+    
   // SHARED STATE FOR ADMIN PANEL AND USER PANEL
   const [salons, setSalons] = useState<Salon[]>(INITIAL_SALON_DATA);
   const [users, setUsers] = useState<UserData[]>(INITIAL_USERS);
@@ -1665,16 +1421,14 @@ export default function App() {
   };
 
   const handleRegisterSalon = (newSalon: Salon) => {
-    // Add to global list for Admin to see
     setSalons(prev => [...prev, newSalon]);
-    
+      
     setRegisteredSalon(newSalon);
     showToast("Salon registered successfully!");
     setCurrentView("salon-dashboard"); 
   };
 
   const handleRegisterUser = (userData: { name: string; email: string }) => {
-    // Add to global users list for Admin
     const newUser: UserData = { 
         id: Date.now(), 
         name: userData.name, 
@@ -1702,85 +1456,6 @@ export default function App() {
 
   return (
     <>
-      <style jsx global>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-
-        @keyframes blob {
-          0% {
-            transform: translate(0px, 0px) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-          100% {
-            transform: translate(0px, 0px) scale(1);
-          }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-
-        @keyframes shimmer {
-          100% {
-            transform: translateX(100%);
-          }
-        }
-
-        @keyframes pulse-slow {
-          0%,
-          100% {
-            opacity: 0.6;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.05);
-          }
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 6s ease-in-out infinite;
-        }
-
-        @keyframes spin-slow {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 40s linear infinite;
-        }
-
-        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes slideUp { from { transform: translate(-50%, 100%); } to { transform: translate(-50%, 0); } }
-        
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
-      `}</style>
-
       {toast && <Toast message={toast.msg} type={toast.type} onClose={() => setToast(null)} />}
       
       {activeTicket && !['salon-dashboard', 'admin-login', 'admin-dashboard'].includes(currentView) && (
@@ -1812,9 +1487,9 @@ export default function App() {
       {currentView === "user-dashboard" && (
         <UserDashboard
           onLogout={() => setCurrentView("home")}
-          salons={salons} // Pass global salons state
+          salons={salons} 
           onJoinQueue={handleJoinQueue}
-          onProfileClick={() => setCurrentView("user-profile")} // Added navigation
+          onProfileClick={() => setCurrentView("user-profile")} 
         />
       )}
 
@@ -1826,7 +1501,7 @@ export default function App() {
             phone: "+91 7568045830",
             location: "Jodhpur, Rajasthan",
             joinDate: "August 2025",
-            avatar: "" // Empty string will show initials
+            avatar: "" 
           }}
           onBack={() => setCurrentView("user-dashboard")} 
           onLogout={() => {
@@ -1838,12 +1513,11 @@ export default function App() {
 
       {currentView === "salon-dashboard" && (
         <SalonDashboard
-          salon={registeredSalon} // Pass the newly registered salon
+          salon={registeredSalon} 
           onLogout={() => setCurrentView("home")}
         />
       )}
 
-      {/* MODIFIED: Using Imported Component */}
       {currentView === "admin-login" && (
         <AdminLogin 
           onBack={() => setCurrentView("home")}
@@ -1851,7 +1525,6 @@ export default function App() {
         />
       )}
 
-      {/* MODIFIED: Using Imported Component */}
       {currentView === "admin-dashboard" && (
         <AdminDashboard 
           salons={salons}
@@ -1860,7 +1533,6 @@ export default function App() {
           onLogout={() => setCurrentView("home")}
         />
       )}
-
     </>
   );
 }
