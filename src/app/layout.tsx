@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TrimGo",
+  title: "TrimGo - Smart Salon Queue Management",
   description: "Skip waiting at salons — live queue & instant booking.",
 };
 
