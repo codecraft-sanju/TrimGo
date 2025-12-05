@@ -10,6 +10,7 @@ import SalonRegistration, { Salon } from "../components/SalonRegistration";
 import UserRegistration from "../components/UserRegistration";
 import { UserProfile } from "../components/UserProfile";
 import { AdminLogin, AdminDashboard, UserData } from "../components/AdminDashboard";
+import Testimonials from "../components/Testimonials";
 
 // NEW IMPORTS
 import HeroSection from "../components/HeroSection";
@@ -20,9 +21,6 @@ import UserDashboard from "../components/UserDashboard";
 import { BackgroundAurora, NoiseOverlay } from "../components/SharedUI";
 import AdvancedDashboardSection from "../components/AdvancedDashboardSection"; // Imported newly created component!
 
-/* ---------------------------------
-   INTERFACES & TYPES
----------------------------------- */
 
 interface TicketData {
   salonName: string;
@@ -354,6 +352,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigateUser, onNavigateSal
           />
         </div>
       </section>
+      <div className="border-t border-zinc-200">
+        <Testimonials />
+      </div>
 
       {/* --- FOOTER COMPONENT --- */}
       <Footer onNavigateAdmin={onNavigateAdmin} />
